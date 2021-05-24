@@ -27,10 +27,17 @@ namespace CommunTools.Common
             Type userAttu = info.GetType();
             try
             {
-                FuncURIAttribute uri = (FuncURIAttribute)userAttu.GetCustomAttributes(false)[0];
+                MemberInfo[] memInfo = userAttu.GetMember(info.ToString());
 
-                //在FuncURIAttribute中设置的是不容许多个特性,故取第1个
-                return uri.FuncUri;
+                if (memInfo != null && memInfo.Length > 0)
+                {
+                    object[] attrs = memInfo[0].GetCustomAttributes(typeof(FuncURIAttribute), false);
+                    if (attrs != null && attrs.Length > 0)
+
+                        //在FuncURIAttribute中设置的是不容许多个特性,故取第1个
+                        return ((FuncURIAttribute)attrs[0]).FuncUri;
+                }
+                return info.ToString();
             }
             catch (ArgumentNullException e)
             {
@@ -49,32 +56,20 @@ namespace CommunTools.Common
         /// </summary>
         /// <param name="Info">枚举类</param>
         /// <returns></returns>
-        public string XGroup(T info)
+        public string XGroup()
         {
             StringBuilder xGroups = new StringBuilder();
 
-            Type types = info.GetType();
-            PropertyInfo[] typesPro = types.GetProperties();
+            Type types = typeof(T);
+            object[] attru = types.GetCustomAttributes(false);
 
-            foreach (PropertyInfo pro in typesPro)
+            foreach (Attribute aGroup in attru)
             {
-                object[] attu = pro.GetCustomAttributes(false);
-
-                //object objValue = pro.GetValue(info, null);
-                //object objFieldName = (Object)pro.Name;
-                //object[] classInfo = new object[2];
-
-                //classInfo[0] = objFieldName;
-                //classInfo[1] = objValue;
-
-                foreach (Attribute aGroup in attu)
+                if (aGroup is FuncGroupAttribute)
                 {
-                    if (aGroup is FuncGroupAttribute)
-                    {
-                        FuncGroupAttribute group = aGroup as FuncGroupAttribute;
+                    FuncGroupAttribute group = aGroup as FuncGroupAttribute;
 
-                        xGroups.Append(group.GroupTag + "," + group.GroupName + ";");
-                    }
+                    xGroups.Append(group.GroupTag + "," + group.GroupName + ";");
                 }
             }
 

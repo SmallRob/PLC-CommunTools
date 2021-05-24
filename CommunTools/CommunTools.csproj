@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Com_CSSkin">
+      <HintPath>..\UsingLib\Com_CSSkin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -77,6 +80,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZCS_Common\ZCS_Common.csproj">
+      <Project>{C0F44B62-2DC6-4C2D-8713-A38ACB20B7D9}</Project>
+      <Name>ZCS_Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZCS_FormUI\ZCS_FormUI.csproj">
+      <Project>{99387794-5DCA-4F92-8E55-F6C415B2CF0B}</Project>
+      <Name>ZCS_FormUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

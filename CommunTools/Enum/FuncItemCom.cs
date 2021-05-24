@@ -40,7 +40,7 @@ namespace CommunTools.Enum
         [FuncGroup("Proto", "硬件协议通信")]
         public enum Com_ProtoFuncItem
         {
-            [Description("SUSI协议I/O口")]
+            [Description("SUSI协议$(I/O口)")]
             [FuncURI("Frm_SUSI")]
             Proto_SUSI = 1,
 
@@ -48,25 +48,25 @@ namespace CommunTools.Enum
             [FuncURI("Frm_Twain")]
             Proto_Twain = 2,
 
-            [Description("BCNet-A以太通讯(三菱)")]
+            [Description("BCNet-A通讯$(以太网协议，三菱)")]
             [FuncURI("Frm_BCNet")]
             Proto_BCNet_A = 3,
 
-            [Description("MELSEC-F控制器(三菱)")]
+            [Description("MELSEC-F控制器$(三菱)")]
             [FuncURI("Frm_MELSEC")]
             Proto_MELSEC_F = 4,
 
-            [Description("CS1W系列(欧姆龙)")]
+            [Description("CS1W系列$(欧姆龙)")]
             [FuncURI("Frm_CS1W")]
             Proto_HL8202 = 5,
 
             //SECS
-            [Description("半导体自动化SECS协议")]
+            [Description("SECS协议$半导体自动化")]
             [FuncURI("Frm_SECS")]
             Proto_SECS = 6,
 
             //松下电工 FP
-            [Description("松下电工FP控制器")]
+            [Description("电工FP控制器$(松下)")]
             [FuncURI("Frm_NAIS_FP")]
             Proto_NAIS_FP = 7,
 

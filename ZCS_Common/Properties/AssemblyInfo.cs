@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ZCS_Common")]
 [assembly: AssemblyDescription("公用类库")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("中国追溯")]
+[assembly: AssemblyCompany("Healer007")]
 [assembly: AssemblyProduct("ZCS_Common")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]

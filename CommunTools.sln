@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunTools", "CommunTools\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCS_Common", "ZCS_Common\ZCS_Common.csproj", "{C0F44B62-2DC6-4C2D-8713-A38ACB20B7D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCS_FormUI", "ZCS_FormUI\ZCS_FormUI.csproj", "{99387794-5DCA-4F92-8E55-F6C415B2CF0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C0F44B62-2DC6-4C2D-8713-A38ACB20B7D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0F44B62-2DC6-4C2D-8713-A38ACB20B7D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0F44B62-2DC6-4C2D-8713-A38ACB20B7D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99387794-5DCA-4F92-8E55-F6C415B2CF0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99387794-5DCA-4F92-8E55-F6C415B2CF0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99387794-5DCA-4F92-8E55-F6C415B2CF0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99387794-5DCA-4F92-8E55-F6C415B2CF0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

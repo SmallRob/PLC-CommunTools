@@ -35,8 +35,9 @@ namespace CommunTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(506, 450);
+            this.ClientSize = new System.Drawing.Size(385, 470);
             this.Name = "FrmMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "硬件及协议通讯工具";
             this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.ResumeLayout(false);
