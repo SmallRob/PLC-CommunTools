@@ -168,5 +168,29 @@ namespace ZCS_Common
                 yield return (T)item;
             }
         }
+
+        /// <summary>
+        /// 获取自定义attribute 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="enumObj"></param>
+        /// <returns></returns>
+        public static T[] GetAttribute<T>(Enum enumObj) where T : Attribute
+        {
+            Type type = enumObj.GetType();
+            object[] attr = null;
+            try
+            {
+                String enumName = Enum.GetName(type, enumObj);  //获取对应的枚举名
+                FieldInfo field = type.GetField(enumName);
+                attr = field.GetCustomAttributes(typeof(T), false);
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteException(ex);
+            }
+
+            return attr as T[];
+        }
     }
 }

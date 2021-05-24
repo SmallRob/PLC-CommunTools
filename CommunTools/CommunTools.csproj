@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AttributesContext.cs" />
     <Compile Include="Common\FuncGroupAttribute.cs" />
     <Compile Include="Common\FuncURIAttribute.cs" />
     <Compile Include="Enum\FuncItemCom.cs" />
