@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCS_Common", "ZCS_Common\ZC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCS_FormUI", "ZCS_FormUI\ZCS_FormUI.csproj", "{99387794-5DCA-4F92-8E55-F6C415B2CF0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunWPF", "CommunWPF\CommunWPF.csproj", "{EF3A8CC8-AD42-4554-9FA8-992E177C9245}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCS_XamlUI", "ZCS_XamlUI\ZCS_XamlUI.csproj", "{A9167068-686F-45F3-A1FC-143C09CACD4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{99387794-5DCA-4F92-8E55-F6C415B2CF0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99387794-5DCA-4F92-8E55-F6C415B2CF0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99387794-5DCA-4F92-8E55-F6C415B2CF0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3A8CC8-AD42-4554-9FA8-992E177C9245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3A8CC8-AD42-4554-9FA8-992E177C9245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3A8CC8-AD42-4554-9FA8-992E177C9245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3A8CC8-AD42-4554-9FA8-992E177C9245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9167068-686F-45F3-A1FC-143C09CACD4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9167068-686F-45F3-A1FC-143C09CACD4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9167068-686F-45F3-A1FC-143C09CACD4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9167068-686F-45F3-A1FC-143C09CACD4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
