@@ -1,21 +1,17 @@
-﻿using CommunTools.Common;
+﻿using Com_CSSkin;
+using CommunTools.Common;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using static CommunTools.Enum.FuncItemCom;
 using ZCS_Common;
 using ZCS_FormUI.Controls;
 using ZCS_FormUI.Forms;
+using static CommunTools.Enum.FuncItemCom;
 
 namespace CommunTools
 {
-    public partial class FrmMenu : Form
+    public partial class FrmMenu : CSSkinMain
     {
         public FrmMenu()
         {

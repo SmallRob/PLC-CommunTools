@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>login.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Com_CSSkin">
       <HintPath>..\UsingLib\Com_CSSkin.dll</HintPath>
@@ -90,6 +93,9 @@
       <Project>{99387794-5DCA-4F92-8E55-F6C415B2CF0B}</Project>
       <Name>ZCS_FormUI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="login.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
