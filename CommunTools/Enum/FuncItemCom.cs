@@ -30,7 +30,11 @@ namespace CommunTools.Enum
 
             [Description("串口通讯")]
             [FuncURI("Frm_SerialPort")]
-            COM_SerialPort = 4
+            COM_SerialPort = 4,
+
+            [Description("MQTT协议")]
+            [FuncURI("Frm_MQTT")]
+            COM_MQTT = 5
         }
 
         /// <summary>
@@ -44,7 +48,7 @@ namespace CommunTools.Enum
             [FuncURI("Frm_SUSI")]
             Proto_SUSI = 1,
 
-            [Description("Twain扫描驱动")]
+            [Description("Twain扫描仪协议")]
             [FuncURI("Frm_Twain")]
             Proto_Twain = 2,
 

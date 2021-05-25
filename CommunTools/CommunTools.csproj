@@ -60,8 +60,17 @@
     <Compile Include="FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmBaseCom\Frm_MQTT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBaseCom\Frm_MQTT.Designer.cs">
+      <DependentUpon>Frm_MQTT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBaseCom\Frm_MQTT.resx">
+      <DependentUpon>Frm_MQTT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMenu.resx">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,6 +94,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Commun.NetWork\Commun.NetWork.csproj">
+      <Project>{93FDC7D0-9623-4858-8B43-9342F0473007}</Project>
+      <Name>Commun.NetWork</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZCS_Common\ZCS_Common.csproj">
       <Project>{C0F44B62-2DC6-4C2D-8713-A38ACB20B7D9}</Project>
       <Name>ZCS_Common</Name>

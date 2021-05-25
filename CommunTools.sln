@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommunWPF", "CommunWPF\Comm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZCS_XamlUI", "ZCS_XamlUI\ZCS_XamlUI.csproj", "{A9167068-686F-45F3-A1FC-143C09CACD4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commun.NetWork", "Commun.NetWork\Commun.NetWork.csproj", "{93FDC7D0-9623-4858-8B43-9342F0473007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commun.NetCore", "Commun.NetCore\Commun.NetCore.csproj", "{DB9852F6-DCFE-4209-BDC5-48362F2A259E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{A9167068-686F-45F3-A1FC-143C09CACD4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9167068-686F-45F3-A1FC-143C09CACD4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9167068-686F-45F3-A1FC-143C09CACD4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93FDC7D0-9623-4858-8B43-9342F0473007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93FDC7D0-9623-4858-8B43-9342F0473007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93FDC7D0-9623-4858-8B43-9342F0473007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93FDC7D0-9623-4858-8B43-9342F0473007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB9852F6-DCFE-4209-BDC5-48362F2A259E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB9852F6-DCFE-4209-BDC5-48362F2A259E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB9852F6-DCFE-4209-BDC5-48362F2A259E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB9852F6-DCFE-4209-BDC5-48362F2A259E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
