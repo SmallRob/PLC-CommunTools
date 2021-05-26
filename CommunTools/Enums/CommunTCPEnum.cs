@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CommunTools.Enum
+namespace CommunTools.Enums
 {
     /// <summary>
     /// TCP服务通讯状态
     /// </summary>
-    public enum CommunticationEnum
+    public enum CommunTCPEnum
     {
         /// <summary>
         /// COM接口数据发送成功

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using ZCS_Common;
 using ZCS_FormUI.Controls;
 using ZCS_FormUI.Forms;
-using static CommunTools.Enum.FuncItemCom;
+using static CommunTools.Enums.FuncItemCom;
 
 namespace CommunTools
 {

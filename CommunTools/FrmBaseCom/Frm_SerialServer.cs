@@ -1,8 +1,9 @@
 ﻿using Com_CSSkin;
+using Com_CSSkin.SkinControl;
 using Commun.NetWork.MQTT;
 using CommunTools.Common;
 using CommunTools.Entity;
-using CommunTools.Enum;
+using CommunTools.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ using System.Threading;
 using System.Windows.Forms;
 using ZCS_Common;
 using ZCS_FormUI.Forms;
+using sp = CommunTools.Enums.SerialPortEnum;
 
 namespace CommunTools
 {
@@ -25,9 +27,68 @@ namespace CommunTools
         public Frm_SerialServer()
         {
             InitializeComponent();
+            InitializeSerialSet();
         }
 
-        TCPComServer comServer;
+        /// <summary>
+        /// 串口初始化加载
+        /// </summary>
+        private void InitializeSerialSet()
+        {
+            InitializePorts();   // 初始化串口号
+            var ps = new List<(SkinComboBox, IList<EnumListModel>)>()
+            {
+                (cmbPortParity,EnumHelper.GetEnumList(typeof(sp.PortParity))),
+                (cmbBandRate,EnumHelper.GetEnumList(typeof(sp.BandRate))),
+                (cmbStopBits,EnumHelper.GetEnumList(typeof(sp.StopBits))),
+                (cmbDataBits,EnumHelper.GetEnumList(typeof(sp.DataBit)))
+            };
+
+            foreach ((SkinComboBox, IList<EnumListModel>) item in ps)
+            {
+                foreach (EnumListModel enumLst in item.Item2)
+                {
+                    item.Item1.Items.Add(enumLst.EnumDescrip);
+                }
+                item.Item1.SelectedIndex = 0;
+            }
+
+            cmbBandRate.Text = cmbBandRate.Items[1].ToString();
+        }
+
+        /// <summary>
+        /// 初始化串口号
+        /// 扫描串口并显示
+        /// </summary>
+        private void InitializePorts()
+        {
+            cmbComLst.Items.Clear();   // 清空原来的信息
+            // 返回可用串口号，形式：COM3
+            string[] arraysPostsNames = SerialPort.GetPortNames();  // 获取所有可用的串口号
+
+            // 检查串口号是否正确
+            if (arraysPostsNames.Length > 0)
+            {
+                Array.Sort(arraysPostsNames);  // 使用默认进行排序，从小到大肾虚
+                for (int i = 0; i < arraysPostsNames.Length; i++)
+                {
+                    cmbComLst.Items.Add(arraysPostsNames[i]);  // 将所有可用串口加载到串口显示框当中
+                }
+                cmbComLst.Text = arraysPostsNames[0];   // 默认选择第一个串口
+
+                cmbComLst.Enabled = true;
+            }
+            else
+            {
+                labComInfo.Text = "没有可用串口";  // 设置状态栏的情况    
+                cmbComLst.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// TCPComServer对象
+        /// </summary>
+        private TCPComServer comServer;
 
         private void btnOpenServer_BtnClick(object sender, EventArgs e)
         {
@@ -36,20 +97,23 @@ namespace CommunTools
                 string tipTxt = string.Empty;
 
                 comServer = new TCPComServer();
-                comServer.ComPort = txtPort.InputText;
+
+                comServer.Context = SynchronizationContext.Current;
+                comServer.ComPort = cmbComLst.Text;
                 comServer.ip = txtTCPIP.InputText;
+                comServer.port = txtPort.InputText;
                 comServer.isTCPClient = false;
 
                 //开启方法
                 if (!InitSerialPort(comServer))
                 {
-                    tipTxt = "串口初始化失败!(" + txtCOM.txtInput + ")";
+                    tipTxt = "串口初始化失败!(" + cmbComLst.Text + ")";
                     FrmDialog.ShowDialog(this, tipTxt);
                     return;
                 }
                 else
                 {
-                    tipTxt = txtCOM.txtInput + " 打开成功！";
+                    tipTxt = cmbComLst.Text + " 打开成功！";
                 }
                 if (!InitTCPListen(comServer))
                 {
@@ -78,34 +142,43 @@ namespace CommunTools
         private bool InitSerialPort(TCPComServer comServer)
         {
             Parity par = Parity.None;
-            if (comboBoxOddEvent.SelectedItem != null)
+            if (cmbPortParity.SelectedItem != null)
             {
-                switch (comboBoxOddEvent.SelectedText.ToLower())
+                sp.PortParity portParity = (sp.PortParity)cmbPortParity.SelectedIndex;
+
+                switch (portParity)
                 {
-                    case "even":
-                        par = Parity.Even;
-                        break;
-                    case "none":
+                    case sp.PortParity.None:
                         par = Parity.None;
                         break;
-                    case "odd":
+                    case sp.PortParity.Odd:
                         par = Parity.Odd;
+                        break;
+                    case sp.PortParity.Even:
+                        par = Parity.Even;
+                        break;
+                    case sp.PortParity.Mark:
+                        par = Parity.Mark;
                         break;
                     default:
                         par = Parity.None;
                         break;
                 }
             }
+
+            //停止位
             StopBits stopBit = StopBits.None;
-            switch (txtStopBit.InputText)
+
+            sp.StopBits stopBits = (sp.StopBits)cmbStopBits.SelectedIndex;
+            switch (stopBits)
             {
-                case "1":
+                case sp.StopBits.One:
                     stopBit = StopBits.One;
                     break;
-                case "1.5":
+                case sp.StopBits.OnePointFive:
                     stopBit = StopBits.OnePointFive;
                     break;
-                case "2":
+                case sp.StopBits.Two:
                     stopBit = StopBits.Two;
                     break;
                 default:
@@ -118,8 +191,8 @@ namespace CommunTools
                 comServer.EntitySerialPort = new SerialPort();
 
                 comServer.EntitySerialPort.PortName = comServer.ComPort;  //串口名称
-                comServer.EntitySerialPort.BaudRate = int.Parse(txtBaudRate.InputText);   //波特率
-                comServer.EntitySerialPort.DataBits = int.Parse(txtDataBit.InputText);    //数据位
+                comServer.EntitySerialPort.BaudRate = int.Parse(cmbBandRate.Text);    //波特率
+                comServer.EntitySerialPort.DataBits = int.Parse(cmbDataBits.Text);    //数据位
                 comServer.EntitySerialPort.Parity = par;       //校验位
                 comServer.EntitySerialPort.StopBits = stopBit; //停止位
                 comServer.EntitySerialPort.ReadTimeout = 3000;   //读写超时控制在3秒内
@@ -145,7 +218,7 @@ namespace CommunTools
                     comServer.EntitySerialPort.Open();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 CloseDispose(comServer);
                 return false;
@@ -182,11 +255,11 @@ namespace CommunTools
                     {
                         server.EntitySerialPort.Write(sendBytes, 0, sendBytes.Length);
 
-                        ShowRealInfoToFrm(CommunticationEnum.COMEntitySendOK, sendBytes, server);
+                        ShowRealInfoToFrm(CommunTCPEnum.COMEntitySendOK, sendBytes, server);
                     }
                     catch (Exception)
                     {
-                        ShowRealInfoToFrm(CommunticationEnum.COMEntitySendError, sendBytes, server);
+                        ShowRealInfoToFrm(CommunTCPEnum.COMEntitySendError, sendBytes, server);
                     }
 
                 }
@@ -266,7 +339,7 @@ namespace CommunTools
                         //labReciveInfo.Text = string.Format("{0}/{1}", RecivePacketNumber, ReciveBytesNumber);
                     }, null);
                     //EntitySerialPort.Write(queueBytes, 0, queueBytes.Length);  //读到数据直接发
-                    ShowRealInfoToFrm(CommunticationEnum.TCPEntityReciveOK, queueBytes, null);
+                    ShowRealInfoToFrm(CommunTCPEnum.TCPEntityReciveOK, queueBytes, null);
                     lock (server.TCPRecvQueue)
                     {
                         server.TCPRecvQueue.Enqueue(queueBytes);
@@ -309,7 +382,7 @@ namespace CommunTools
                     {
                         int nu = server.EntitySerialPort.Read(comButs, 0, reciveNU);
 
-                        ShowRealInfoToFrm(CommunticationEnum.COMEntityReciveOK, comButs, nu, server);
+                        ShowRealInfoToFrm(CommunTCPEnum.COMEntityReciveOK, comButs, nu, server);
                         byte[] SendBytes = new byte[nu + 8];
                         Array.Copy(heardBytes, 0, SendBytes, 0, heardBytes.Length);
                         Array.Copy(comButs, 0, SendBytes, heardBytes.Length, nu);
@@ -349,7 +422,7 @@ namespace CommunTools
             }
         }
 
-        private void ShowRealInfoToFrm(CommunticationEnum commEnum, byte[] buff, int buffLen, TCPComServer comServer)
+        private void ShowRealInfoToFrm(CommunTCPEnum commEnum, byte[] buff, int buffLen, TCPComServer comServer)
         {
             if (buffLen == buff.Length)
             {
@@ -373,7 +446,7 @@ namespace CommunTools
         /// </summary>
         /// <param name="cOMEntitySendOK"></param>
         /// <param name="sendBytes"></param>
-        private void ShowRealInfoToFrm(CommunticationEnum commEnum, byte[] buff, TCPComServer server)
+        private void ShowRealInfoToFrm(CommunTCPEnum commEnum, byte[] buff, TCPComServer server)
         {
             if (server == null)
             {
@@ -388,28 +461,28 @@ namespace CommunTools
             sb.AppendFormat("[{0}]# ", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
             switch (commEnum)
             {
-                case CommunticationEnum.COMEntitySendOK:
+                case CommunTCPEnum.COMEntitySendOK:
                     sb.AppendFormat("TXD[OK]  {0} >\r\n", server.ComPort);
                     break;
-                case CommunticationEnum.COMEntitySendError:
+                case CommunTCPEnum.COMEntitySendError:
                     sb.AppendFormat("TXD[Error] {0} >\r\n", server.ComPort);
                     break;
-                case CommunticationEnum.COMEntityReciveOK:
+                case CommunTCPEnum.COMEntityReciveOK:
                     sb.AppendFormat("RXD[OK] {0} >\r\n", server.ComPort);
                     break;
-                case CommunticationEnum.COMEntityReciveError:
+                case CommunTCPEnum.COMEntityReciveError:
                     sb.AppendFormat("RXD[Error] {0} >\r\n", server.ComPort);
                     break;
-                case CommunticationEnum.TCPEntitySendOK:
+                case CommunTCPEnum.TCPEntitySendOK:
                     sb.AppendFormat("Send[OK] {0} >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString());
                     break;
-                case CommunticationEnum.TCPEntitySendError:
+                case CommunTCPEnum.TCPEntitySendError:
                     sb.AppendFormat("Send[Err] {0} >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString());
                     break;
-                case CommunticationEnum.TCPEntityReciveOK:
+                case CommunTCPEnum.TCPEntityReciveOK:
                     sb.AppendFormat("Recive[OK] {0} >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString());
                     break;
-                case CommunticationEnum.TCPEntityReciveError:
+                case CommunTCPEnum.TCPEntityReciveError:
                     sb.AppendFormat("Recive {0}[Err] >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString());
                     break;
                 default:
@@ -427,7 +500,7 @@ namespace CommunTools
                     txtShowMsg.AppendText(strHex);
                     txtShowMsg.ScrollToCaret();
 
-                    if (commEnum == CommunticationEnum.COMEntityReciveOK || commEnum == CommunticationEnum.COMEntitySendOK)
+                    if (commEnum == CommunTCPEnum.COMEntityReciveOK || commEnum == CommunTCPEnum.COMEntitySendOK)
                     {
                         //txtReceive.AppendText("\r\n");
                     }

@@ -32,28 +32,28 @@ namespace CommunTools
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_SerialServer));
             this.btnClean = new ZCS_FormUI.Controls.UCBtnExt();
             this.groupBoxEx1 = new ZCS_FormUI.Controls.GroupBoxEx();
-            this.txtTCPIP = new ZCS_FormUI.Controls.UCTextBoxEx();
-            this.skinLabel1 = new Com_CSSkin.SkinControl.SkinLabel();
+            this.btnStart = new ZCS_FormUI.Controls.UCBtnExt();
+            this.lblCount = new Com_CSSkin.SkinControl.SkinLabel();
+            this.skinLabel3 = new Com_CSSkin.SkinControl.SkinLabel();
             this.skinLabel2 = new Com_CSSkin.SkinControl.SkinLabel();
             this.txtPort = new ZCS_FormUI.Controls.UCTextBoxEx();
-            this.skinLabel3 = new Com_CSSkin.SkinControl.SkinLabel();
-            this.lblCount = new Com_CSSkin.SkinControl.SkinLabel();
+            this.skinLabel1 = new Com_CSSkin.SkinControl.SkinLabel();
+            this.txtTCPIP = new ZCS_FormUI.Controls.UCTextBoxEx();
             this.groupBoxEx2 = new ZCS_FormUI.Controls.GroupBoxEx();
-            this.skinLabel7 = new Com_CSSkin.SkinControl.SkinLabel();
-            this.txtCOM = new ZCS_FormUI.Controls.UCTextBoxEx();
-            this.btnStart = new ZCS_FormUI.Controls.UCBtnExt();
-            this.skinLabel4 = new Com_CSSkin.SkinControl.SkinLabel();
-            this.skinLabel5 = new Com_CSSkin.SkinControl.SkinLabel();
-            this.txtBaudRate = new ZCS_FormUI.Controls.UCTextBoxEx();
-            this.skinLabel6 = new Com_CSSkin.SkinControl.SkinLabel();
-            this.txtStopBit = new ZCS_FormUI.Controls.UCTextBoxEx();
+            this.cmbDataBits = new Com_CSSkin.SkinControl.SkinComboBox();
+            this.cmbStopBits = new Com_CSSkin.SkinControl.SkinComboBox();
+            this.cmbBandRate = new Com_CSSkin.SkinControl.SkinComboBox();
+            this.cmbComLst = new Com_CSSkin.SkinControl.SkinComboBox();
+            this.cmbPortParity = new Com_CSSkin.SkinControl.SkinComboBox();
             this.skinLabel8 = new Com_CSSkin.SkinControl.SkinLabel();
-            this.txtDataBit = new ZCS_FormUI.Controls.UCTextBoxEx();
+            this.skinLabel6 = new Com_CSSkin.SkinControl.SkinLabel();
+            this.skinLabel5 = new Com_CSSkin.SkinControl.SkinLabel();
+            this.skinLabel4 = new Com_CSSkin.SkinControl.SkinLabel();
+            this.skinLabel7 = new Com_CSSkin.SkinControl.SkinLabel();
             this.groupBoxEx3 = new ZCS_FormUI.Controls.GroupBoxEx();
-            this.labComInfo = new Com_CSSkin.SkinControl.SkinLabel();
-            this.comboBoxOddEvent = new Com_CSSkin.SkinControl.SkinComboBox();
-            this.labLinkClient = new Com_CSSkin.SkinControl.SkinLabel();
             this.txtShowMsg = new System.Windows.Forms.RichTextBox();
+            this.labComInfo = new Com_CSSkin.SkinControl.SkinLabel();
+            this.labLinkClient = new Com_CSSkin.SkinControl.SkinLabel();
             this.groupBoxEx1.SuspendLayout();
             this.groupBoxEx2.SuspendLayout();
             this.groupBoxEx3.SuspendLayout();
@@ -103,59 +103,56 @@ namespace CommunTools
             this.groupBoxEx1.TabStop = false;
             this.groupBoxEx1.Text = "TCP转发服务";
             // 
-            // txtTCPIP
+            // btnStart
             // 
-            this.txtTCPIP.BackColor = System.Drawing.Color.Transparent;
-            this.txtTCPIP.ConerRadius = 5;
-            this.txtTCPIP.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtTCPIP.DecLength = 2;
-            this.txtTCPIP.FillColor = System.Drawing.Color.Empty;
-            this.txtTCPIP.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-            this.txtTCPIP.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtTCPIP.InputText = "";
-            this.txtTCPIP.InputType = ZCS_FormUI.TextInputType.NotControl;
-            this.txtTCPIP.IsFocusColor = true;
-            this.txtTCPIP.IsRadius = true;
-            this.txtTCPIP.IsShowClearBtn = true;
-            this.txtTCPIP.IsShowKeyboard = false;
-            this.txtTCPIP.IsShowRect = true;
-            this.txtTCPIP.IsShowSearchBtn = false;
-            this.txtTCPIP.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtTCPIP.Location = new System.Drawing.Point(110, 27);
-            this.txtTCPIP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtTCPIP.MaxValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.txtTCPIP.MinValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.txtTCPIP.Name = "txtTCPIP";
-            this.txtTCPIP.Padding = new System.Windows.Forms.Padding(5);
-            this.txtTCPIP.PasswordChar = '\0';
-            this.txtTCPIP.PromptColor = System.Drawing.Color.Gray;
-            this.txtTCPIP.PromptFont = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtTCPIP.PromptText = "";
-            this.txtTCPIP.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txtTCPIP.RectWidth = 1;
-            this.txtTCPIP.RegexPattern = "";
-            this.txtTCPIP.Size = new System.Drawing.Size(140, 26);
-            this.txtTCPIP.TabIndex = 0;
+            this.btnStart.BackColor = System.Drawing.Color.White;
+            this.btnStart.BtnBackColor = System.Drawing.Color.White;
+            this.btnStart.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnStart.BtnForeColor = System.Drawing.Color.White;
+            this.btnStart.BtnText = "开启服务";
+            this.btnStart.ConerRadius = 5;
+            this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStart.EnabledMouseEffect = false;
+            this.btnStart.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnStart.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btnStart.IsRadius = true;
+            this.btnStart.IsShowRect = true;
+            this.btnStart.IsShowTips = false;
+            this.btnStart.Location = new System.Drawing.Point(282, 22);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(0);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
+            this.btnStart.RectWidth = 1;
+            this.btnStart.Size = new System.Drawing.Size(86, 33);
+            this.btnStart.TabIndex = 2;
+            this.btnStart.TabStop = false;
+            this.btnStart.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.btnStart.TipsText = "";
+            this.btnStart.BtnClick += new System.EventHandler(this.btnOpenServer_BtnClick);
             // 
-            // skinLabel1
+            // lblCount
             // 
-            this.skinLabel1.AutoSize = true;
-            this.skinLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel1.BorderColor = System.Drawing.Color.White;
-            this.skinLabel1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel1.Location = new System.Drawing.Point(28, 27);
-            this.skinLabel1.Name = "skinLabel1";
-            this.skinLabel1.Size = new System.Drawing.Size(36, 20);
-            this.skinLabel1.TabIndex = 1;
-            this.skinLabel1.Text = "IP：";
+            this.lblCount.AutoSize = true;
+            this.lblCount.BackColor = System.Drawing.Color.Transparent;
+            this.lblCount.BorderColor = System.Drawing.Color.White;
+            this.lblCount.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblCount.Location = new System.Drawing.Point(141, 121);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(99, 20);
+            this.lblCount.TabIndex = 5;
+            this.lblCount.Text = "接收包/总字节";
+            // 
+            // skinLabel3
+            // 
+            this.skinLabel3.AutoSize = true;
+            this.skinLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel3.BorderColor = System.Drawing.Color.White;
+            this.skinLabel3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel3.Location = new System.Drawing.Point(28, 121);
+            this.skinLabel3.Name = "skinLabel3";
+            this.skinLabel3.Size = new System.Drawing.Size(107, 20);
+            this.skinLabel3.TabIndex = 4;
+            this.skinLabel3.Text = "接收数据统计：";
             // 
             // skinLabel2
             // 
@@ -211,42 +208,72 @@ namespace CommunTools
             this.txtPort.Size = new System.Drawing.Size(85, 26);
             this.txtPort.TabIndex = 2;
             // 
-            // skinLabel3
+            // skinLabel1
             // 
-            this.skinLabel3.AutoSize = true;
-            this.skinLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel3.BorderColor = System.Drawing.Color.White;
-            this.skinLabel3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel3.Location = new System.Drawing.Point(28, 121);
-            this.skinLabel3.Name = "skinLabel3";
-            this.skinLabel3.Size = new System.Drawing.Size(107, 20);
-            this.skinLabel3.TabIndex = 4;
-            this.skinLabel3.Text = "接收数据统计：";
+            this.skinLabel1.AutoSize = true;
+            this.skinLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel1.BorderColor = System.Drawing.Color.White;
+            this.skinLabel1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel1.Location = new System.Drawing.Point(28, 27);
+            this.skinLabel1.Name = "skinLabel1";
+            this.skinLabel1.Size = new System.Drawing.Size(36, 20);
+            this.skinLabel1.TabIndex = 1;
+            this.skinLabel1.Text = "IP：";
             // 
-            // lblCount
+            // txtTCPIP
             // 
-            this.lblCount.AutoSize = true;
-            this.lblCount.BackColor = System.Drawing.Color.Transparent;
-            this.lblCount.BorderColor = System.Drawing.Color.White;
-            this.lblCount.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblCount.Location = new System.Drawing.Point(141, 121);
-            this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(99, 20);
-            this.lblCount.TabIndex = 5;
-            this.lblCount.Text = "接收包/总字节";
+            this.txtTCPIP.BackColor = System.Drawing.Color.Transparent;
+            this.txtTCPIP.ConerRadius = 5;
+            this.txtTCPIP.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtTCPIP.DecLength = 2;
+            this.txtTCPIP.FillColor = System.Drawing.Color.Empty;
+            this.txtTCPIP.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
+            this.txtTCPIP.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtTCPIP.InputText = "";
+            this.txtTCPIP.InputType = ZCS_FormUI.TextInputType.NotControl;
+            this.txtTCPIP.IsFocusColor = true;
+            this.txtTCPIP.IsRadius = true;
+            this.txtTCPIP.IsShowClearBtn = true;
+            this.txtTCPIP.IsShowKeyboard = false;
+            this.txtTCPIP.IsShowRect = true;
+            this.txtTCPIP.IsShowSearchBtn = false;
+            this.txtTCPIP.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
+            this.txtTCPIP.Location = new System.Drawing.Point(110, 27);
+            this.txtTCPIP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtTCPIP.MaxValue = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.txtTCPIP.MinValue = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            -2147483648});
+            this.txtTCPIP.Name = "txtTCPIP";
+            this.txtTCPIP.Padding = new System.Windows.Forms.Padding(5);
+            this.txtTCPIP.PasswordChar = '\0';
+            this.txtTCPIP.PromptColor = System.Drawing.Color.Gray;
+            this.txtTCPIP.PromptFont = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTCPIP.PromptText = "";
+            this.txtTCPIP.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.txtTCPIP.RectWidth = 1;
+            this.txtTCPIP.RegexPattern = "";
+            this.txtTCPIP.Size = new System.Drawing.Size(140, 26);
+            this.txtTCPIP.TabIndex = 0;
             // 
             // groupBoxEx2
             // 
-            this.groupBoxEx2.Controls.Add(this.comboBoxOddEvent);
+            this.groupBoxEx2.Controls.Add(this.cmbDataBits);
+            this.groupBoxEx2.Controls.Add(this.cmbStopBits);
+            this.groupBoxEx2.Controls.Add(this.cmbBandRate);
+            this.groupBoxEx2.Controls.Add(this.cmbComLst);
+            this.groupBoxEx2.Controls.Add(this.cmbPortParity);
             this.groupBoxEx2.Controls.Add(this.skinLabel8);
-            this.groupBoxEx2.Controls.Add(this.txtDataBit);
             this.groupBoxEx2.Controls.Add(this.skinLabel6);
-            this.groupBoxEx2.Controls.Add(this.txtStopBit);
             this.groupBoxEx2.Controls.Add(this.skinLabel5);
-            this.groupBoxEx2.Controls.Add(this.txtBaudRate);
             this.groupBoxEx2.Controls.Add(this.skinLabel4);
             this.groupBoxEx2.Controls.Add(this.skinLabel7);
-            this.groupBoxEx2.Controls.Add(this.txtCOM);
             this.groupBoxEx2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBoxEx2.Location = new System.Drawing.Point(10, 193);
             this.groupBoxEx2.Name = "groupBoxEx2";
@@ -255,206 +282,70 @@ namespace CommunTools
             this.groupBoxEx2.TabStop = false;
             this.groupBoxEx2.Text = "COM口设置";
             // 
-            // skinLabel7
+            // cmbDataBits
             // 
-            this.skinLabel7.AutoSize = true;
-            this.skinLabel7.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel7.BorderColor = System.Drawing.Color.White;
-            this.skinLabel7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel7.Location = new System.Drawing.Point(28, 30);
-            this.skinLabel7.Name = "skinLabel7";
-            this.skinLabel7.Size = new System.Drawing.Size(57, 20);
-            this.skinLabel7.TabIndex = 1;
-            this.skinLabel7.Text = "COM：";
+            this.cmbDataBits.BorderColor = System.Drawing.Color.Gainsboro;
+            this.cmbDataBits.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbDataBits.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbDataBits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDataBits.FormattingEnabled = true;
+            this.cmbDataBits.Location = new System.Drawing.Point(110, 210);
+            this.cmbDataBits.Name = "cmbDataBits";
+            this.cmbDataBits.Size = new System.Drawing.Size(140, 27);
+            this.cmbDataBits.TabIndex = 14;
+            this.cmbDataBits.WaterText = "";
             // 
-            // txtCOM
+            // cmbStopBits
             // 
-            this.txtCOM.BackColor = System.Drawing.Color.Transparent;
-            this.txtCOM.ConerRadius = 5;
-            this.txtCOM.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCOM.DecLength = 2;
-            this.txtCOM.FillColor = System.Drawing.Color.Empty;
-            this.txtCOM.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-            this.txtCOM.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtCOM.InputText = "";
-            this.txtCOM.InputType = ZCS_FormUI.TextInputType.NotControl;
-            this.txtCOM.IsFocusColor = true;
-            this.txtCOM.IsRadius = true;
-            this.txtCOM.IsShowClearBtn = true;
-            this.txtCOM.IsShowKeyboard = false;
-            this.txtCOM.IsShowRect = true;
-            this.txtCOM.IsShowSearchBtn = false;
-            this.txtCOM.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtCOM.Location = new System.Drawing.Point(110, 27);
-            this.txtCOM.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtCOM.MaxValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.txtCOM.MinValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.txtCOM.Name = "txtCOM";
-            this.txtCOM.Padding = new System.Windows.Forms.Padding(5);
-            this.txtCOM.PasswordChar = '\0';
-            this.txtCOM.PromptColor = System.Drawing.Color.Gray;
-            this.txtCOM.PromptFont = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtCOM.PromptText = "";
-            this.txtCOM.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txtCOM.RectWidth = 1;
-            this.txtCOM.RegexPattern = "";
-            this.txtCOM.Size = new System.Drawing.Size(140, 26);
-            this.txtCOM.TabIndex = 0;
+            this.cmbStopBits.BorderColor = System.Drawing.Color.Gainsboro;
+            this.cmbStopBits.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbStopBits.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbStopBits.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStopBits.FormattingEnabled = true;
+            this.cmbStopBits.Location = new System.Drawing.Point(110, 164);
+            this.cmbStopBits.Name = "cmbStopBits";
+            this.cmbStopBits.Size = new System.Drawing.Size(140, 27);
+            this.cmbStopBits.TabIndex = 13;
+            this.cmbStopBits.WaterText = "";
             // 
-            // btnStart
+            // cmbBandRate
             // 
-            this.btnStart.BackColor = System.Drawing.Color.White;
-            this.btnStart.BtnBackColor = System.Drawing.Color.White;
-            this.btnStart.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnStart.BtnForeColor = System.Drawing.Color.White;
-            this.btnStart.BtnText = "开启服务";
-            this.btnStart.ConerRadius = 5;
-            this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStart.EnabledMouseEffect = false;
-            this.btnStart.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnStart.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.btnStart.IsRadius = true;
-            this.btnStart.IsShowRect = true;
-            this.btnStart.IsShowTips = false;
-            this.btnStart.Location = new System.Drawing.Point(282, 22);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(0);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
-            this.btnStart.RectWidth = 1;
-            this.btnStart.Size = new System.Drawing.Size(86, 33);
-            this.btnStart.TabIndex = 2;
-            this.btnStart.TabStop = false;
-            this.btnStart.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-            this.btnStart.TipsText = "";
-            this.btnStart.BtnClick += new System.EventHandler(this.btnOpenServer_BtnClick);
+            this.cmbBandRate.BorderColor = System.Drawing.Color.Gainsboro;
+            this.cmbBandRate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbBandRate.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbBandRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbBandRate.FormattingEnabled = true;
+            this.cmbBandRate.Location = new System.Drawing.Point(110, 119);
+            this.cmbBandRate.Name = "cmbBandRate";
+            this.cmbBandRate.Size = new System.Drawing.Size(140, 27);
+            this.cmbBandRate.TabIndex = 12;
+            this.cmbBandRate.WaterText = "";
             // 
-            // skinLabel4
+            // cmbComLst
             // 
-            this.skinLabel4.AutoSize = true;
-            this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel4.BorderColor = System.Drawing.Color.White;
-            this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel4.Location = new System.Drawing.Point(28, 76);
-            this.skinLabel4.Name = "skinLabel4";
-            this.skinLabel4.Size = new System.Drawing.Size(79, 20);
-            this.skinLabel4.TabIndex = 3;
-            this.skinLabel4.Text = "奇偶校验：";
+            this.cmbComLst.BorderColor = System.Drawing.Color.Gainsboro;
+            this.cmbComLst.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbComLst.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbComLst.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbComLst.FormattingEnabled = true;
+            this.cmbComLst.Location = new System.Drawing.Point(110, 27);
+            this.cmbComLst.Name = "cmbComLst";
+            this.cmbComLst.Size = new System.Drawing.Size(140, 27);
+            this.cmbComLst.TabIndex = 11;
+            this.cmbComLst.WaterText = "";
             // 
-            // skinLabel5
+            // cmbPortParity
             // 
-            this.skinLabel5.AutoSize = true;
-            this.skinLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel5.BorderColor = System.Drawing.Color.White;
-            this.skinLabel5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel5.Location = new System.Drawing.Point(28, 122);
-            this.skinLabel5.Name = "skinLabel5";
-            this.skinLabel5.Size = new System.Drawing.Size(65, 20);
-            this.skinLabel5.TabIndex = 5;
-            this.skinLabel5.Text = "波特率：";
-            // 
-            // txtBaudRate
-            // 
-            this.txtBaudRate.BackColor = System.Drawing.Color.Transparent;
-            this.txtBaudRate.ConerRadius = 5;
-            this.txtBaudRate.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtBaudRate.DecLength = 2;
-            this.txtBaudRate.FillColor = System.Drawing.Color.Empty;
-            this.txtBaudRate.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-            this.txtBaudRate.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtBaudRate.InputText = "";
-            this.txtBaudRate.InputType = ZCS_FormUI.TextInputType.NotControl;
-            this.txtBaudRate.IsFocusColor = true;
-            this.txtBaudRate.IsRadius = true;
-            this.txtBaudRate.IsShowClearBtn = true;
-            this.txtBaudRate.IsShowKeyboard = false;
-            this.txtBaudRate.IsShowRect = true;
-            this.txtBaudRate.IsShowSearchBtn = false;
-            this.txtBaudRate.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtBaudRate.Location = new System.Drawing.Point(110, 119);
-            this.txtBaudRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtBaudRate.MaxValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.txtBaudRate.MinValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.txtBaudRate.Name = "txtBaudRate";
-            this.txtBaudRate.Padding = new System.Windows.Forms.Padding(5);
-            this.txtBaudRate.PasswordChar = '\0';
-            this.txtBaudRate.PromptColor = System.Drawing.Color.Gray;
-            this.txtBaudRate.PromptFont = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtBaudRate.PromptText = "";
-            this.txtBaudRate.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txtBaudRate.RectWidth = 1;
-            this.txtBaudRate.RegexPattern = "";
-            this.txtBaudRate.Size = new System.Drawing.Size(140, 26);
-            this.txtBaudRate.TabIndex = 4;
-            // 
-            // skinLabel6
-            // 
-            this.skinLabel6.AutoSize = true;
-            this.skinLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel6.BorderColor = System.Drawing.Color.White;
-            this.skinLabel6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel6.Location = new System.Drawing.Point(28, 167);
-            this.skinLabel6.Name = "skinLabel6";
-            this.skinLabel6.Size = new System.Drawing.Size(65, 20);
-            this.skinLabel6.TabIndex = 7;
-            this.skinLabel6.Text = "停止位：";
-            // 
-            // txtStopBit
-            // 
-            this.txtStopBit.BackColor = System.Drawing.Color.Transparent;
-            this.txtStopBit.ConerRadius = 5;
-            this.txtStopBit.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtStopBit.DecLength = 2;
-            this.txtStopBit.FillColor = System.Drawing.Color.Empty;
-            this.txtStopBit.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-            this.txtStopBit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtStopBit.InputText = "";
-            this.txtStopBit.InputType = ZCS_FormUI.TextInputType.NotControl;
-            this.txtStopBit.IsFocusColor = true;
-            this.txtStopBit.IsRadius = true;
-            this.txtStopBit.IsShowClearBtn = true;
-            this.txtStopBit.IsShowKeyboard = false;
-            this.txtStopBit.IsShowRect = true;
-            this.txtStopBit.IsShowSearchBtn = false;
-            this.txtStopBit.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtStopBit.Location = new System.Drawing.Point(110, 164);
-            this.txtStopBit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtStopBit.MaxValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.txtStopBit.MinValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.txtStopBit.Name = "txtStopBit";
-            this.txtStopBit.Padding = new System.Windows.Forms.Padding(5);
-            this.txtStopBit.PasswordChar = '\0';
-            this.txtStopBit.PromptColor = System.Drawing.Color.Gray;
-            this.txtStopBit.PromptFont = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtStopBit.PromptText = "";
-            this.txtStopBit.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txtStopBit.RectWidth = 1;
-            this.txtStopBit.RegexPattern = "";
-            this.txtStopBit.Size = new System.Drawing.Size(140, 26);
-            this.txtStopBit.TabIndex = 6;
+            this.cmbPortParity.BorderColor = System.Drawing.Color.Gainsboro;
+            this.cmbPortParity.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbPortParity.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbPortParity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPortParity.FormattingEnabled = true;
+            this.cmbPortParity.Location = new System.Drawing.Point(110, 73);
+            this.cmbPortParity.Name = "cmbPortParity";
+            this.cmbPortParity.Size = new System.Drawing.Size(140, 27);
+            this.cmbPortParity.TabIndex = 10;
+            this.cmbPortParity.WaterText = "";
             // 
             // skinLabel8
             // 
@@ -468,47 +359,53 @@ namespace CommunTools
             this.skinLabel8.TabIndex = 9;
             this.skinLabel8.Text = "数据位：";
             // 
-            // txtDataBit
+            // skinLabel6
             // 
-            this.txtDataBit.BackColor = System.Drawing.Color.Transparent;
-            this.txtDataBit.ConerRadius = 5;
-            this.txtDataBit.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDataBit.DecLength = 2;
-            this.txtDataBit.FillColor = System.Drawing.Color.Empty;
-            this.txtDataBit.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-            this.txtDataBit.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDataBit.InputText = "";
-            this.txtDataBit.InputType = ZCS_FormUI.TextInputType.NotControl;
-            this.txtDataBit.IsFocusColor = true;
-            this.txtDataBit.IsRadius = true;
-            this.txtDataBit.IsShowClearBtn = true;
-            this.txtDataBit.IsShowKeyboard = false;
-            this.txtDataBit.IsShowRect = true;
-            this.txtDataBit.IsShowSearchBtn = false;
-            this.txtDataBit.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtDataBit.Location = new System.Drawing.Point(110, 210);
-            this.txtDataBit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtDataBit.MaxValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.txtDataBit.MinValue = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            -2147483648});
-            this.txtDataBit.Name = "txtDataBit";
-            this.txtDataBit.Padding = new System.Windows.Forms.Padding(5);
-            this.txtDataBit.PasswordChar = '\0';
-            this.txtDataBit.PromptColor = System.Drawing.Color.Gray;
-            this.txtDataBit.PromptFont = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.txtDataBit.PromptText = "";
-            this.txtDataBit.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.txtDataBit.RectWidth = 1;
-            this.txtDataBit.RegexPattern = "";
-            this.txtDataBit.Size = new System.Drawing.Size(140, 26);
-            this.txtDataBit.TabIndex = 8;
+            this.skinLabel6.AutoSize = true;
+            this.skinLabel6.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel6.BorderColor = System.Drawing.Color.White;
+            this.skinLabel6.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel6.Location = new System.Drawing.Point(28, 167);
+            this.skinLabel6.Name = "skinLabel6";
+            this.skinLabel6.Size = new System.Drawing.Size(65, 20);
+            this.skinLabel6.TabIndex = 7;
+            this.skinLabel6.Text = "停止位：";
+            // 
+            // skinLabel5
+            // 
+            this.skinLabel5.AutoSize = true;
+            this.skinLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel5.BorderColor = System.Drawing.Color.White;
+            this.skinLabel5.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel5.Location = new System.Drawing.Point(28, 122);
+            this.skinLabel5.Name = "skinLabel5";
+            this.skinLabel5.Size = new System.Drawing.Size(65, 20);
+            this.skinLabel5.TabIndex = 5;
+            this.skinLabel5.Text = "波特率：";
+            // 
+            // skinLabel4
+            // 
+            this.skinLabel4.AutoSize = true;
+            this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel4.BorderColor = System.Drawing.Color.White;
+            this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel4.Location = new System.Drawing.Point(28, 76);
+            this.skinLabel4.Name = "skinLabel4";
+            this.skinLabel4.Size = new System.Drawing.Size(79, 20);
+            this.skinLabel4.TabIndex = 3;
+            this.skinLabel4.Text = "奇偶校验：";
+            // 
+            // skinLabel7
+            // 
+            this.skinLabel7.AutoSize = true;
+            this.skinLabel7.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel7.BorderColor = System.Drawing.Color.White;
+            this.skinLabel7.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel7.Location = new System.Drawing.Point(28, 30);
+            this.skinLabel7.Name = "skinLabel7";
+            this.skinLabel7.Size = new System.Drawing.Size(57, 20);
+            this.skinLabel7.TabIndex = 1;
+            this.skinLabel7.Text = "COM：";
             // 
             // groupBoxEx3
             // 
@@ -520,6 +417,17 @@ namespace CommunTools
             this.groupBoxEx3.TabIndex = 7;
             this.groupBoxEx3.TabStop = false;
             this.groupBoxEx3.Text = "接收信息";
+            // 
+            // txtShowMsg
+            // 
+            this.txtShowMsg.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtShowMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtShowMsg.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtShowMsg.Location = new System.Drawing.Point(3, 22);
+            this.txtShowMsg.Name = "txtShowMsg";
+            this.txtShowMsg.Size = new System.Drawing.Size(369, 394);
+            this.txtShowMsg.TabIndex = 0;
+            this.txtShowMsg.Text = "";
             // 
             // labComInfo
             // 
@@ -534,17 +442,6 @@ namespace CommunTools
             this.labComInfo.TabIndex = 10;
             this.labComInfo.Text = "COM口信息";
             // 
-            // comboBoxOddEvent
-            // 
-            this.comboBoxOddEvent.BorderColor = System.Drawing.Color.Gainsboro;
-            this.comboBoxOddEvent.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxOddEvent.FormattingEnabled = true;
-            this.comboBoxOddEvent.Location = new System.Drawing.Point(110, 73);
-            this.comboBoxOddEvent.Name = "comboBoxOddEvent";
-            this.comboBoxOddEvent.Size = new System.Drawing.Size(140, 27);
-            this.comboBoxOddEvent.TabIndex = 10;
-            this.comboBoxOddEvent.WaterText = "";
-            // 
             // labLinkClient
             // 
             this.labLinkClient.ArtTextStyle = Com_CSSkin.SkinControl.ArtTextStyle.Forme;
@@ -558,17 +455,6 @@ namespace CommunTools
             this.labLinkClient.Size = new System.Drawing.Size(86, 20);
             this.labLinkClient.TabIndex = 11;
             this.labLinkClient.Text = "- Client信息";
-            // 
-            // txtShowMsg
-            // 
-            this.txtShowMsg.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtShowMsg.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtShowMsg.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtShowMsg.Location = new System.Drawing.Point(3, 22);
-            this.txtShowMsg.Name = "txtShowMsg";
-            this.txtShowMsg.Size = new System.Drawing.Size(369, 394);
-            this.txtShowMsg.TabIndex = 0;
-            this.txtShowMsg.Text = "";
             // 
             // Frm_SerialServer
             // 
@@ -620,18 +506,18 @@ namespace CommunTools
         private ZCS_FormUI.Controls.UCTextBoxEx txtTCPIP;
         private ZCS_FormUI.Controls.GroupBoxEx groupBoxEx2;
         private Com_CSSkin.SkinControl.SkinLabel skinLabel8;
-        private ZCS_FormUI.Controls.UCTextBoxEx txtDataBit;
         private Com_CSSkin.SkinControl.SkinLabel skinLabel6;
-        private ZCS_FormUI.Controls.UCTextBoxEx txtStopBit;
         private Com_CSSkin.SkinControl.SkinLabel skinLabel5;
-        private ZCS_FormUI.Controls.UCTextBoxEx txtBaudRate;
         private Com_CSSkin.SkinControl.SkinLabel skinLabel4;
         private Com_CSSkin.SkinControl.SkinLabel skinLabel7;
-        private ZCS_FormUI.Controls.UCTextBoxEx txtCOM;
         private ZCS_FormUI.Controls.GroupBoxEx groupBoxEx3;
         private Com_CSSkin.SkinControl.SkinLabel labComInfo;
-        private Com_CSSkin.SkinControl.SkinComboBox comboBoxOddEvent;
+        private Com_CSSkin.SkinControl.SkinComboBox cmbPortParity;
         private Com_CSSkin.SkinControl.SkinLabel labLinkClient;
         private System.Windows.Forms.RichTextBox txtShowMsg;
+        private Com_CSSkin.SkinControl.SkinComboBox cmbComLst;
+        private Com_CSSkin.SkinControl.SkinComboBox cmbDataBits;
+        private Com_CSSkin.SkinControl.SkinComboBox cmbStopBits;
+        private Com_CSSkin.SkinControl.SkinComboBox cmbBandRate;
     }
 }

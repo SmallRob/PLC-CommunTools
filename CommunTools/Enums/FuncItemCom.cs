@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace CommunTools.Enum
+namespace CommunTools.Enums
 {
     public static class FuncItemCom
     {
