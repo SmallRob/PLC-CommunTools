@@ -16,25 +16,47 @@ namespace CommunTools.Enum
         [FuncGroup("Base", "基础通信")]
         public enum Com_BaseFuncItem
         {
-            [Description("TCP/IP客户端")]
-            [FuncURI("Frm_TCPClient")]
-            TCP_Client = 1,
-
-            [Description("TCP/IP服务端")]
+            /// <summary>
+            /// TCP服务端
+            /// </summary>
+            [Description("  TCP/IP服务端")]
             [FuncURI("Frm_TCPServer")]
-            TCP_Server = 2,
+            TCP_Server = 1,
 
-            [Description("Socket通信")]
-            [FuncURI("Frm_ComSocket")]
-            COM_Socket = 3,
+            /// <summary>
+            /// TCP客户端
+            /// </summary>
+            [Description("  TCP/IP客户端")]
+            [FuncURI("Frm_TCPClient")]
+            TCP_Client = 2,
 
-            [Description("串口通讯")]
+            /// <summary>
+            /// 串口转发端
+            /// </summary>
+            [Description(" 串口接收转发端")]
+            [FuncURI("Frm_SerialServer")]
+            COM_SerialServer = 3,  
+
+            /// <summary>
+            /// 串口发送端
+            /// </summary>
+            [Description(" 串口通讯发送端")]
             [FuncURI("Frm_SerialPort")]
             COM_SerialPort = 4,
 
-            [Description("MQTT协议")]
-            [FuncURI("Frm_MQTT")]
-            COM_MQTT = 5
+            /// <summary>
+            /// SOCKET通讯
+            /// </summary>
+            [Description("   Socket通信")]
+            [FuncURI("Frm_ComSocket")]
+            COM_Socket = 5,
+
+            /// <summary>
+            /// WebSocket
+            /// </summary>
+            [Description(" WebSocket通信")]
+            [FuncURI("Frm_ComWebSocket")]
+            COM_WebSocket = 6
         }
 
         /// <summary>
@@ -44,7 +66,7 @@ namespace CommunTools.Enum
         [FuncGroup("Proto", "硬件协议通信")]
         public enum Com_ProtoFuncItem
         {
-            [Description("SUSI I/O口通信")]
+            [Description(" SUSI I/O口通信")]
             [FuncURI("Frm_SUSI")]
             Proto_SUSI = 1,
 
@@ -56,7 +78,7 @@ namespace CommunTools.Enum
             [FuncURI("Frm_BCNet_A")]
             Proto_BCNet_A = 3,
 
-            [Description(" SEC-F控制器$(三菱PCL)")]
+            [Description("  SEC-F控制器$(三菱PCL)")]
             [FuncURI("Frm_MELSEC")]
             Proto_MELSEC_F = 4,
 
@@ -64,7 +86,7 @@ namespace CommunTools.Enum
             [FuncURI("Frm_Modbus")]
             Proto_Modbus = 5,
 
-            [Description(" S7西门子PLC")]
+            [Description("  S7西门子PLC")]
             [FuncURI("Frm_S7")]
             Proto_S7 = 6,
 
@@ -73,7 +95,7 @@ namespace CommunTools.Enum
             Proto_HL8202 = 7,
 
             //SECS
-            [Description("    SECS协议$半导体自动化")]
+            [Description("  SECS PLC协议$半导体自动化")]
             [FuncURI("Frm_SECS")]
             Proto_SECS = 8,
 
@@ -84,7 +106,11 @@ namespace CommunTools.Enum
 
             [Description("  台达PLC通讯")]
             [FuncURI("Frm_DELTA_PLC")]
-            Proto_DELTA_PLC = 10
+            Proto_DELTA_PLC = 10,
+
+            [Description("   MQTT协议")]
+            [FuncURI("Frm_MQTT")]
+            Proto_MQTT = 11
         }
     }
 }

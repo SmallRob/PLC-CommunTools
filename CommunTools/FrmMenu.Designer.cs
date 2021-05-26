@@ -40,13 +40,13 @@ namespace CommunTools
             this.BackColor = System.Drawing.Color.White;
             this.CaptionBackColorTop = System.Drawing.Color.AntiqueWhite;
             this.CaptionFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ClientSize = new System.Drawing.Size(385, 576);
+            this.ClientSize = new System.Drawing.Size(385, 650);
             this.CloseBoxSize = new System.Drawing.Size(32, 24);
             this.EffectBack = System.Drawing.Color.LightGray;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaxSize = new System.Drawing.Size(32, 24);
-            this.MinimumSize = new System.Drawing.Size(385, 576);
+            this.MinimumSize = new System.Drawing.Size(385, 650);
             this.MiniSize = new System.Drawing.Size(32, 24);
             this.Name = "FrmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -53,22 +53,34 @@
     <Compile Include="Common\AttributesContext.cs" />
     <Compile Include="Common\FuncGroupAttribute.cs" />
     <Compile Include="Common\FuncURIAttribute.cs" />
+    <Compile Include="Common\TCPComHelper.cs" />
+    <Compile Include="Entity\TCPComServer.cs" />
+    <Compile Include="Enum\CommunticationEnum.cs" />
     <Compile Include="Enum\FuncItemCom.cs" />
+    <Compile Include="FrmBaseCom\Frm_SerialServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBaseCom\Frm_SerialServer.Designer.cs">
+      <DependentUpon>Frm_SerialServer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMenu.Designer.cs">
       <DependentUpon>FrmMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmBaseCom\Frm_MQTT.cs">
+    <Compile Include="FrmProto\Frm_MQTT.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmBaseCom\Frm_MQTT.Designer.cs">
+    <Compile Include="FrmProto\Frm_MQTT.Designer.cs">
       <DependentUpon>Frm_MQTT.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmBaseCom\Frm_MQTT.resx">
+    <EmbeddedResource Include="FrmBaseCom\Frm_SerialServer.resx">
+      <DependentUpon>Frm_SerialServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProto\Frm_MQTT.resx">
       <DependentUpon>Frm_MQTT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMenu.resx">
@@ -110,5 +122,6 @@
   <ItemGroup>
     <Content Include="login.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
