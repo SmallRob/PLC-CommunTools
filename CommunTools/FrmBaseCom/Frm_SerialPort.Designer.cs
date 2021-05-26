@@ -32,8 +32,10 @@ namespace CommunTools
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_SerialPort));
             this.groupBoxEx2 = new ZCS_FormUI.Controls.GroupBoxEx();
+            this.btnOpenPort = new ZCS_FormUI.Controls.UCBtnExt();
             this.cmbDataBits = new Com_CSSkin.SkinControl.SkinComboBox();
             this.cmbStopBits = new Com_CSSkin.SkinControl.SkinComboBox();
+            this.btnRefresh = new ZCS_FormUI.Controls.UCBtnExt();
             this.cmbBandRate = new Com_CSSkin.SkinControl.SkinComboBox();
             this.cmbComLst = new Com_CSSkin.SkinControl.SkinComboBox();
             this.cmbPortParity = new Com_CSSkin.SkinControl.SkinComboBox();
@@ -45,9 +47,7 @@ namespace CommunTools
             this.groupBoxEx3 = new ZCS_FormUI.Controls.GroupBoxEx();
             this.richTextBox_Receive = new System.Windows.Forms.RichTextBox();
             this.labComInfo = new Com_CSSkin.SkinControl.SkinLabel();
-            this.btnRefresh = new ZCS_FormUI.Controls.UCBtnExt();
             this.skinLabel3 = new Com_CSSkin.SkinControl.SkinLabel();
-            this.btnOpenPort = new ZCS_FormUI.Controls.UCBtnExt();
             this.txtSendTime = new ZCS_FormUI.Controls.UCTextBoxEx();
             this.ckbTimeSend = new ZCS_FormUI.Controls.UCCheckBox();
             this.ucTextBoxEx2 = new ZCS_FormUI.Controls.UCTextBoxEx();
@@ -55,13 +55,14 @@ namespace CommunTools
             this.groupBoxEx4 = new ZCS_FormUI.Controls.GroupBoxEx();
             this.richTextBox_Send = new System.Windows.Forms.RichTextBox();
             this.btnScan = new ZCS_FormUI.Controls.UCBtnExt();
-            this.btnHAX = new ZCS_FormUI.Controls.UCCheckBox();
+            this.btnHEX = new ZCS_FormUI.Controls.UCCheckBox();
             this.btnSend = new ZCS_FormUI.Controls.UCBtnExt();
             this.btnClean = new ZCS_FormUI.Controls.UCBtnExt();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.lblrecestatus = new Com_CSSkin.SkinControl.SkinLabel();
             this.lblSendStatus = new Com_CSSkin.SkinControl.SkinLabel();
             this.timerSend = new System.Windows.Forms.Timer(this.components);
+            this.ucCheckBox1 = new ZCS_FormUI.Controls.UCCheckBox();
             this.groupBoxEx2.SuspendLayout();
             this.groupBoxEx3.SuspendLayout();
             this.groupBoxEx4.SuspendLayout();
@@ -89,6 +90,33 @@ namespace CommunTools
             this.groupBoxEx2.TabStop = false;
             this.groupBoxEx2.Text = "COM口设置";
             // 
+            // btnOpenPort
+            // 
+            this.btnOpenPort.BackColor = System.Drawing.Color.White;
+            this.btnOpenPort.BtnBackColor = System.Drawing.Color.White;
+            this.btnOpenPort.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnOpenPort.BtnForeColor = System.Drawing.Color.White;
+            this.btnOpenPort.BtnText = "打开串口";
+            this.btnOpenPort.ConerRadius = 5;
+            this.btnOpenPort.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOpenPort.EnabledMouseEffect = false;
+            this.btnOpenPort.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnOpenPort.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btnOpenPort.IsRadius = true;
+            this.btnOpenPort.IsShowRect = true;
+            this.btnOpenPort.IsShowTips = false;
+            this.btnOpenPort.Location = new System.Drawing.Point(297, 30);
+            this.btnOpenPort.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOpenPort.Name = "btnOpenPort";
+            this.btnOpenPort.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
+            this.btnOpenPort.RectWidth = 1;
+            this.btnOpenPort.Size = new System.Drawing.Size(86, 33);
+            this.btnOpenPort.TabIndex = 2;
+            this.btnOpenPort.TabStop = false;
+            this.btnOpenPort.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.btnOpenPort.TipsText = "";
+            this.btnOpenPort.BtnClick += new System.EventHandler(this.btnOpenServer_BtnClick);
+            // 
             // cmbDataBits
             // 
             this.cmbDataBits.BorderColor = System.Drawing.Color.Gainsboro;
@@ -114,6 +142,33 @@ namespace CommunTools
             this.cmbStopBits.Size = new System.Drawing.Size(140, 27);
             this.cmbStopBits.TabIndex = 13;
             this.cmbStopBits.WaterText = "";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.White;
+            this.btnRefresh.BtnBackColor = System.Drawing.Color.White;
+            this.btnRefresh.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnRefresh.BtnForeColor = System.Drawing.Color.White;
+            this.btnRefresh.BtnText = "刷新串口";
+            this.btnRefresh.ConerRadius = 5;
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.EnabledMouseEffect = false;
+            this.btnRefresh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnRefresh.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btnRefresh.IsRadius = true;
+            this.btnRefresh.IsShowRect = true;
+            this.btnRefresh.IsShowTips = false;
+            this.btnRefresh.Location = new System.Drawing.Point(297, 85);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
+            this.btnRefresh.RectWidth = 1;
+            this.btnRefresh.Size = new System.Drawing.Size(86, 33);
+            this.btnRefresh.TabIndex = 0;
+            this.btnRefresh.TabStop = false;
+            this.btnRefresh.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.btnRefresh.TipsText = "";
+            this.btnRefresh.BtnClick += new System.EventHandler(this.btnRefresh_BtnClick);
             // 
             // cmbBandRate
             // 
@@ -249,33 +304,6 @@ namespace CommunTools
             this.labComInfo.TabIndex = 10;
             this.labComInfo.Text = "COM口信息";
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.BackColor = System.Drawing.Color.White;
-            this.btnRefresh.BtnBackColor = System.Drawing.Color.White;
-            this.btnRefresh.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnRefresh.BtnForeColor = System.Drawing.Color.White;
-            this.btnRefresh.BtnText = "刷新串口";
-            this.btnRefresh.ConerRadius = 5;
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefresh.EnabledMouseEffect = false;
-            this.btnRefresh.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnRefresh.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.btnRefresh.IsRadius = true;
-            this.btnRefresh.IsShowRect = true;
-            this.btnRefresh.IsShowTips = false;
-            this.btnRefresh.Location = new System.Drawing.Point(297, 85);
-            this.btnRefresh.Margin = new System.Windows.Forms.Padding(0);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
-            this.btnRefresh.RectWidth = 1;
-            this.btnRefresh.Size = new System.Drawing.Size(86, 33);
-            this.btnRefresh.TabIndex = 0;
-            this.btnRefresh.TabStop = false;
-            this.btnRefresh.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-            this.btnRefresh.TipsText = "";
-            this.btnRefresh.BtnClick += new System.EventHandler(this.btnRefresh_BtnClick);
-            // 
             // skinLabel3
             // 
             this.skinLabel3.AutoSize = true;
@@ -287,33 +315,6 @@ namespace CommunTools
             this.skinLabel3.Size = new System.Drawing.Size(79, 20);
             this.skinLabel3.TabIndex = 4;
             this.skinLabel3.Text = "发送数据：";
-            // 
-            // btnOpenPort
-            // 
-            this.btnOpenPort.BackColor = System.Drawing.Color.White;
-            this.btnOpenPort.BtnBackColor = System.Drawing.Color.White;
-            this.btnOpenPort.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnOpenPort.BtnForeColor = System.Drawing.Color.White;
-            this.btnOpenPort.BtnText = "打开串口";
-            this.btnOpenPort.ConerRadius = 5;
-            this.btnOpenPort.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOpenPort.EnabledMouseEffect = false;
-            this.btnOpenPort.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnOpenPort.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.btnOpenPort.IsRadius = true;
-            this.btnOpenPort.IsShowRect = true;
-            this.btnOpenPort.IsShowTips = false;
-            this.btnOpenPort.Location = new System.Drawing.Point(297, 30);
-            this.btnOpenPort.Margin = new System.Windows.Forms.Padding(0);
-            this.btnOpenPort.Name = "btnOpenPort";
-            this.btnOpenPort.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
-            this.btnOpenPort.RectWidth = 1;
-            this.btnOpenPort.Size = new System.Drawing.Size(86, 33);
-            this.btnOpenPort.TabIndex = 2;
-            this.btnOpenPort.TabStop = false;
-            this.btnOpenPort.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-            this.btnOpenPort.TipsText = "";
-            this.btnOpenPort.BtnClick += new System.EventHandler(this.btnOpenServer_BtnClick);
             // 
             // txtSendTime
             // 
@@ -408,7 +409,7 @@ namespace CommunTools
             this.ucTextBoxEx2.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.ucTextBoxEx2.RectWidth = 1;
             this.ucTextBoxEx2.RegexPattern = "";
-            this.ucTextBoxEx2.Size = new System.Drawing.Size(301, 26);
+            this.ucTextBoxEx2.Size = new System.Drawing.Size(207, 26);
             this.ucTextBoxEx2.TabIndex = 16;
             // 
             // ucCheckBox2
@@ -419,9 +420,9 @@ namespace CommunTools
             this.ucCheckBox2.Location = new System.Drawing.Point(544, 379);
             this.ucCheckBox2.Name = "ucCheckBox2";
             this.ucCheckBox2.Padding = new System.Windows.Forms.Padding(1);
-            this.ucCheckBox2.Size = new System.Drawing.Size(108, 26);
+            this.ucCheckBox2.Size = new System.Drawing.Size(128, 26);
             this.ucCheckBox2.TabIndex = 17;
-            this.ucCheckBox2.TextValue = "发送文件";
+            this.ucCheckBox2.TextValue = "发送文件/文件夹";
             // 
             // groupBoxEx4
             // 
@@ -460,7 +461,7 @@ namespace CommunTools
             this.btnScan.IsRadius = true;
             this.btnScan.IsShowRect = true;
             this.btnScan.IsShowTips = false;
-            this.btnScan.Location = new System.Drawing.Point(659, 381);
+            this.btnScan.Location = new System.Drawing.Point(793, 414);
             this.btnScan.Margin = new System.Windows.Forms.Padding(0);
             this.btnScan.Name = "btnScan";
             this.btnScan.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
@@ -471,17 +472,17 @@ namespace CommunTools
             this.btnScan.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
             this.btnScan.TipsText = "";
             // 
-            // btnHAX
+            // btnHEX
             // 
-            this.btnHAX.BackColor = System.Drawing.Color.Transparent;
-            this.btnHAX.Checked = false;
-            this.btnHAX.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnHAX.Location = new System.Drawing.Point(764, 347);
-            this.btnHAX.Name = "btnHAX";
-            this.btnHAX.Padding = new System.Windows.Forms.Padding(1);
-            this.btnHAX.Size = new System.Drawing.Size(108, 26);
-            this.btnHAX.TabIndex = 19;
-            this.btnHAX.TextValue = "HAX格式";
+            this.btnHEX.BackColor = System.Drawing.Color.Transparent;
+            this.btnHEX.Checked = false;
+            this.btnHEX.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnHEX.Location = new System.Drawing.Point(764, 347);
+            this.btnHEX.Name = "btnHEX";
+            this.btnHEX.Padding = new System.Windows.Forms.Padding(1);
+            this.btnHEX.Size = new System.Drawing.Size(108, 26);
+            this.btnHEX.TabIndex = 19;
+            this.btnHEX.TextValue = "HEX格式发送";
             // 
             // btnSend
             // 
@@ -573,6 +574,18 @@ namespace CommunTools
             this.timerSend.Interval = 1000;
             this.timerSend.Tick += new System.EventHandler(this.timerSend_Tick);
             // 
+            // ucCheckBox1
+            // 
+            this.ucCheckBox1.BackColor = System.Drawing.Color.Transparent;
+            this.ucCheckBox1.Checked = false;
+            this.ucCheckBox1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ucCheckBox1.Location = new System.Drawing.Point(764, 379);
+            this.ucCheckBox1.Name = "ucCheckBox1";
+            this.ucCheckBox1.Padding = new System.Windows.Forms.Padding(1);
+            this.ucCheckBox1.Size = new System.Drawing.Size(108, 26);
+            this.ucCheckBox1.TabIndex = 24;
+            this.ucCheckBox1.TextValue = "文件轮询发送";
+            // 
             // Frm_SerialPort
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -582,11 +595,12 @@ namespace CommunTools
             this.CaptionFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ClientSize = new System.Drawing.Size(905, 576);
             this.CloseBoxSize = new System.Drawing.Size(32, 24);
+            this.Controls.Add(this.ucCheckBox1);
             this.Controls.Add(this.lblSendStatus);
             this.Controls.Add(this.lblrecestatus);
             this.Controls.Add(this.btnClean);
             this.Controls.Add(this.btnSend);
-            this.Controls.Add(this.btnHAX);
+            this.Controls.Add(this.btnHEX);
             this.Controls.Add(this.btnScan);
             this.Controls.Add(this.groupBoxEx4);
             this.Controls.Add(this.ucTextBoxEx2);
@@ -645,12 +659,13 @@ namespace CommunTools
         private ZCS_FormUI.Controls.GroupBoxEx groupBoxEx4;
         private System.Windows.Forms.RichTextBox richTextBox_Send;
         private ZCS_FormUI.Controls.UCBtnExt btnScan;
-        private ZCS_FormUI.Controls.UCCheckBox btnHAX;
+        private ZCS_FormUI.Controls.UCCheckBox btnHEX;
         private ZCS_FormUI.Controls.UCBtnExt btnSend;
         private ZCS_FormUI.Controls.UCBtnExt btnClean;
         private System.IO.Ports.SerialPort serialPort1;
         private Com_CSSkin.SkinControl.SkinLabel lblrecestatus;
         private Com_CSSkin.SkinControl.SkinLabel lblSendStatus;
         private System.Windows.Forms.Timer timerSend;
+        private ZCS_FormUI.Controls.UCCheckBox ucCheckBox1;
     }
 }
