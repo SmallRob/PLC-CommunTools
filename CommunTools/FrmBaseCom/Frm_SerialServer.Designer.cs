@@ -483,6 +483,7 @@ namespace CommunTools
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "串口通讯转发端";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_SerialServer_FormClosing);
+            this.Load += new System.EventHandler(this.Frm_SerialServer_Load);
             this.groupBoxEx1.ResumeLayout(false);
             this.groupBoxEx1.PerformLayout();
             this.groupBoxEx2.ResumeLayout(false);

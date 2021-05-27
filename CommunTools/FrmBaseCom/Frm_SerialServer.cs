@@ -6,6 +6,7 @@ using CommunTools.Entity;
 using CommunTools.Enums;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -491,7 +492,7 @@ namespace CommunTools
 
             lock (buff)
             {
-                string strHex = (TCPComHelper.GetBufferFormatHex(buff) + "\r\n");
+                string strHex = (HEXConverter.GetBufferFormatHex(buff) + "\r\n");
                 server.Context.Post(ret =>
                 {
                     txtShowMsg.SelectionColor = Color.Gray;
@@ -579,6 +580,17 @@ namespace CommunTools
             {
                 //throw;
             }
+        }
+
+        private void Frm_SerialServer_Load(object sender, EventArgs e)
+        {
+            JsonFileConfig jsonFile = new JsonFileConfig();
+            jsonFile.ConfigSection = "TcpServer";
+
+            var jc = jsonFile.LoadJsonConfig(jsonFile.ConfigFile, "TcpServer");
+
+            txtTCPIP.InputText = jc[0];
+            txtPort.InputText = jc[1];
         }
     }
 }

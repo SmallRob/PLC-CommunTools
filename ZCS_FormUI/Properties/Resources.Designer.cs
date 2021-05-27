@@ -84,7 +84,7 @@ namespace ZCS_FormUI.Properties
         {
             get
             {
-                object obj = ResourceManager.GetObject("loading1", resourceCulture);
+                object obj = ResourceManager.GetObject("loading2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

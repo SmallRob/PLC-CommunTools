@@ -48,26 +48,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyCacheManager.cs" />
-    <Compile Include="ConfigUtilites\ConfigHelper.cs" />
+    <Compile Include="Utilites\CacheUtilites\AssemblyCacheManager.cs" />
+    <Compile Include="Utilites\ConfigUtilites\ConfigHelper.cs" />
     <Compile Include="Converter\ConvertExt.cs" />
-    <Compile Include="DataCache.cs" />
-    <Compile Include="DataUtilites\DataEntityConvert.cs" />
-    <Compile Include="DataUtilites\DataFieldAttribute.cs" />
-    <Compile Include="DataUtilites\DataTableEntityBuilder.cs" />
-    <Compile Include="EnumUtilites\EnumConvert.cs" />
-    <Compile Include="EnumUtilites\EnumHelper.cs" />
-    <Compile Include="EnumUtilites\EnumListModel.cs" />
+    <Compile Include="Utilites\CacheUtilites\DataCache.cs" />
+    <Compile Include="Utilites\DataUtilites\DataEntityConvert.cs" />
+    <Compile Include="Utilites\DataUtilites\DataFieldAttribute.cs" />
+    <Compile Include="Utilites\DataUtilites\DataTableEntityBuilder.cs" />
+    <Compile Include="Utilites\EnumUtilites\EnumConvert.cs" />
+    <Compile Include="Utilites\EnumUtilites\EnumHelper.cs" />
+    <Compile Include="Utilites\EnumUtilites\EnumListModel.cs" />
     <Compile Include="ES_RegexLib .cs" />
+    <Compile Include="Converter\HEXConverter.cs" />
     <Compile Include="HttpHandle.cs" />
-    <Compile Include="EnumUtilites\XMLToEnum.cs" />
-    <Compile Include="ConfigUtilites\JsonFileConfig.cs" />
+    <Compile Include="Utilites\EnumUtilites\XMLToEnum.cs" />
+    <Compile Include="Utilites\ConfigUtilites\JsonFileConfig.cs" />
     <Compile Include="Converter\ListConverTo.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="Converter\ObjectConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimedLock.cs" />
-    <None Include="packages.config" />
+    <Compile Include="Utilites\IOFileUtilites\FileHelper.cs" />
+    <Compile Include="Utilites\IOFileUtilites\PathHelper.cs" />
+    <Compile Include="Utilites\IOFileUtilites\SelectFileDialog.cs" />
+    <None Include="CfgFiles\packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Net;
@@ -33,8 +34,6 @@ namespace CommunTools
             InitializeComponent();
             InitializeSerialSet();
         }
-
-        private string FilePath = null;    // 打开文件路径
 
         private object thisLock = new object();    // 锁住线程
 
@@ -177,10 +176,70 @@ namespace CommunTools
         private void btnSend_BtnClick(object sender, EventArgs e)
         {
             string senddata = richTextBox_Send.Text;
-            byte[] data = System.Text.Encoding.Default.GetBytes(senddata);   // 将发送的数据转化为字节数组            
+            string txtFile = txtFileDic.InputText;
+
+            if (ckbFile.Checked && !String.IsNullOrEmpty(txtFile))
+            {
+                senddata = GetFileData(txtFile, out _);
+            }
+
+            // 将发送的数据转化为字节数组
+            byte[] data = System.Text.Encoding.Default.GetBytes(senddata);
+
+            if (ckbHEX.Checked) data = Encoding.UTF8.GetBytes(HEXConverter.BitConverterHexFromStr(senddata));
+
             SendData(data);    // 发送数据
             sendCount += senddata.Length;
             lblSendStatus.Text = "已发送数据：" + sendCount.ToString();
+        }
+
+        /// <summary>
+        /// 获取文件内容
+        /// </summary>
+        /// <param name="txtFile"></param>
+        /// <param name="fileIndex">文件索引</param>
+        /// <returns></returns>
+        private string GetFileData(string txtFile, out FileSystemInfo[] files, int fileIndex = 0)
+        {
+            string senddata = string.Empty;
+            files = null;
+
+            if (rdbFile.Checked)
+            {
+                senddata = FileHelper.ReadFile(txtFile, Encoding.UTF8);
+            }
+            else if (rdbDirct.Checked)
+            {
+                files = PathHelper.GetFilesInfo(txtFile);
+
+                if (files != null && files.Length > 0)
+                {
+                    senddata = GetDataFormFile(fileIndex, files);
+                }
+            }
+
+            return senddata;
+        }
+
+        private static string GetDataFormFile(int fileIndex, FileSystemInfo[] files)
+        {
+            if (fileIndex < 0 || fileIndex >= files.Count())
+                fileIndex = 0;
+
+            //普通发送只发送一个
+            FileInfo file = files[fileIndex] as FileInfo;
+
+            //如果是文件
+            if (file != null)
+            {
+                //如果不是这几种格式则不处理
+                if (",.JSON,.XML,.TXT,".Contains("," + file.Extension.ToUpper() + ","))
+                {
+                    return FileHelper.ReadFile(file.FullName, Encoding.UTF8);
+                }
+            }
+
+            return null;
         }
 
         private void btnRefresh_BtnClick(object sender, EventArgs e)
@@ -319,6 +378,13 @@ namespace CommunTools
         }
 
         /// <summary>
+        /// 开始索引
+        /// </summary>
+        int startIndex = 0;
+
+        FileSystemInfo[] files = null;
+
+        /// <summary>
         /// 定时发送
         /// </summary>
         /// <param name="sender"></param>
@@ -328,12 +394,38 @@ namespace CommunTools
             if (ckbTimeSend.Checked)
             {
                 string datastr = richTextBox_Send.Text;
+                string txtFile = txtFileDic.InputText;
+
+                if (ckbFile.Checked && !String.IsNullOrEmpty(txtFile))
+                {
+                    if (files != null && startIndex >= files.Count())
+                        startIndex = 0;
+
+                    if (files == null)
+                    {
+                        if (startIndex == 0)
+                        {
+                            datastr = GetFileData(txtFile, out files, startIndex);
+                            startIndex++;
+                        }
+                        else
+                        {
+                            datastr = GetDataFormFile(startIndex, files);
+                            startIndex++;
+                        }
+                    }
+                }
+
                 if (datastr == "")
                 {
                     return;
                 }
                 timerSend.Interval = int.Parse(txtSendTime.InputText);  // 将字符串转化为整型数字
                 byte[] data = System.Text.Encoding.Default.GetBytes(datastr);   // 字符串转化为字节数组
+
+                if (ckbHEX.Checked)
+                    data = Encoding.UTF8.GetBytes(HEXConverter.BitConverterHexFromStr(datastr));
+
                 SendData(data);
                 sendCount += datastr.Length;
                 lblSendStatus.Text = "已发送数据：" + sendCount.ToString();
@@ -344,6 +436,39 @@ namespace CommunTools
             {
                 btnSend.Enabled = true;
             }
+        }
+
+        private void btnScan_BtnClick(object sender, EventArgs e)
+        {
+            if (ckbFile.Checked)
+            {
+                if (rdbFile.Checked)
+                {
+                    string[] file = SelectFileDialog.SelectFile("选择文本文件", "文本文件|*.txt; *.json; *.xml", false);
+
+                    if (file != null && file.Length > 0)
+                    {
+                        txtFileDic.InputText = file[0];
+                    }
+                }
+                else if (rdbDirct.Checked)
+                {
+                    string[] path = SelectFileDialog.SelectDir("选择文本文件数据源", "", false);
+
+                    if (path != null && path.Length > 0)
+                    {
+                        txtFileDic.InputText = path[0];
+                    }
+                }
+            }
+        }
+
+        private void ckbFile_CheckedChangeEvent(object sender, EventArgs e)
+        {
+            btnScan.Enabled = ckbFile.Checked;
+
+            startIndex = 0;
+            files = null;
         }
     }
 }

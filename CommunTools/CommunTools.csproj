@@ -35,9 +35,6 @@
     <ApplicationIcon>login.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Com_CSSkin">
-      <HintPath>..\UsingLib\Com_CSSkin.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -51,13 +48,16 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Taurus.CSSkinUI.WF">
+      <HintPath>..\UsingLib\Taurus.CSSkinUI.WF.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AttributesContext.cs" />
     <Compile Include="Common\FuncGroupAttribute.cs" />
     <Compile Include="Common\FuncURIAttribute.cs" />
-    <Compile Include="Common\TCPComHelper.cs" />
     <Compile Include="Entity\TCPComServer.cs" />
+    <Compile Include="Entity\TcpServer.cs" />
     <Compile Include="Enums\CommunTCPEnum.cs" />
     <Compile Include="Enums\FuncItemCom.cs" />
     <Compile Include="Enums\SerialPortEnum.cs" />
@@ -109,6 +109,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

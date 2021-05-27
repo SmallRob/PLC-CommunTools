@@ -10,29 +10,50 @@ using System.Threading.Tasks;
 namespace ZCS_Common
 {
     public class JsonFileConfig
-    { /// <summary>
-      /// 配置内容
-      /// </summary>
+    {
+        #region config
+        /// <summary>
+        /// 配置内容
+        /// </summary>
         private NameValueCollection _configs = new NameValueCollection();
+
         /// <summary>
         /// 默认路径
         /// </summary>
-        public string _configFile = System.AppDomain.CurrentDomain.BaseDirectory + "appsettings.json";
+        private string _configFile = System.AppDomain.CurrentDomain.BaseDirectory + "appsettings.json";
 
         /// <summary>
         /// 配置节点关键字
         /// </summary>
-        public string _configSection = "AppSettings";
+        private string _configSection = "AppSettings";
+
+
+        public NameValueCollection ConfigNameValue
+        {
+            get { return _configs; }
+        }
+
+        public string ConfigSection { get => _configSection; set => _configSection = value; }
+
+        public string ConfigFile { get => _configFile; set => _configFile = value; }
+
         public JsonFileConfig()
         {
-
         }
+        #endregion
+
+        /// <summary>
+        /// 获取指定文件的配置
+        /// </summary>
+        /// <param name="configFile"></param>
+        /// <param name="configSection"></param>
         public JsonFileConfig(string configFile, string configSection)
         {
-            this._configFile = System.AppDomain.CurrentDomain.BaseDirectory + configFile;
-            this._configSection = configSection;
-            _configs = LoadJsonConfig(this._configFile, this._configSection);
+            this.ConfigFile = System.AppDomain.CurrentDomain.BaseDirectory + configFile;
+            this.ConfigSection = configSection;
+            _configs = LoadJsonConfig(this.ConfigFile, this.ConfigSection);
         }
+
         /// <summary>
         /// 读取配置文件内容
         /// </summary>
@@ -45,7 +66,7 @@ namespace ZCS_Common
 
             if (config_object[configSection] != null)
             {
-                foreach (JProperty prop in config_object[_configSection])
+                foreach (JProperty prop in config_object[ConfigSection])
                 {
                     configColltion[prop.Name] = prop.Value.ToString();
                 }
@@ -75,9 +96,5 @@ namespace ZCS_Common
             }
         }
 
-        public NameValueCollection ConfigNameValue
-        {
-            get { return _configs; }
-        }
     }
 }
