@@ -12,6 +12,3 @@
 > * 效果图预览：
 >
 
-![总体菜单预览](ShotCuts\tools.PNG)
-![COM端口转发](ShotCuts\server.PNG)
-![COM发送端口](ShotCuts\client.PNG)
