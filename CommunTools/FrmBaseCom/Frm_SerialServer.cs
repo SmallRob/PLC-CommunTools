@@ -123,7 +123,7 @@ namespace CommunTools
                 }
                 InitComRecive(comServer);
                 Thread.Sleep(100);
-                btnStart.Text = "关闭";
+                btnStart.BtnText = "关闭";
                 labComInfo.Text = "监听成功！" + tipTxt;
             }
             else
@@ -131,7 +131,7 @@ namespace CommunTools
                 //关闭模式
                 CloseDispose(comServer);
                 Thread.Sleep(100);
-                btnStart.Text = "开启服务";
+                btnStart.BtnText = "开启服务";
                 labLinkClient.Text = "";
                 labComInfo.Text = "com打开信息";
             }

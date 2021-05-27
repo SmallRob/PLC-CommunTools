@@ -102,11 +102,6 @@ namespace CommunTools
             }
         }
 
-        /// <summary>
-        /// TCPComServer对象
-        /// </summary>
-        private TCPComServer comServer;
-
         private void btnOpenServer_BtnClick(object sender, EventArgs e)
         {
             if (serialPort1 == null)
