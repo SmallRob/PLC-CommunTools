@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace Commun.NetWork.Enum
+namespace Commun.NetWork.Enums
 {
     /// <summary>
     /// 编码格式

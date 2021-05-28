@@ -37,6 +37,9 @@ namespace CommunTools
             this.lblrecestatus = new Com_CSSkin.SkinControl.SkinLabel();
             this.lblSendStatus = new Com_CSSkin.SkinControl.SkinLabel();
             this.timerSend = new System.Windows.Forms.Timer(this.components);
+            this.rdbFile = new Com_CSSkin.SkinControl.SkinRadioButton();
+            this.rdbDirct = new Com_CSSkin.SkinControl.SkinRadioButton();
+            this.skinPanel1 = new Com_CSSkin.SkinControl.SkinPanel();
             this.ucCheckBox1 = new ZCS_FormUI.Controls.UCCheckBox();
             this.btnClean = new ZCS_FormUI.Controls.UCBtnExt();
             this.btnSend = new ZCS_FormUI.Controls.UCBtnExt();
@@ -63,13 +66,10 @@ namespace CommunTools
             this.skinLabel5 = new Com_CSSkin.SkinControl.SkinLabel();
             this.skinLabel4 = new Com_CSSkin.SkinControl.SkinLabel();
             this.skinLabel7 = new Com_CSSkin.SkinControl.SkinLabel();
-            this.rdbFile = new Com_CSSkin.SkinControl.SkinRadioButton();
-            this.rdbDirct = new Com_CSSkin.SkinControl.SkinRadioButton();
-            this.skinPanel1 = new Com_CSSkin.SkinControl.SkinPanel();
+            this.skinPanel1.SuspendLayout();
             this.groupBoxEx4.SuspendLayout();
             this.groupBoxEx3.SuspendLayout();
             this.groupBoxEx2.SuspendLayout();
-            this.skinPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labComInfo
@@ -132,6 +132,62 @@ namespace CommunTools
             this.timerSend.Enabled = true;
             this.timerSend.Interval = 1000;
             this.timerSend.Tick += new System.EventHandler(this.timerSend_Tick);
+            // 
+            // rdbFile
+            // 
+            this.rdbFile.AutoSize = true;
+            this.rdbFile.BackColor = System.Drawing.Color.Transparent;
+            this.rdbFile.BaseColor = System.Drawing.Color.DimGray;
+            this.rdbFile.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
+            this.rdbFile.DownBack = null;
+            this.rdbFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdbFile.Location = new System.Drawing.Point(3, 3);
+            this.rdbFile.MouseBack = null;
+            this.rdbFile.Name = "rdbFile";
+            this.rdbFile.NormlBack = null;
+            this.rdbFile.SelectedDownBack = null;
+            this.rdbFile.SelectedMouseBack = null;
+            this.rdbFile.SelectedNormlBack = null;
+            this.rdbFile.Size = new System.Drawing.Size(74, 21);
+            this.rdbFile.TabIndex = 25;
+            this.rdbFile.TabStop = true;
+            this.rdbFile.Text = "文本文件";
+            this.rdbFile.UseVisualStyleBackColor = false;
+            // 
+            // rdbDirct
+            // 
+            this.rdbDirct.AutoSize = true;
+            this.rdbDirct.BackColor = System.Drawing.Color.Transparent;
+            this.rdbDirct.BaseColor = System.Drawing.Color.DimGray;
+            this.rdbDirct.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
+            this.rdbDirct.DownBack = null;
+            this.rdbDirct.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdbDirct.Location = new System.Drawing.Point(3, 30);
+            this.rdbDirct.MouseBack = null;
+            this.rdbDirct.Name = "rdbDirct";
+            this.rdbDirct.NormlBack = null;
+            this.rdbDirct.SelectedDownBack = null;
+            this.rdbDirct.SelectedMouseBack = null;
+            this.rdbDirct.SelectedNormlBack = null;
+            this.rdbDirct.Size = new System.Drawing.Size(62, 21);
+            this.rdbDirct.TabIndex = 26;
+            this.rdbDirct.TabStop = true;
+            this.rdbDirct.Text = "文件夹";
+            this.rdbDirct.UseVisualStyleBackColor = false;
+            // 
+            // skinPanel1
+            // 
+            this.skinPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.skinPanel1.Controls.Add(this.rdbFile);
+            this.skinPanel1.Controls.Add(this.rdbDirct);
+            this.skinPanel1.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
+            this.skinPanel1.DownBack = null;
+            this.skinPanel1.Location = new System.Drawing.Point(656, 377);
+            this.skinPanel1.MouseBack = null;
+            this.skinPanel1.Name = "skinPanel1";
+            this.skinPanel1.NormlBack = null;
+            this.skinPanel1.Size = new System.Drawing.Size(78, 54);
+            this.skinPanel1.TabIndex = 27;
             // 
             // ucCheckBox1
             // 
@@ -592,62 +648,6 @@ namespace CommunTools
             this.skinLabel7.TabIndex = 1;
             this.skinLabel7.Text = "COM：";
             // 
-            // rdbFile
-            // 
-            this.rdbFile.AutoSize = true;
-            this.rdbFile.BackColor = System.Drawing.Color.Transparent;
-            this.rdbFile.BaseColor = System.Drawing.Color.DimGray;
-            this.rdbFile.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
-            this.rdbFile.DownBack = null;
-            this.rdbFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdbFile.Location = new System.Drawing.Point(3, 3);
-            this.rdbFile.MouseBack = null;
-            this.rdbFile.Name = "rdbFile";
-            this.rdbFile.NormlBack = null;
-            this.rdbFile.SelectedDownBack = null;
-            this.rdbFile.SelectedMouseBack = null;
-            this.rdbFile.SelectedNormlBack = null;
-            this.rdbFile.Size = new System.Drawing.Size(74, 21);
-            this.rdbFile.TabIndex = 25;
-            this.rdbFile.TabStop = true;
-            this.rdbFile.Text = "文本文件";
-            this.rdbFile.UseVisualStyleBackColor = false;
-            // 
-            // rdbDirct
-            // 
-            this.rdbDirct.AutoSize = true;
-            this.rdbDirct.BackColor = System.Drawing.Color.Transparent;
-            this.rdbDirct.BaseColor = System.Drawing.Color.DimGray;
-            this.rdbDirct.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
-            this.rdbDirct.DownBack = null;
-            this.rdbDirct.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdbDirct.Location = new System.Drawing.Point(3, 30);
-            this.rdbDirct.MouseBack = null;
-            this.rdbDirct.Name = "rdbDirct";
-            this.rdbDirct.NormlBack = null;
-            this.rdbDirct.SelectedDownBack = null;
-            this.rdbDirct.SelectedMouseBack = null;
-            this.rdbDirct.SelectedNormlBack = null;
-            this.rdbDirct.Size = new System.Drawing.Size(62, 21);
-            this.rdbDirct.TabIndex = 26;
-            this.rdbDirct.TabStop = true;
-            this.rdbDirct.Text = "文件夹";
-            this.rdbDirct.UseVisualStyleBackColor = false;
-            // 
-            // skinPanel1
-            // 
-            this.skinPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.skinPanel1.Controls.Add(this.rdbFile);
-            this.skinPanel1.Controls.Add(this.rdbDirct);
-            this.skinPanel1.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
-            this.skinPanel1.DownBack = null;
-            this.skinPanel1.Location = new System.Drawing.Point(656, 377);
-            this.skinPanel1.MouseBack = null;
-            this.skinPanel1.Name = "skinPanel1";
-            this.skinPanel1.NormlBack = null;
-            this.skinPanel1.Size = new System.Drawing.Size(78, 54);
-            this.skinPanel1.TabIndex = 27;
-            // 
             // Frm_SerialPort
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -688,12 +688,12 @@ namespace CommunTools
             this.Text = "串口通讯发送端";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_SerialServer_FormClosing);
             this.Load += new System.EventHandler(this.Frm_SerialPort_Load);
+            this.skinPanel1.ResumeLayout(false);
+            this.skinPanel1.PerformLayout();
             this.groupBoxEx4.ResumeLayout(false);
             this.groupBoxEx3.ResumeLayout(false);
             this.groupBoxEx2.ResumeLayout(false);
             this.groupBoxEx2.PerformLayout();
-            this.skinPanel1.ResumeLayout(false);
-            this.skinPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

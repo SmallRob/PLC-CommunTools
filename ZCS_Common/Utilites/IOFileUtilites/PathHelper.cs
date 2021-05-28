@@ -103,5 +103,22 @@ namespace ZCS_Common
             return files;
         }
 
+        /// <summary>
+        /// 删除非空文件夹
+        /// </summary>
+        /// <param name="path">要删除的文件夹目录</param>
+        public static void DeleteDirectory(string path)
+        {
+            DirectoryInfo dir = new DirectoryInfo(path);
+            if (dir.Exists)
+            {
+                DirectoryInfo[] childs = dir.GetDirectories();
+                foreach (DirectoryInfo child in childs)
+                {
+                    child.Delete(true);
+                }
+                dir.Delete(true);
+            }
+        }
     }
 }
