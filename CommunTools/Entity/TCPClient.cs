@@ -10,8 +10,6 @@ namespace CommunTools.Entity
 {
     public class TCPClient
     {
-        //新建socket连接口
-        private Socket newClient;
         private Thread clientThread;
 
         private IPEndPoint endPoint;
@@ -19,7 +17,7 @@ namespace CommunTools.Entity
         private IPAddress ip;
         private int port;
 
-        public Socket NewClient { get => newClient; set => newClient = value; }
+        //新建socket连接口
         public Socket Newclient { get; internal set; }
         public bool Connected { get; set; } = false;
 
