@@ -341,9 +341,17 @@ namespace CommunTools
 
             if (richTextBox_Receive.Text.Length > 0)
             {
-                richTextBox_Receive.AppendText(" ");  // 中间使用 隔开，也可以使用-隔开
+                richTextBox_Receive.AppendText("\n");  // 中间使用 隔开，也可以使用\n隔开
             }
+
+            string dateMsg = String.Format("[{0}]# ", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")) + "\n";
+
+            richTextBox_Receive.SelectionColor = Color.Gray;
+            richTextBox_Receive.AppendText(dateMsg);
+            richTextBox_Receive.SelectionColor = Color.Blue;
+
             richTextBox_Receive.AppendText(System.Text.Encoding.Default.GetString(e.receivedBytes));
+            richTextBox_Receive.ScrollToCaret();
 
             // 更新状态显示框
             receCount += e.receivedBytes.Length;
@@ -415,6 +423,11 @@ namespace CommunTools
                 {
                     return;
                 }
+
+
+                if (String.IsNullOrWhiteSpace(txtSendTime.InputText))
+                    txtSendTime.InputText = "2000";
+
                 timerSend.Interval = int.Parse(txtSendTime.InputText);  // 将字符串转化为整型数字
                 byte[] data = System.Text.Encoding.Default.GetBytes(datastr);   // 字符串转化为字节数组
 

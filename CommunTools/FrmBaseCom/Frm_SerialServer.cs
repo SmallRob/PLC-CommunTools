@@ -585,9 +585,9 @@ namespace CommunTools
         private void Frm_SerialServer_Load(object sender, EventArgs e)
         {
             JsonFileConfig jsonFile = new JsonFileConfig();
-            jsonFile.ConfigSection = "TcpServer";
+            jsonFile.ConfigSection = "TCPServer";
 
-            var jc = jsonFile.LoadJsonConfig(jsonFile.ConfigFile, "TcpServer");
+            var jc = jsonFile.LoadJsonConfig(jsonFile.ConfigFile, "TCPServer");
 
             txtTCPIP.InputText = jc[0];
             txtPort.InputText = jc[1];
