@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="StringUtilites.cs" />
     <Compile Include="Utilites\CacheUtilites\AssemblyCacheManager.cs" />
     <Compile Include="Utilites\ConfigUtilites\ConfigHelper.cs" />
     <Compile Include="Converter\ConvertExt.cs" />
