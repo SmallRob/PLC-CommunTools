@@ -47,7 +47,7 @@ namespace CommunTools
             this.ucCheckBox1 = new ZCS_FormUI.Controls.UCCheckBox();
             this.lblSendStatus = new Com_CSSkin.SkinControl.SkinLabel();
             this.lblrecestatus = new Com_CSSkin.SkinControl.SkinLabel();
-            this.ucBtnExt1 = new ZCS_FormUI.Controls.UCBtnExt();
+            this.btnSenFile = new ZCS_FormUI.Controls.UCBtnExt();
             this.btnSend = new ZCS_FormUI.Controls.UCBtnExt();
             this.ckbHEX = new ZCS_FormUI.Controls.UCCheckBox();
             this.btnScan = new ZCS_FormUI.Controls.UCBtnExt();
@@ -60,6 +60,7 @@ namespace CommunTools
             this.skinLabel4 = new Com_CSSkin.SkinControl.SkinLabel();
             this.labComInfo = new Com_CSSkin.SkinControl.SkinLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ckbToTCP = new ZCS_FormUI.Controls.UCCheckBox();
             this.groupBoxEx1.SuspendLayout();
             this.groupBoxEx3.SuspendLayout();
             this.skinPanel1.SuspendLayout();
@@ -81,7 +82,7 @@ namespace CommunTools
             this.btnClean.IsRadius = true;
             this.btnClean.IsShowRect = true;
             this.btnClean.IsShowTips = false;
-            this.btnClean.Location = new System.Drawing.Point(282, 69);
+            this.btnClean.Location = new System.Drawing.Point(282, 86);
             this.btnClean.Margin = new System.Windows.Forms.Padding(0);
             this.btnClean.Name = "btnClean";
             this.btnClean.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
@@ -107,7 +108,7 @@ namespace CommunTools
             this.groupBoxEx1.Size = new System.Drawing.Size(394, 156);
             this.groupBoxEx1.TabIndex = 1;
             this.groupBoxEx1.TabStop = false;
-            this.groupBoxEx1.Text = "连接到TCP主机";
+            this.groupBoxEx1.Text = "连接到TCP/串口主机";
             // 
             // btnStart
             // 
@@ -124,7 +125,7 @@ namespace CommunTools
             this.btnStart.IsRadius = true;
             this.btnStart.IsShowRect = true;
             this.btnStart.IsShowTips = false;
-            this.btnStart.Location = new System.Drawing.Point(282, 22);
+            this.btnStart.Location = new System.Drawing.Point(282, 39);
             this.btnStart.Margin = new System.Windows.Forms.Padding(0);
             this.btnStart.Name = "btnStart";
             this.btnStart.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
@@ -142,7 +143,7 @@ namespace CommunTools
             this.skinLabel2.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel2.BorderColor = System.Drawing.Color.White;
             this.skinLabel2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel2.Location = new System.Drawing.Point(28, 76);
+            this.skinLabel2.Location = new System.Drawing.Point(28, 93);
             this.skinLabel2.Name = "skinLabel2";
             this.skinLabel2.Size = new System.Drawing.Size(51, 20);
             this.skinLabel2.TabIndex = 3;
@@ -166,7 +167,7 @@ namespace CommunTools
             this.txtPort.IsShowRect = true;
             this.txtPort.IsShowSearchBtn = false;
             this.txtPort.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtPort.Location = new System.Drawing.Point(110, 76);
+            this.txtPort.Location = new System.Drawing.Point(110, 93);
             this.txtPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPort.MaxValue = new decimal(new int[] {
             1000000,
@@ -196,7 +197,7 @@ namespace CommunTools
             this.skinLabel1.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel1.BorderColor = System.Drawing.Color.White;
             this.skinLabel1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel1.Location = new System.Drawing.Point(28, 27);
+            this.skinLabel1.Location = new System.Drawing.Point(28, 44);
             this.skinLabel1.Name = "skinLabel1";
             this.skinLabel1.Size = new System.Drawing.Size(36, 20);
             this.skinLabel1.TabIndex = 1;
@@ -220,7 +221,7 @@ namespace CommunTools
             this.txtTCPIP.IsShowRect = true;
             this.txtTCPIP.IsShowSearchBtn = false;
             this.txtTCPIP.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtTCPIP.Location = new System.Drawing.Point(110, 27);
+            this.txtTCPIP.Location = new System.Drawing.Point(110, 44);
             this.txtTCPIP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTCPIP.MaxValue = new decimal(new int[] {
             1000000,
@@ -261,7 +262,7 @@ namespace CommunTools
             this.ckbRevHEX.BackColor = System.Drawing.Color.Transparent;
             this.ckbRevHEX.Checked = false;
             this.ckbRevHEX.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckbRevHEX.Location = new System.Drawing.Point(236, -4);
+            this.ckbRevHEX.Location = new System.Drawing.Point(258, -4);
             this.ckbRevHEX.Name = "ckbRevHEX";
             this.ckbRevHEX.Padding = new System.Windows.Forms.Padding(1);
             this.ckbRevHEX.Size = new System.Drawing.Size(108, 26);
@@ -286,11 +287,11 @@ namespace CommunTools
             this.skinPanel1.Controls.Add(this.rdbDirct);
             this.skinPanel1.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
             this.skinPanel1.DownBack = null;
-            this.skinPanel1.Location = new System.Drawing.Point(530, 281);
+            this.skinPanel1.Location = new System.Drawing.Point(530, 279);
             this.skinPanel1.MouseBack = null;
             this.skinPanel1.Name = "skinPanel1";
             this.skinPanel1.NormlBack = null;
-            this.skinPanel1.Size = new System.Drawing.Size(78, 54);
+            this.skinPanel1.Size = new System.Drawing.Size(167, 25);
             this.skinPanel1.TabIndex = 42;
             // 
             // rdbFile
@@ -322,7 +323,7 @@ namespace CommunTools
             this.rdbDirct.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
             this.rdbDirct.DownBack = null;
             this.rdbDirct.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdbDirct.Location = new System.Drawing.Point(3, 30);
+            this.rdbDirct.Location = new System.Drawing.Point(103, 3);
             this.rdbDirct.MouseBack = null;
             this.rdbDirct.Name = "rdbDirct";
             this.rdbDirct.NormlBack = null;
@@ -340,7 +341,7 @@ namespace CommunTools
             this.ucCheckBox1.BackColor = System.Drawing.Color.Transparent;
             this.ucCheckBox1.Checked = false;
             this.ucCheckBox1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ucCheckBox1.Location = new System.Drawing.Point(633, 280);
+            this.ucCheckBox1.Location = new System.Drawing.Point(418, 309);
             this.ucCheckBox1.Name = "ucCheckBox1";
             this.ucCheckBox1.Padding = new System.Windows.Forms.Padding(1);
             this.ucCheckBox1.Size = new System.Drawing.Size(108, 26);
@@ -373,31 +374,32 @@ namespace CommunTools
             this.lblrecestatus.TabIndex = 39;
             this.lblrecestatus.Text = "已接收数据：接收包/总字节";
             // 
-            // ucBtnExt1
+            // btnSenFile
             // 
-            this.ucBtnExt1.BackColor = System.Drawing.Color.White;
-            this.ucBtnExt1.BtnBackColor = System.Drawing.Color.White;
-            this.ucBtnExt1.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ucBtnExt1.BtnForeColor = System.Drawing.Color.White;
-            this.ucBtnExt1.BtnText = "清空统计数";
-            this.ucBtnExt1.ConerRadius = 5;
-            this.ucBtnExt1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ucBtnExt1.EnabledMouseEffect = false;
-            this.ucBtnExt1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.ucBtnExt1.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.ucBtnExt1.IsRadius = true;
-            this.ucBtnExt1.IsShowRect = true;
-            this.ucBtnExt1.IsShowTips = false;
-            this.ucBtnExt1.Location = new System.Drawing.Point(566, 379);
-            this.ucBtnExt1.Margin = new System.Windows.Forms.Padding(0);
-            this.ucBtnExt1.Name = "ucBtnExt1";
-            this.ucBtnExt1.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
-            this.ucBtnExt1.RectWidth = 1;
-            this.ucBtnExt1.Size = new System.Drawing.Size(86, 33);
-            this.ucBtnExt1.TabIndex = 38;
-            this.ucBtnExt1.TabStop = false;
-            this.ucBtnExt1.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-            this.ucBtnExt1.TipsText = "";
+            this.btnSenFile.BackColor = System.Drawing.Color.White;
+            this.btnSenFile.BtnBackColor = System.Drawing.Color.White;
+            this.btnSenFile.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSenFile.BtnForeColor = System.Drawing.Color.White;
+            this.btnSenFile.BtnText = "发送文件";
+            this.btnSenFile.ConerRadius = 5;
+            this.btnSenFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSenFile.EnabledMouseEffect = false;
+            this.btnSenFile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnSenFile.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btnSenFile.IsRadius = true;
+            this.btnSenFile.IsShowRect = true;
+            this.btnSenFile.IsShowTips = false;
+            this.btnSenFile.Location = new System.Drawing.Point(566, 379);
+            this.btnSenFile.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSenFile.Name = "btnSenFile";
+            this.btnSenFile.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(58)))));
+            this.btnSenFile.RectWidth = 1;
+            this.btnSenFile.Size = new System.Drawing.Size(86, 33);
+            this.btnSenFile.TabIndex = 38;
+            this.btnSenFile.TabStop = false;
+            this.btnSenFile.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.btnSenFile.TipsText = "";
+            this.btnSenFile.BtnClick += new System.EventHandler(this.btnSenFile_BtnClick);
             // 
             // btnSend
             // 
@@ -405,7 +407,7 @@ namespace CommunTools
             this.btnSend.BtnBackColor = System.Drawing.Color.White;
             this.btnSend.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSend.BtnForeColor = System.Drawing.Color.White;
-            this.btnSend.BtnText = "发送";
+            this.btnSend.BtnText = "发送文字";
             this.btnSend.ConerRadius = 5;
             this.btnSend.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSend.EnabledMouseEffect = false;
@@ -431,7 +433,7 @@ namespace CommunTools
             this.ckbHEX.BackColor = System.Drawing.Color.Transparent;
             this.ckbHEX.Checked = false;
             this.ckbHEX.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckbHEX.Location = new System.Drawing.Point(633, 247);
+            this.ckbHEX.Location = new System.Drawing.Point(671, 211);
             this.ckbHEX.Name = "ckbHEX";
             this.ckbHEX.Padding = new System.Windows.Forms.Padding(1);
             this.ckbHEX.Size = new System.Drawing.Size(108, 26);
@@ -533,7 +535,7 @@ namespace CommunTools
             this.ckbFile.BackColor = System.Drawing.Color.Transparent;
             this.ckbFile.Checked = false;
             this.ckbFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckbFile.Location = new System.Drawing.Point(418, 280);
+            this.ckbFile.Location = new System.Drawing.Point(418, 278);
             this.ckbFile.Name = "ckbFile";
             this.ckbFile.Padding = new System.Windows.Forms.Padding(1);
             this.ckbFile.Size = new System.Drawing.Size(113, 26);
@@ -558,7 +560,7 @@ namespace CommunTools
             this.txtSendTime.IsShowRect = true;
             this.txtSendTime.IsShowSearchBtn = false;
             this.txtSendTime.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtSendTime.Location = new System.Drawing.Point(533, 247);
+            this.txtSendTime.Location = new System.Drawing.Point(530, 247);
             this.txtSendTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSendTime.MaxValue = new decimal(new int[] {
             1000000,
@@ -600,7 +602,7 @@ namespace CommunTools
             this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel4.BorderColor = System.Drawing.Color.White;
             this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel4.Location = new System.Drawing.Point(425, 216);
+            this.skinLabel4.Location = new System.Drawing.Point(425, 217);
             this.skinLabel4.Name = "skinLabel4";
             this.skinLabel4.Size = new System.Drawing.Size(79, 20);
             this.skinLabel4.TabIndex = 29;
@@ -623,6 +625,18 @@ namespace CommunTools
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // ckbToTCP
+            // 
+            this.ckbToTCP.BackColor = System.Drawing.Color.Transparent;
+            this.ckbToTCP.Checked = false;
+            this.ckbToTCP.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ckbToTCP.Location = new System.Drawing.Point(530, 211);
+            this.ckbToTCP.Name = "ckbToTCP";
+            this.ckbToTCP.Padding = new System.Windows.Forms.Padding(1);
+            this.ckbToTCP.Size = new System.Drawing.Size(135, 26);
+            this.ckbToTCP.TabIndex = 43;
+            this.ckbToTCP.TextValue = "发送至TCP服务端";
+            // 
             // Frm_TCPClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -632,11 +646,12 @@ namespace CommunTools
             this.CaptionFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ClientSize = new System.Drawing.Size(796, 480);
             this.CloseBoxSize = new System.Drawing.Size(32, 24);
+            this.Controls.Add(this.ckbToTCP);
             this.Controls.Add(this.skinPanel1);
             this.Controls.Add(this.ucCheckBox1);
             this.Controls.Add(this.lblSendStatus);
             this.Controls.Add(this.lblrecestatus);
-            this.Controls.Add(this.ucBtnExt1);
+            this.Controls.Add(this.btnSenFile);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.ckbHEX);
             this.Controls.Add(this.btnScan);
@@ -691,7 +706,7 @@ namespace CommunTools
         private ZCS_FormUI.Controls.UCCheckBox ucCheckBox1;
         private Com_CSSkin.SkinControl.SkinLabel lblSendStatus;
         private Com_CSSkin.SkinControl.SkinLabel lblrecestatus;
-        private ZCS_FormUI.Controls.UCBtnExt ucBtnExt1;
+        private ZCS_FormUI.Controls.UCBtnExt btnSenFile;
         private ZCS_FormUI.Controls.UCBtnExt btnSend;
         private ZCS_FormUI.Controls.UCCheckBox ckbHEX;
         private ZCS_FormUI.Controls.UCBtnExt btnScan;
@@ -705,5 +720,6 @@ namespace CommunTools
         private Com_CSSkin.SkinControl.SkinLabel labComInfo;
         private ZCS_FormUI.Controls.UCCheckBox ckbRevHEX;
         private System.Windows.Forms.Timer timer1;
+        private ZCS_FormUI.Controls.UCCheckBox ckbToTCP;
     }
 }

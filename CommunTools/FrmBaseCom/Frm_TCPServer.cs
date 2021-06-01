@@ -32,7 +32,7 @@ namespace CommunTools
         {
             InitializeComponent();
             TextBox.CheckForIllegalCrossThreadCalls = false;
-        }      
+        }
 
         private void Frm_SerialServer_Load(object sender, EventArgs e)
         {
@@ -58,30 +58,40 @@ namespace CommunTools
 
         private void OpenTCPServer()
         {
-            // 创建负责监听的套接字，注意其中的参数；
-            socketWatch = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            // 获得文本框中的IP对象；
-            IPAddress address = IPAddress.Parse(txtTCPIP.InputText.Trim());
-            // 创建包含ip和端口号的网络节点对象；
-            IPEndPoint endPoint = new IPEndPoint(address, int.Parse(txtPort.InputText.Trim()));
-            try
+            if (!"停止服务".Equals(btnStart.BtnText))
             {
-                // 将负责监听的套接字绑定到唯一的ip和端口上；
-                socketWatch.Bind(endPoint);
+                // 创建负责监听的套接字，注意其中的参数；
+                socketWatch = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                // 获得文本框中的IP对象；
+                IPAddress address = IPAddress.Parse(txtTCPIP.InputText.Trim());
+                // 创建包含ip和端口号的网络节点对象；
+                IPEndPoint endPoint = new IPEndPoint(address, int.Parse(txtPort.InputText.Trim()));
+                try
+                {
+                    // 将负责监听的套接字绑定到唯一的ip和端口上；
+                    socketWatch.Bind(endPoint);
+                }
+                catch (SocketException se)
+                {
+                    FrmDialog.ShowDialog(this, "程序异常：\n" + se.Message);
+                    return;
+                }
+                // 设置监听队列的长度；
+                socketWatch.Listen(10);
+                // 创建负责监听的线程；
+                threadWatch = new Thread(WatchConnecting);
+                threadWatch.IsBackground = true;
+                threadWatch.Start();
+                ShowMsg("服务器启动监听成功！");
+
+                btnStart.BtnText = "停止服务";
+
             }
-            catch (SocketException se)
-            {               
-                FrmDialog.ShowDialog(this, "程序异常：\n" + se.Message);
-                return;
+            else
+            {
+                //停止服务
+
             }
-            // 设置监听队列的长度；
-            socketWatch.Listen(10);
-            // 创建负责监听的线程；
-            threadWatch = new Thread(WatchConnecting);
-            threadWatch.IsBackground = true;
-            threadWatch.Start();
-            ShowMsg("服务器启动监听成功！");
-            //}
         }
 
         /// <summary>
@@ -176,22 +186,25 @@ namespace CommunTools
 
         private void btnSend_BtnClick(object sender, EventArgs e)
         {
-            string strMsg = "服务器" + "\r\n" + "   -->" + richTextBox_Send.Text.Trim() + "\r\n";
-            byte[] arrMsg = System.Text.Encoding.UTF8.GetBytes(strMsg); // 将要发送的字符串转换成Utf-8字节数组；
-            byte[] arrSendMsg = new byte[arrMsg.Length + 1];
-            arrSendMsg[0] = 0; // 表示发送的是消息数据
-            Buffer.BlockCopy(arrMsg, 0, arrSendMsg, 1, arrMsg.Length);
-            string strKey = "";
-            strKey = lbOnline.Text.Trim();
-            if (string.IsNullOrEmpty(strKey))   // 判断是不是选择了发送的对象；
+            if (!string.IsNullOrWhiteSpace(richTextBox_Send.Text.Trim()))
             {
-                MessageBox.Show("请选择你要发送的好友！！！");
-            }
-            else
-            {
-                dict[strKey].Send(arrSendMsg);// 解决了 sokConnection是局部变量，不能再本函数中引用的问题；
-                ShowMsg(strMsg);
-                richTextBox_Send.Clear();
+                string strMsg = "服务器 --> " + richTextBox_Send.Text.Trim() + "\r\n";
+                byte[] arrMsg = System.Text.Encoding.UTF8.GetBytes(strMsg); // 将要发送的字符串转换成Utf-8字节数组；
+                byte[] arrSendMsg = new byte[arrMsg.Length + 1];
+                arrSendMsg[0] = 0; // 表示发送的是消息数据
+                Buffer.BlockCopy(arrMsg, 0, arrSendMsg, 1, arrMsg.Length);
+                string strKey = "";
+                strKey = lbOnline.Text.Trim();
+                if (string.IsNullOrEmpty(strKey))   // 判断是不是选择了发送的对象；
+                {
+                    FrmDialog.ShowDialog(this, "请先选择您要发送的对象!");
+                }
+                else
+                {
+                    dict[strKey].Send(arrSendMsg);// 解决了 sokConnection是局部变量，不能再本函数中引用的问题；
+                    ShowMsg(strMsg);
+                    //richTextBox_Send.Clear();
+                }
             }
         }
 
@@ -202,15 +215,17 @@ namespace CommunTools
         /// <param name="e"></param>
         private void btnSendToAll_BtnClick(object sender, EventArgs e)
         {
-            string strMsg = "服务器" + "\r\n" + "   -->" + richTextBox_Send.Text.Trim() + "\r\n";
-            byte[] arrMsg = System.Text.Encoding.UTF8.GetBytes(strMsg); // 将要发送的字符串转换成Utf-8字节数组；
-            foreach (Socket s in dict.Values)
+            if (!string.IsNullOrWhiteSpace(richTextBox_Send.Text.Trim()))
             {
-                s.Send(arrMsg);
+                string strMsg = "服务器 --> " + richTextBox_Send.Text.Trim() + "\r\n";
+                byte[] arrMsg = System.Text.Encoding.UTF8.GetBytes(strMsg); // 将要发送的字符串转换成Utf-8字节数组；
+                foreach (Socket s in dict.Values)
+                {
+                    s.Send(arrMsg);
+                }
+                ShowMsg(strMsg);
+                ShowMsg("服务器：群发消息完毕～～～");
             }
-            ShowMsg(strMsg);
-            richTextBox_Send.Clear();
-            ShowMsg(" 群发完毕～～～");
         }
     }
 }

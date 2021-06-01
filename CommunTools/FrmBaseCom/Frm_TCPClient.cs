@@ -11,6 +11,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Net;
@@ -110,6 +111,8 @@ namespace CommunTools
                     return;
                 }
 
+                labComInfo.Text = "已连接至服务器：" + client.Ip + ":" + client.Port;
+
                 //多线程处理
 
                 //ThreadStart myThreaddelegate = new ThreadStart(ReceiveMsg);
@@ -132,6 +135,8 @@ namespace CommunTools
                 client.Newclient.Disconnect(false);
                 txtTCPIP.Enabled = true;
                 txtPort.Enabled = true;
+
+                labComInfo.Text = "未连接服务";
             }
         }
 
@@ -152,14 +157,17 @@ namespace CommunTools
                         byte[] data = new byte[1024];
 
                         //先记录下来，避免某种原因，人为的原因，操作几次之间时间长，缓存不一致
-                        int n = client.Newclient.Receive(data);
-                        if (n > 0)//有数据时才处理
+                        int length = -1;
+
+                        length = client.Newclient.Receive(data);
+
+                        if (length > 0)//有数据时才处理
                         {
                             StringBuilder builder = new StringBuilder();//避免在事件处理方法中反复的创建，定义到外面。
                             long received_count = 0;//接收计数
-                            byte[] buf = new byte[n];//声明一个临时数组存储当前来的串口数据
-                            received_count += n;//增加接收计数
-                            Array.Copy(data, 0, buf, 0, n);
+                            byte[] buf = new byte[length];//声明一个临时数组存储当前来的串口数据
+                            received_count += length;//增加接收计数
+                            Array.Copy(data, 0, buf, 0, length);
                             //serialPort1.Read(buf, 0, n);//读取缓冲数据
                             builder.Clear();//清除字符串构造器的内容
 
@@ -182,13 +190,49 @@ namespace CommunTools
                             }
                             else
                             {
-                                //直接按ASCII规则转换成字符串
-                                builder.Append(Encoding.ASCII.GetString(buf));
+                                string bufOri = Encoding.UTF8.GetString(buf);
+
+                                if (buf[0] == 0) // 表示接收到的是消息数据；
+                                {
+                                    //直接按ASCII规则转换成字符串
+                                    builder.Append(Encoding.UTF8.GetString(buf, 1, length - 1));
+                                }
+                                else if (buf[0] == 1)
+                                {
+                                    //表示收到了文件
+
+                                    try
+                                    {
+                                        SaveFileDialog sfd = new SaveFileDialog();
+
+                                        if (sfd.ShowDialog(this) == System.Windows.Forms.DialogResult.OK)
+                                        {
+                                            // 在上边的 sfd.ShowDialog（） 的括号里边一定要加上 this 否则就不会弹出 另存为 的对话框
+                                            // 而弹出的是本类的其他窗口，，这个一定要注意！！！【解释：加了this的sfd.ShowDialog(this)，
+                                            // “另存为”窗口的指针才能被SaveFileDialog的对象调用，
+                                            // 若不加thisSaveFileDialog 的对象调用的是本类的其他窗口了，当然不弹出“另存为”窗口。】
+
+                                            string fileSavePath = sfd.FileName;// 获得文件保存的路径；
+                                                                               // 创建文件流，然后根据路径创建文件；
+                                            using (FileStream fs = new FileStream(fileSavePath, FileMode.Create))
+                                            {
+                                                fs.Write(buf, 1, length - 1);
+                                                builder.Append("接收到文件：" + fileSavePath);
+                                            }
+                                        }
+                                    }
+                                    catch (Exception aaa)
+                                    {
+                                        MessageBox.Show(aaa.Message);
+                                    }
+
+                                }
+                                else builder.Append(bufOri);
                             }
 
                             bulidStr += builder.ToString() + "\n";
 
-                            recv_count += n;//增加接收计数
+                            recv_count += length;//增加接收计数
                         }
                     }
                     catch (System.Exception ex)
@@ -240,7 +284,7 @@ namespace CommunTools
             {
                 if ((client.Connected) && (ckbTimeSend.Checked))
                 {
-                    SendMsg();
+                    SendMsg(ckbToTCP.Checked);
                 }
                 else
                 {
@@ -268,7 +312,7 @@ namespace CommunTools
                         timer1.Enabled = false;
                     }
 
-                    SendMsg();
+                    SendMsg(ckbToTCP.Checked);
                 }
                 else
                 {
@@ -282,16 +326,33 @@ namespace CommunTools
             }
         }
 
-        private void SendMsg()
+        /// <summary>
+        /// 发送文件
+        /// </summary>
+        private void btnSenFile_BtnClick(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 发送消息
+        /// </summary>
+        /// <param name="isTCPService">是否发送到TCP主机</param>
+        private void SendMsg(bool isTCPService = false)
         {
             //十六进制发送
             if (ckbHEX.Checked)
             {
                 ArrayList al = StringUtilites.Str16ToArrayList(richTextBox_Send.Text);
-                byte[] by = new byte[al.Count];
+                byte[] arrMsg = new byte[al.Count];
 
-                send_DataCnt += by.Length;
+                int mySendLenth = SendToService(isTCPService, arrMsg);
 
+                send_DataCnt += mySendLenth;
+
+                //send_DataCnt += by.Length;
+
+                /*
                 int i = 0;
                 foreach (string stmp in al)
                 {
@@ -299,25 +360,44 @@ namespace CommunTools
                     by[i] += Convert.ToByte(stmp, 16);
                     i++;
                 }
-                int mySendLenth = client.Newclient.Send(by);
+                */
 
                 //serialPort1.Write(by, 0, i);//发送字节
                 //s = Encoding.GetEncoding("Gb2312").GetString(by);
                 //在派生类中重写时，将指定字节数组中的所有字节解码为一个字符串。。
             }
-            else//ASCII发送
+            else
             {
+                //ASCII发送
                 int m_length = richTextBox_Send.Text.Trim().Length;
-                byte[] data = new byte[m_length];
-                data = Encoding.UTF8.GetBytes(richTextBox_Send.Text);
-                int mySendLenth = client.Newclient.Send(data);
+                byte[] arrMsg = new byte[m_length];
 
-                send_DataCnt += data.Length;
+                int mySendLenth = SendToService(isTCPService, arrMsg);
+                send_DataCnt += mySendLenth;
                 //Marshal.SizeOf((ByteDataCommon.byLength(data)).GetType());
             }
             send_count++;
 
             lblSendStatus.Text = "已发送数据：" + send_count + "/" + send_DataCnt.ToString();
+        }
+
+        private int SendToService(bool isTCPService, byte[] arrMsg)
+        {
+            int mySendLenth;
+            if (isTCPService)
+            {
+                byte[] arrSendMsg = new byte[arrMsg.Length + 1];
+                arrSendMsg[0] = 0; // 用来表示发送的是消息数据
+                Buffer.BlockCopy(arrMsg, 0, arrSendMsg, 1, arrMsg.Length);
+
+                mySendLenth = client.Newclient.Send(arrSendMsg);
+            }
+            else
+            {
+                mySendLenth = client.Newclient.Send(arrMsg);
+            }
+
+            return mySendLenth;
         }
 
         private void btnClean_BtnClick(object sender, EventArgs e)
