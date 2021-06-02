@@ -610,6 +610,7 @@ namespace CommunTools
             // 
             // labComInfo
             // 
+            this.labComInfo.ArtTextStyle = Com_CSSkin.SkinControl.ArtTextStyle.None;
             this.labComInfo.AutoSize = true;
             this.labComInfo.BackColor = System.Drawing.Color.Transparent;
             this.labComInfo.BorderColor = System.Drawing.Color.White;

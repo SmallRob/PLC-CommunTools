@@ -431,12 +431,13 @@ namespace CommunTools
             // 
             // labComInfo
             // 
+            this.labComInfo.ArtTextStyle = Com_CSSkin.SkinControl.ArtTextStyle.None;
             this.labComInfo.AutoSize = true;
             this.labComInfo.BackColor = System.Drawing.Color.Transparent;
             this.labComInfo.BorderColor = System.Drawing.Color.White;
             this.labComInfo.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labComInfo.ForeColor = System.Drawing.Color.BlueViolet;
-            this.labComInfo.Location = new System.Drawing.Point(32, 455);
+            this.labComInfo.Location = new System.Drawing.Point(32, 454);
             this.labComInfo.Name = "labComInfo";
             this.labComInfo.Size = new System.Drawing.Size(85, 20);
             this.labComInfo.TabIndex = 10;

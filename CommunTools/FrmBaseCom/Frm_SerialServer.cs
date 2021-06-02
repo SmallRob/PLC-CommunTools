@@ -45,13 +45,13 @@ namespace CommunTools
                 (cmbDataBits,EnumHelper.GetEnumList(typeof(sp.DataBit)))
             };
 
-            foreach ((SkinComboBox, IList<EnumListModel>) item in ps)
+            foreach ((SkinComboBox box, IList<EnumListModel> enumModel) item in ps)
             {
-                foreach (EnumListModel enumLst in item.Item2)
+                foreach (EnumListModel enumLst in item.enumModel)
                 {
-                    item.Item1.Items.Add(enumLst.EnumDescrip);
+                    item.box.Items.Add(enumLst.EnumDescrip);
                 }
-                item.Item1.SelectedIndex = 0;
+                item.box.SelectedIndex = 0;
             }
 
             cmbBandRate.Text = cmbBandRate.Items[1].ToString();
@@ -142,50 +142,9 @@ namespace CommunTools
         /// </summary>
         private bool InitSerialPort(TCPComServer comServer)
         {
-            Parity par = Parity.None;
-            if (cmbPortParity.SelectedItem != null)
-            {
-                sp.PortParity portParity = (sp.PortParity)cmbPortParity.SelectedIndex;
-
-                switch (portParity)
-                {
-                    case sp.PortParity.None:
-                        par = Parity.None;
-                        break;
-                    case sp.PortParity.Odd:
-                        par = Parity.Odd;
-                        break;
-                    case sp.PortParity.Even:
-                        par = Parity.Even;
-                        break;
-                    case sp.PortParity.Mark:
-                        par = Parity.Mark;
-                        break;
-                    default:
-                        par = Parity.None;
-                        break;
-                }
-            }
-
-            //停止位
-            StopBits stopBit = StopBits.None;
-
+            sp.PortParity portParity = (sp.PortParity)cmbPortParity.SelectedIndex;
             sp.StopBits stopBits = (sp.StopBits)cmbStopBits.SelectedIndex;
-            switch (stopBits)
-            {
-                case sp.StopBits.One:
-                    stopBit = StopBits.One;
-                    break;
-                case sp.StopBits.OnePointFive:
-                    stopBit = StopBits.OnePointFive;
-                    break;
-                case sp.StopBits.Two:
-                    stopBit = StopBits.Two;
-                    break;
-                default:
-                    stopBit = StopBits.None;
-                    break;
-            }
+
             try
             {
                 comServer.EntitySerialPort = null;
@@ -194,8 +153,8 @@ namespace CommunTools
                 comServer.EntitySerialPort.PortName = comServer.ComPort;  //串口名称
                 comServer.EntitySerialPort.BaudRate = int.Parse(cmbBandRate.Text);    //波特率
                 comServer.EntitySerialPort.DataBits = int.Parse(cmbDataBits.Text);    //数据位
-                comServer.EntitySerialPort.Parity = par;       //校验位
-                comServer.EntitySerialPort.StopBits = stopBit; //停止位
+                comServer.EntitySerialPort.Parity = GetPortParity(portParity);        //校验位
+                comServer.EntitySerialPort.StopBits = GetStopBits(stopBits);          //停止位
                 comServer.EntitySerialPort.ReadTimeout = 3000;   //读写超时控制在3秒内
                 comServer.EntitySerialPort.WriteTimeout = 3000;
 
@@ -231,6 +190,28 @@ namespace CommunTools
             comServer.ThreadCOMSend.IsBackground = true;
             comServer.ThreadCOMSend.Start(comServer);
             return true;
+
+            //停止位
+            StopBits GetStopBits(sp.StopBits bits) =>
+                bits switch
+                {
+                    sp.StopBits.One => StopBits.One,
+                    sp.StopBits.OnePointFive => StopBits.OnePointFive,
+                    sp.StopBits.Two => StopBits.Two,
+                    _ => StopBits.None
+                    //throw new ArgumentException(message: "invalid enum value", paramName: nameof(bits)),
+                };
+
+            //奇偶性
+            Parity GetPortParity(sp.PortParity portParity) =>
+                portParity switch
+                {
+                    sp.PortParity.None => Parity.None,
+                    sp.PortParity.Odd => Parity.Odd,
+                    sp.PortParity.Even => Parity.Even,
+                    sp.PortParity.Mark => Parity.Mark,
+                    _ => Parity.None
+                };
         }
 
         /// <summary>
@@ -460,35 +441,7 @@ namespace CommunTools
             }
             StringBuilder sb = new StringBuilder();
             sb.AppendFormat("[{0}]# ", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
-            switch (commEnum)
-            {
-                case CommunTCPEnum.COMEntitySendOK:
-                    sb.AppendFormat("TXD[OK]  {0} >\r\n", server.ComPort);
-                    break;
-                case CommunTCPEnum.COMEntitySendError:
-                    sb.AppendFormat("TXD[Error] {0} >\r\n", server.ComPort);
-                    break;
-                case CommunTCPEnum.COMEntityReciveOK:
-                    sb.AppendFormat("RXD[OK] {0} >\r\n", server.ComPort);
-                    break;
-                case CommunTCPEnum.COMEntityReciveError:
-                    sb.AppendFormat("RXD[Error] {0} >\r\n", server.ComPort);
-                    break;
-                case CommunTCPEnum.TCPEntitySendOK:
-                    sb.AppendFormat("Send[OK] {0} >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString());
-                    break;
-                case CommunTCPEnum.TCPEntitySendError:
-                    sb.AppendFormat("Send[Err] {0} >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString());
-                    break;
-                case CommunTCPEnum.TCPEntityReciveOK:
-                    sb.AppendFormat("Recive[OK] {0} >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString());
-                    break;
-                case CommunTCPEnum.TCPEntityReciveError:
-                    sb.AppendFormat("Recive {0}[Err] >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString());
-                    break;
-                default:
-                    break;
-            }
+            sb.Append(CommuEnumAppend(commEnum, server));
 
             lock (buff)
             {
@@ -517,6 +470,20 @@ namespace CommunTools
                     //txtReceive.ScrollToCaret();
                 }, null);
             }
+
+            static string CommuEnumAppend(CommunTCPEnum commEnum, TCPComServer server) =>
+                commEnum switch
+                {
+                    CommunTCPEnum.COMEntitySendOK => string.Format("TXD[OK]  {0} >\r\n", server.ComPort),
+                    CommunTCPEnum.COMEntitySendError => string.Format("TXD[Error] {0} >\r\n", server.ComPort),
+                    CommunTCPEnum.COMEntityReciveOK => string.Format("RXD[OK] {0} >\r\n", server.ComPort),
+                    CommunTCPEnum.COMEntityReciveError => string.Format("RXD[Error] {0} >\r\n", server.ComPort),
+                    CommunTCPEnum.TCPEntitySendOK => string.Format("Send[OK] {0} >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString()),
+                    CommunTCPEnum.TCPEntitySendError => string.Format("Send[Error] {0} >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString()),
+                    CommunTCPEnum.TCPEntityReciveOK => string.Format("Recive[OK] {0} >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString()),
+                    CommunTCPEnum.TCPEntityReciveError => string.Format("Recive[Error] {0} >\r\n", server.TCPClient.Client.RemoteEndPoint.ToString()),
+                    _ => throw new ArgumentException(message: "invalid enum value", paramName: nameof(commEnum))
+                };
         }
 
         /// <summary>

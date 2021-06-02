@@ -53,7 +53,7 @@ namespace CommunTools
         private void InitializeSerialSet()
         {
             InitializePorts();   // 初始化串口号
-            var ps = new List<(SkinComboBox, IList<EnumListModel>)>()
+            var ps = new List<(SkinComboBox box, IList<EnumListModel> enumModel)>()
             {
                 (cmbPortParity,EnumHelper.GetEnumList(typeof(sp.PortParity))),
                 (cmbBandRate,EnumHelper.GetEnumList(typeof(sp.BandRate))),
@@ -61,13 +61,13 @@ namespace CommunTools
                 (cmbDataBits,EnumHelper.GetEnumList(typeof(sp.DataBit)))
             };
 
-            foreach ((SkinComboBox, IList<EnumListModel>) item in ps)
+            foreach ((SkinComboBox box, IList<EnumListModel> enumModel) item in ps)
             {
-                foreach (EnumListModel enumLst in item.Item2)
+                foreach (EnumListModel enumLst in item.enumModel)
                 {
-                    item.Item1.Items.Add(enumLst.EnumDescrip);
+                    item.box.Items.Add(enumLst.EnumDescrip);
                 }
-                item.Item1.SelectedIndex = 0;
+                item.box.SelectedIndex = 0;
             }
 
             cmbBandRate.Text = cmbBandRate.Items[1].ToString();
@@ -86,8 +86,8 @@ namespace CommunTools
             // 检查串口号是否正确
             if (arraysPostsNames.Length > 0)
             {
-                Array.Sort(arraysPostsNames);  // 使用默认进行排序，从小到大肾虚
-                for (int i = 0; i < arraysPostsNames.Length; i++)
+                Array.Sort(arraysPostsNames);  // 使用默认进行排序，从小到大升序
+                for (int i = 0, cnt = arraysPostsNames.Length; i < cnt; i++)
                 {
                     cmbComLst.Items.Add(arraysPostsNames[i]);  // 将所有可用串口加载到串口显示框当中
                 }

@@ -162,7 +162,7 @@ namespace CommunTools
             this.rdbDirct.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
             this.rdbDirct.DownBack = null;
             this.rdbDirct.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.rdbDirct.Location = new System.Drawing.Point(3, 30);
+            this.rdbDirct.Location = new System.Drawing.Point(83, 3);
             this.rdbDirct.MouseBack = null;
             this.rdbDirct.Name = "rdbDirct";
             this.rdbDirct.NormlBack = null;
@@ -182,11 +182,11 @@ namespace CommunTools
             this.skinPanel1.Controls.Add(this.rdbDirct);
             this.skinPanel1.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
             this.skinPanel1.DownBack = null;
-            this.skinPanel1.Location = new System.Drawing.Point(656, 377);
+            this.skinPanel1.Location = new System.Drawing.Point(656, 373);
             this.skinPanel1.MouseBack = null;
             this.skinPanel1.Name = "skinPanel1";
             this.skinPanel1.NormlBack = null;
-            this.skinPanel1.Size = new System.Drawing.Size(78, 54);
+            this.skinPanel1.Size = new System.Drawing.Size(154, 25);
             this.skinPanel1.TabIndex = 27;
             // 
             // ucCheckBox1
@@ -194,7 +194,7 @@ namespace CommunTools
             this.ucCheckBox1.BackColor = System.Drawing.Color.Transparent;
             this.ucCheckBox1.Checked = false;
             this.ucCheckBox1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ucCheckBox1.Location = new System.Drawing.Point(759, 376);
+            this.ucCheckBox1.Location = new System.Drawing.Point(544, 404);
             this.ucCheckBox1.Name = "ucCheckBox1";
             this.ucCheckBox1.Padding = new System.Windows.Forms.Padding(1);
             this.ucCheckBox1.Size = new System.Drawing.Size(108, 26);
@@ -260,7 +260,7 @@ namespace CommunTools
             this.ckbHEX.BackColor = System.Drawing.Color.Transparent;
             this.ckbHEX.Checked = false;
             this.ckbHEX.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckbHEX.Location = new System.Drawing.Point(759, 343);
+            this.ckbHEX.Location = new System.Drawing.Point(759, 339);
             this.ckbHEX.Name = "ckbHEX";
             this.ckbHEX.Padding = new System.Windows.Forms.Padding(1);
             this.ckbHEX.Size = new System.Drawing.Size(108, 26);
@@ -363,7 +363,7 @@ namespace CommunTools
             this.ckbFile.BackColor = System.Drawing.Color.Transparent;
             this.ckbFile.Checked = false;
             this.ckbFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckbFile.Location = new System.Drawing.Point(544, 376);
+            this.ckbFile.Location = new System.Drawing.Point(544, 372);
             this.ckbFile.Name = "ckbFile";
             this.ckbFile.Padding = new System.Windows.Forms.Padding(1);
             this.ckbFile.Size = new System.Drawing.Size(113, 26);
@@ -389,7 +389,7 @@ namespace CommunTools
             this.txtSendTime.IsShowRect = true;
             this.txtSendTime.IsShowSearchBtn = false;
             this.txtSendTime.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtSendTime.Location = new System.Drawing.Point(659, 343);
+            this.txtSendTime.Location = new System.Drawing.Point(659, 339);
             this.txtSendTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtSendTime.MaxValue = new decimal(new int[] {
             1000000,
@@ -418,7 +418,7 @@ namespace CommunTools
             this.ckbTimeSend.BackColor = System.Drawing.Color.Transparent;
             this.ckbTimeSend.Checked = false;
             this.ckbTimeSend.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckbTimeSend.Location = new System.Drawing.Point(544, 343);
+            this.ckbTimeSend.Location = new System.Drawing.Point(544, 339);
             this.ckbTimeSend.Name = "ckbTimeSend";
             this.ckbTimeSend.Padding = new System.Windows.Forms.Padding(1);
             this.ckbTimeSend.Size = new System.Drawing.Size(108, 26);
