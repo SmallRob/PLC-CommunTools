@@ -2,8 +2,140 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CommunWPF"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Views\MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <!--GroupBox Header Style Template(Base)-->
+            <Style x:Key="GroupBoxHeaderStyle" TargetType="HeaderedContentControl">
+                <Setter Property="OverridesDefaultStyle" Value="True" />
+                <Setter Property="SnapsToDevicePixels" Value="True" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type HeaderedContentControl}">
+                            <ContentPresenter ContentSource="Header"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--GroupBox Header Data Template[Recv]-->
+            <DataTemplate x:Key="RecvGroupBoxHeaderData">
+                <TextBlock>
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}接收区：已接收{0}字节，接收自动保存[{1}]，接收状态[{2}]">
+                            <Binding Path="RecvModel.RecvDataCount"/>
+                            <Binding Path="RecvModel.RecvAutoSave"/>
+                            <Binding Path="RecvModel.RecvEnable"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </DataTemplate>
+
+            <!--GroupBox Header Data Template[Send]-->
+            <DataTemplate x:Key="SendGroupBoxHeaderData">
+                <TextBlock>
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}发送区：已发送{0}字节">
+                            <Binding Path="SendModel.SendDataCount"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </DataTemplate>
+
+            <!--MainWindows XAML - Menu style-->
+            <Style TargetType="MenuItem" x:Key="MainMenuItem">
+                <Setter Property="Margin" Value="0,3,0,3"/>
+                <Setter Property="Padding" Value="5,3,5,3"/>
+            </Style>
+            <Style TargetType="Button" x:Key="MainButton">
+                <Setter Property="Width" Value="46"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="White"/>
+            </Style>
+
+            <!--MainWindows XAML - Status style-->
+            <Style TargetType="StatusBarItem" x:Key="SBStatusBarItem">
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+
+            <!--MainWindows XAML - Recv and Send style-->
+            <Style TargetType="TextBox" x:Key="RSTextBox">
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="AcceptsReturn" Value="True"/>
+                <Setter Property="Margin" Value="0,3,0,0"/>
+                <Setter Property="BorderBrush" Value="#FF0078D7"/>
+            </Style>
+            <Style TargetType="Button" x:Key="SendButton">
+                <Setter Property="Padding" Value="32,10"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+            </Style>
+
+            <!--MainWindows XAML - Config Block style-->
+            <Style TargetType="TextBlock" x:Key="ConfigTextBlock">
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="ComboBox" x:Key="ConfigComboBox">
+                <Setter Property="Margin" Value="0,4,0,4"/>
+                <Setter Property="Padding" Value="6,6,6,6"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                <Setter Property="ItemContainerStyle">
+                    <Setter.Value>
+                        <Style TargetType="ComboBoxItem">
+                            <Setter Property="Height" Value="25"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        </Style>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="Ellipse" x:Key="ConfigEilipse">
+                <Setter Property="Width" Value="28"/>
+                <Setter Property="Height" Value="28"/>
+            </Style>
+            <Style TargetType="Button" x:Key="ConfigButton">
+                <Setter Property="Margin" Value="0,5,0,3"/>
+                <Setter Property="Padding" Value="0,6,0,6"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            </Style>
+
+            <!--MainWindows XAML - Signal Block style-->
+            <Style TargetType="TextBlock" x:Key="HDTextBlock">
+                <Setter Property="Margin" Value="0,6,0,2"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="Ellipse" x:Key="HDEilipse">
+                <Setter Property="Margin" Value="0,6,0,2"/>
+                <Setter Property="Width" Value="13"/>
+                <Setter Property="Height" Value="13"/>
+            </Style>
+
+            <!--MainWindows XAML - Assist Block style-->
+            <Style TargetType="CheckBox" x:Key="AssistCheckBox">
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="TextBox" x:Key="AutoSendNumTextBox">
+                <Setter Property="Padding" Value="0,6"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+            </Style>
+            <Style TargetType="Button" x:Key="AssistButton">
+                <Setter Property="Padding" Value="25,6"/>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+            </Style>
+
+            <!--WPFUpdate XAML Style-->
+            <Style TargetType="Button" x:Key="UpdateButton">
+                <Setter Property="Padding" Value="18,6"/>
+                <Setter Property="Background" Value="White"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
