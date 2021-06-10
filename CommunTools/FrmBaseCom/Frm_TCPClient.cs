@@ -70,7 +70,7 @@ namespace CommunTools
             var jc = jsonFile.LoadJsonConfig(jsonFile.ConfigFile, "TCPServer");
 
             txtTCPIP.InputText = jc[0];
-            txtPort.InputText = jc[1];
+            txtPort.InputText = jc[1];           
         }
 
         private void btnStart_BtnClick(object sender, EventArgs e)
@@ -237,12 +237,17 @@ namespace CommunTools
                     }
                     catch (System.Exception ex)
                     {
-                        client.Connected = false;
-                        btnStart.Text = "连接";
-                        ClientThreadStop = false;
+                        LogHelper.WriteException(ex);
 
-                        txtTCPIP.Enabled = true;
-                        txtPort.Enabled = true;
+                        this.Invoke(new Action(delegate
+                        {
+                            client.Connected = false;
+                            btnStart.Text = "连接";
+                            ClientThreadStop = false;
+
+                            txtTCPIP.Enabled = true;
+                            txtPort.Enabled = true;
+                        }));
 
                         FrmDialog.ShowDialog(this, "与服务器断开！\n" + ex.Message);
                     }
@@ -346,6 +351,8 @@ namespace CommunTools
                 ArrayList al = StringUtilites.Str16ToArrayList(richTextBox_Send.Text);
                 byte[] arrMsg = new byte[al.Count];
 
+                arrMsg = richTextBox_Send.Text.Trim().ToBytes();
+
                 int mySendLenth = SendToService(isTCPService, arrMsg);
 
                 send_DataCnt += mySendLenth;
@@ -372,6 +379,8 @@ namespace CommunTools
                 int m_length = richTextBox_Send.Text.Trim().Length;
                 byte[] arrMsg = new byte[m_length];
 
+                arrMsg = richTextBox_Send.Text.Trim().ToBytes();
+
                 int mySendLenth = SendToService(isTCPService, arrMsg);
                 send_DataCnt += mySendLenth;
                 //Marshal.SizeOf((ByteDataCommon.byLength(data)).GetType());
@@ -396,6 +405,9 @@ namespace CommunTools
             {
                 mySendLenth = client.Newclient.Send(arrMsg);
             }
+
+            string ss = HEXConverter.GetBufferFormatHex(arrMsg);
+            LogHelper.WriteInfoLog(ss, "Send_Inf");
 
             return mySendLenth;
         }
