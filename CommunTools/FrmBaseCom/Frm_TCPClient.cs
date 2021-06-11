@@ -90,54 +90,50 @@ namespace CommunTools
                 try
                 {
                     client.Newclient.Connect(client.EndPoint);
+                    EnableTxt(true);
 
-                    client.Connected = true;
-                    btnStart.BtnText = "断开";
-                    ClientThreadStop = true;
+                    labComInfo.Text = "已连接至服务器：" + client.Ip + ":" + client.Port;
 
-                    txtTCPIP.Enabled = false;
-                    txtPort.Enabled = false;
+                    //多线程处理
+
+                    //ThreadStart myThreaddelegate = new ThreadStart(ReceiveMsg);
+                    //myThread = new Thread(myThreaddelegate);
+
+                    Thread myThread = new Thread(ReceiveMsg);//创建新线程
+                    myThread.IsBackground = true;//线程后台运行
+                    myThread.Start();//启动线程
                 }
                 catch (SocketException e)
                 {
-                    client.Connected = false;
-                    btnStart.BtnText = "连接";
-                    ClientThreadStop = false;
-
-                    txtTCPIP.Enabled = true;
-                    txtPort.Enabled = true;
+                    EnableTxt(false);
 
                     FrmDialog.ShowDialog(this, "连接服务器失败！\n" + e.Message);
                     return;
                 }
-
-                labComInfo.Text = "已连接至服务器：" + client.Ip + ":" + client.Port;
-
-                //多线程处理
-
-                //ThreadStart myThreaddelegate = new ThreadStart(ReceiveMsg);
-                //myThread = new Thread(myThreaddelegate);
-
-                Thread myThread = new Thread(ReceiveMsg);//创建新线程
-                myThread.IsBackground = true;//线程后台运行
-                myThread.Start();//启动线程
             }
             else
             {
-                client.Connected = false;
-                btnStart.BtnText = "连接";
+                EnableTxt(false);
+
                 if (client.ClientThread != null)
                 {
                     client.ClientThread.Abort();
                     //Application.ExitThread();
                 }
-                ClientThreadStop = false;
                 client.Newclient.Disconnect(false);
-                txtTCPIP.Enabled = true;
-                txtPort.Enabled = true;
 
                 labComInfo.Text = "未连接服务";
             }
+        }
+
+        private void EnableTxt(bool isFlag)
+        {
+            client.Connected = isFlag;
+            btnStart.BtnText = isFlag ? "断开" : "连接";
+            ClientThreadStop = isFlag;
+
+            txtTCPIP.Enabled = !isFlag;
+            txtPort.Enabled = !isFlag;
         }
 
         public void ReceiveMsg()//接收处理线程部分
@@ -241,12 +237,7 @@ namespace CommunTools
 
                         this.Invoke(new Action(delegate
                         {
-                            client.Connected = false;
-                            btnStart.Text = "连接";
-                            ClientThreadStop = false;
-
-                            txtTCPIP.Enabled = true;
-                            txtPort.Enabled = true;
+                            EnableTxt(false);
                         }));
 
                         FrmDialog.ShowDialog(this, "与服务器断开！\n" + ex.Message);
@@ -262,7 +253,7 @@ namespace CommunTools
         {
             {
                 //在线程里以安全方式调用控件
-                if ((txtShowMsg.InvokeRequired) || (lblSendStatus.InvokeRequired))
+                if ((txtShowMsg.InvokeRequired) || (lblrecestatus.InvokeRequired))
                 {
                     ClientInvoke _myinvoke = new ClientInvoke(showMsg);
                     txtShowMsg.Invoke(_myinvoke, new object[] { msg, buildStr });
@@ -277,7 +268,7 @@ namespace CommunTools
 
                     recv_count += 1;
                     recv_DataCnt += Encoding.Default.GetByteCount(msg);
-                    lblSendStatus.Text = "已接收数据：" + recv_count.ToString() + "/" + recv_DataCnt.ToString();
+                    lblrecestatus.Text = "已接收数据：" + recv_count.ToString() + "/" + recv_DataCnt.ToString();
                 }
             }
         }
