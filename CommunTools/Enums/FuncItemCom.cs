@@ -35,7 +35,7 @@ namespace CommunTools.Enums
             /// </summary>
             [Description(" 串口接收转发端")]
             [FuncURI("Frm_SerialServer")]
-            COM_SerialServer = 3,  
+            COM_SerialServer = 3,
 
             /// <summary>
             /// 串口发送端
@@ -100,7 +100,7 @@ namespace CommunTools.Enums
             Proto_SECS = 8,
 
             //松下电工 FP
-            [Description("   电工FP控制器$  (松下)")]
+            [Description("   电工FP控制器$  (松下PLC)")]
             [FuncURI("Frm_NAIS_FP")]
             Proto_NAIS_FP = 9,
 
@@ -110,7 +110,11 @@ namespace CommunTools.Enums
 
             [Description("   MQTT协议")]
             [FuncURI("Frm_MQTT")]
-            Proto_MQTT = 11
+            Proto_MQTT = 11,
+
+            [Description("   施耐德PLC")]
+            [FuncURI("Frm_SCHNEIDER")]
+            Proto_SCHND = 12
         }
     }
 }

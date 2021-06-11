@@ -70,7 +70,7 @@ namespace CommunTools
             var jc = jsonFile.LoadJsonConfig(jsonFile.ConfigFile, "TCPServer");
 
             txtTCPIP.InputText = jc[0];
-            txtPort.InputText = jc[1];           
+            txtPort.InputText = jc[1];
         }
 
         private void btnStart_BtnClick(object sender, EventArgs e)
@@ -348,10 +348,21 @@ namespace CommunTools
             //十六进制发送
             if (ckbHEX.Checked)
             {
-                ArrayList al = StringUtilites.Str16ToArrayList(richTextBox_Send.Text);
-                byte[] arrMsg = new byte[al.Count];
+                //ArrayList al = StringUtilites.Str16ToArrayList(richTextBox_Send.Text);
+                //byte[] arrMsg = new byte[al.Count];
+                //arrMsg = richTextBox_Send.Text.Trim().ToBytes();
 
-                arrMsg = richTextBox_Send.Text.Trim().ToBytes();
+
+                string strMsg = richTextBox_Send.Text.Replace(" ", "");
+                byte[] arrMsg = new byte[strMsg.Length / 2];
+                int k = 0;
+
+                for (int i = 0, arrLen = arrMsg.Length; i < arrLen; i++)
+                {
+                    arrMsg[i] = Convert.ToByte(strMsg.Substring(k, 2), 16);
+
+                    k += 2;
+                }
 
                 int mySendLenth = SendToService(isTCPService, arrMsg);
 
