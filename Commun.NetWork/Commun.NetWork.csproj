@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommunDataValid.cs" />
     <Compile Include="Enums\EncodeType.cs" />
     <Compile Include="MQTT\MQTTBase.cs" />
     <Compile Include="NetworkStreamPlus.cs" />

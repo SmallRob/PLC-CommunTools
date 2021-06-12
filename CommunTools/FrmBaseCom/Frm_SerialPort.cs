@@ -1,5 +1,6 @@
 ﻿using Com_CSSkin;
 using Com_CSSkin.SkinControl;
+using Commun.NetWork;
 using Commun.NetWork.MQTT;
 using CommunTools.Common;
 using CommunTools.Entity;
@@ -58,7 +59,8 @@ namespace CommunTools
                 (cmbPortParity,EnumHelper.GetEnumList(typeof(sp.PortParity))),
                 (cmbBandRate,EnumHelper.GetEnumList(typeof(sp.BandRate))),
                 (cmbStopBits,EnumHelper.GetEnumList(typeof(sp.StopBits))),
-                (cmbDataBits,EnumHelper.GetEnumList(typeof(sp.DataBit)))
+                (cmbDataBits,EnumHelper.GetEnumList(typeof(sp.DataBit))),
+                (cmbHandShake,EnumHelper.GetEnumList(typeof(sp.HandShake)))
             };
 
             foreach ((SkinComboBox box, IList<EnumListModel> enumModel) item in ps)
@@ -116,6 +118,10 @@ namespace CommunTools
                 serialPort1.Parity = (Parity)System.Enum.Parse(typeof(Parity), cmbPortParity.Text);
                 serialPort1.DataBits = Convert.ToInt32(cmbDataBits.Text);
                 serialPort1.StopBits = (StopBits)System.Enum.Parse(typeof(StopBits), cmbStopBits.Text);
+                serialPort1.Handshake = (Handshake)System.Enum.Parse(typeof(Handshake), cmbHandShake.Text);
+
+                serialPort1.RtsEnable = ckbRts.Checked;
+                serialPort1.DtrEnable = ckbDtr.Checked;
                 try
                 {
                     serialPort1.Open();
@@ -150,6 +156,8 @@ namespace CommunTools
             cmbPortParity.Enabled = isEnable;
             cmbDataBits.Enabled = isEnable;
             cmbStopBits.Enabled = isEnable;
+            cmbHandShake.Enabled = isEnable;
+
             btnRefresh.Enabled = isEnable;
 
             btnSend.Enabled = !isEnable;
@@ -261,7 +269,58 @@ namespace CommunTools
 
             try
             {
-                serialPort1.Write(data, 0, data.Length);
+                if (rdbRTU.Checked)/////rtu发送
+                {
+                    try
+                    {
+                        string str = (richTextBox_Send.Text.Trim()).Replace(" ", "");///去掉空格要发送的内容
+                        byte[] outbuffer = new byte[str.Length / 2 + 2];///除以2是两个字符为一个字节 加上2是因为后面还要装CRC检验
+                        string crcstr = CommunDataValid.CRC(str);///调用CRC检验
+                        int k = 0;
+                        for (int i = 0; i < outbuffer.Length - 2; i++)//每次截取两个字转成字节型
+                        {
+                            outbuffer[i] = Convert.ToByte((str.Substring(k, 2)), 16);//每次截取两个字转成10进制字节型
+                            k = k + 2;
+                        }
+                        outbuffer[outbuffer.Length - 2] = Convert.ToByte(crcstr.Substring(2, 2), 16);//转换成10进制
+                        outbuffer[outbuffer.Length - 1] = Convert.ToByte(crcstr.Substring(0, 2), 16); //转换成10进制
+                        serialPort1.Write(outbuffer, 0, outbuffer.Length); //发送数据 
+                    }
+                    catch (Exception)
+                    {
+                        FrmDialog.ShowDialog(this, "RTU模式发送失败！检查数据帧是否规范！");
+                    }
+
+                }
+                else if (rdbASCII.Checked)///ASCII发送模式
+                {
+                    string str = (richTextBox_Send.Text.Trim()).Replace(" ", "");///去掉空格要发送的内容
+                    byte[] outbuffer = new byte[str.Length + 4];
+                    string lrc = CommunDataValid.LRC(str.Substring(1, str.Length - 1));
+                    for (int i = 0; i < str.Length; i++)
+                    {
+                        outbuffer[i] = Convert.ToByte(Convert.ToChar(str[i].ToString()));
+                    }
+                    try
+                    {
+                        outbuffer[outbuffer.Length - 4] = Convert.ToByte((Convert.ToChar(lrc.Substring(0, 1))));//截取LRC检验转换成10进制
+                        outbuffer[outbuffer.Length - 3] = Convert.ToByte((Convert.ToChar(lrc.Substring(1, 1))));//截取LRC检验转换成10进制
+                        outbuffer[outbuffer.Length - 2] = 13;///回车
+                        outbuffer[outbuffer.Length - 1] = 10;//换行  //ASCII码发送数据帧尾须是回车换行结尾
+                        // outbuffer[0] = Convert.ToByte((Convert.ToChar(textBox2.Text.Substring(0, 1))));//ASCII码发送数据帧头必须是冒号开头
+                        serialPort1.Write(outbuffer, 0, outbuffer.Length); //发送数据
+                    }
+                    catch (Exception)
+                    {
+                        FrmDialog.ShowDialog(this, "ASCII码发送失败！检查数据帧是否规范！");
+                    }
+                }
+                else
+                {
+                    //TCP发送
+
+                    serialPort1.Write(data, 0, data.Length);
+                }
             }
             catch (Exception ex)
             {
@@ -477,6 +536,39 @@ namespace CommunTools
 
             startIndex = 0;
             files = null;
+        }
+
+        /// <summary>
+        /// 校验码测试
+        /// </summary>
+        private void btnValidCodeTest_BtnClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (rdbTCP.Checked)///无检验测试
+                {
+                    FrmDialog.ShowDialog(this, "TCP模式不用校验！");
+                }
+                else if (rdbValidCRC.Checked)///CRC检验测试
+                {
+                    string crcValid = CommunDataValid.CRC(richTextBox_Send.Text.Replace(" ", ""));
+
+                    FrmDialog.ShowDialog(this, crcValid);
+                }
+                else if (rdbValidLRC.Checked)////LRC校验测试
+                {
+                    string str = richTextBox_Send.Text.Replace(" ", "");
+                    string str2 = str.Substring(1, str.Length - 1);
+
+                    string lrcValid = CommunDataValid.LRC(str2);
+                    FrmDialog.ShowDialog(this, lrcValid);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.WriteException(ex);
+                FrmDialog.ShowDialog(this, "校验测试失败！");
+            }
         }
     }
 }

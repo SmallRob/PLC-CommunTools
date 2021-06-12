@@ -116,5 +116,23 @@ namespace CommunTools.Enums
             [Description("9")]
             Nine = 9
         }
+
+        /// <summary>
+        /// 握手协议
+        /// </summary>
+        public enum HandShake
+        {
+            [Description("None")]
+            None,
+
+            [Description("XOnXOff")]
+            XOnXOff,
+
+            [Description("RequestToSend")]
+            RequestToSend,
+
+            [Description("RequestToSendXOnXOff")]
+            RequestToSendXOnXOff
+        }
     }
 }
