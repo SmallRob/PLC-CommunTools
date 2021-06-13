@@ -68,8 +68,15 @@
     <Compile Include="Entity\TCPComServer.cs" />
     <Compile Include="Entity\TCPServer.cs" />
     <Compile Include="Enums\CommunTCPEnum.cs" />
+    <Compile Include="Enums\Encoding.cs" />
     <Compile Include="Enums\FuncItemCom.cs" />
     <Compile Include="Enums\SerialPortEnum.cs" />
+    <Compile Include="FrmBaseCom\Frm_ComWebSocket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBaseCom\Frm_ComWebSocket.Designer.cs">
+      <DependentUpon>Frm_ComWebSocket.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmBaseCom\Frm_SerialServer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +116,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\SerialPortEventArgs.cs" />
+    <EmbeddedResource Include="FrmBaseCom\Frm_ComWebSocket.resx">
+      <DependentUpon>Frm_ComWebSocket.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmBaseCom\Frm_SerialServer.resx">
       <DependentUpon>Frm_SerialServer.cs</DependentUpon>
     </EmbeddedResource>

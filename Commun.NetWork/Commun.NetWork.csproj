@@ -34,9 +34,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,6 +56,7 @@
     <Compile Include="TCP\Abstracts\ProxySocket.cs" />
     <Compile Include="TCP\Abstracts\ZDataBuffer.cs" />
     <Compile Include="TCP\Abstracts\ZMessage.cs" />
+    <Compile Include="WSocketClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZCS_Common\ZCS_Common.csproj">
@@ -67,7 +65,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="WebSocket4Net">
+      <Version>0.15.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
