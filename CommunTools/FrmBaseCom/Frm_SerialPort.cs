@@ -60,7 +60,8 @@ namespace CommunTools
                 (cmbBandRate,EnumHelper.GetEnumList(typeof(sp.BandRate))),
                 (cmbStopBits,EnumHelper.GetEnumList(typeof(sp.StopBits))),
                 (cmbDataBits,EnumHelper.GetEnumList(typeof(sp.DataBit))),
-                (cmbHandShake,EnumHelper.GetEnumList(typeof(sp.HandShake)))
+                (cmbHandShake,EnumHelper.GetEnumList(typeof(sp.HandShake))),
+                (cmbEncoding,EnumHelper.GetEnumList(typeof(EnumEncoding)))
             };
 
             foreach ((SkinComboBox box, IList<EnumListModel> enumModel) item in ps)
@@ -122,6 +123,12 @@ namespace CommunTools
 
                 serialPort1.RtsEnable = ckbRts.Checked;
                 serialPort1.DtrEnable = ckbDtr.Checked;
+
+                serialPort1.WriteBufferSize = 1048576;   /* 输出缓冲区的大小为1048576字节 = 1MB */
+                serialPort1.ReadBufferSize = 2097152;    /* 输入缓冲区的大小为2097152字节 = 2MB */
+
+                SetSeriaPortEncoding();
+
                 try
                 {
                     serialPort1.Open();
@@ -145,6 +152,32 @@ namespace CommunTools
                 // 打开属性变为关闭属性
                 btnOpenPort.BtnText = "打开串口";
                 labComInfo.Text = "断开连接:" + cmbComLst.Text;
+            }
+        }
+
+        private void SetSeriaPortEncoding()
+        {
+            EnumEncoding encoding = (EnumEncoding)System.Enum.Parse(typeof(EnumEncoding), cmbEncoding.Text);
+            switch (encoding)
+            {
+                case EnumEncoding.ASCII:
+
+                    serialPort1.Encoding = System.Text.Encoding.ASCII;
+                    break;
+                case EnumEncoding.UTF8:
+
+                    serialPort1.Encoding = System.Text.Encoding.UTF8;
+                    break;
+                case EnumEncoding.Unicode:
+
+                    serialPort1.Encoding = System.Text.Encoding.Unicode;
+                    break;
+                case EnumEncoding.UTF32:
+
+                    serialPort1.Encoding = System.Text.Encoding.UTF32;
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -397,6 +430,7 @@ namespace CommunTools
                 return;
             }
 
+            Thread.Sleep(500);//这个延时非常重要
 
             if (richTextBox_Receive.Text.Length > 0)
             {
@@ -410,7 +444,22 @@ namespace CommunTools
             richTextBox_Receive.SelectionColor = Color.Blue;
 
             richTextBox_Receive.AppendText(System.Text.Encoding.Default.GetString(e.receivedBytes));
+
+            /*
+            int n = sp.BytesToRead;//先记录下来，避免某种原因，人为的原因，操作几次之间时间长，缓存不一致
+            byte[] buf = new byte[n];//声明一个临时数组存储当前来的串口数据
+            sp.Read(buf, 0, n);//读取缓冲数据
+
+            //因为要访问ui资源，所以需要使用invoke方式同步ui。
+            this.Invoke((EventHandler)(delegate
+            {
+                for (int i; i < n; i++)
+                {
+                    textBox1.text += buf[i].ToString();
+                }
+            }));
             richTextBox_Receive.ScrollToCaret();
+            */
 
             // 更新状态显示框
             receCount += e.receivedBytes.Length;
@@ -568,6 +617,49 @@ namespace CommunTools
             {
                 LogHelper.WriteException(ex);
                 FrmDialog.ShowDialog(this, "校验测试失败！");
+            }
+        }
+
+        #region 信号状态事件
+        private void serialPort1_PinChanged(object sender, SerialPinChangedEventArgs e)
+        {
+            if ((SerialPort)sender == null)
+            {
+                return;
+            }
+
+            if (e == null)
+            {
+                return;
+            }
+
+            SerialPort _SerialPort = (SerialPort)sender;
+
+            switch (e.EventType)
+            {
+                case SerialPinChange.CDChanged:
+
+                    btnDCD.FillColor = _SerialPort.CDHolding ? Color.GreenYellow : Color.Black;
+                    break;
+                case SerialPinChange.CtsChanged:
+
+                    btnCTS.FillColor = _SerialPort.CtsHolding ? Color.GreenYellow : Color.Black;
+                    break;
+                case SerialPinChange.DsrChanged:
+
+                    btnDSR.FillColor = _SerialPort.DsrHolding ? Color.GreenYellow : Color.Black;
+                    break;
+                default:
+                    break;
+            }
+        }
+        #endregion
+
+        private void cmbEncoding_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbEncoding.SelectedIndex >= 0)
+            {
+                SetSeriaPortEncoding();
             }
         }
     }

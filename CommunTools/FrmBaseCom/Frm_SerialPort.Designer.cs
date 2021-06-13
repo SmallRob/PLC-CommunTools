@@ -89,6 +89,8 @@ namespace CommunTools
             this.skinLabel11 = new Com_CSSkin.SkinControl.SkinLabel();
             this.btnDSR = new ZCS_FormUI.Controls.UCBtnExt();
             this.skinLabel12 = new Com_CSSkin.SkinControl.SkinLabel();
+            this.cmbEncoding = new Com_CSSkin.SkinControl.SkinComboBox();
+            this.skinLabel13 = new Com_CSSkin.SkinControl.SkinLabel();
             this.skinPanel1.SuspendLayout();
             this.groupBoxEx4.SuspendLayout();
             this.groupBoxEx3.SuspendLayout();
@@ -125,6 +127,7 @@ namespace CommunTools
             // 
             // serialPort1
             // 
+            this.serialPort1.PinChanged += new System.IO.Ports.SerialPinChangedEventHandler(this.serialPort1_PinChanged);
             this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // lblrecestatus
@@ -326,11 +329,12 @@ namespace CommunTools
             // 
             // groupBoxEx4
             // 
+            this.groupBoxEx4.Controls.Add(this.skinLabel13);
             this.groupBoxEx4.Controls.Add(this.richTextBox_Send);
             this.groupBoxEx4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.groupBoxEx4.Location = new System.Drawing.Point(9, 347);
+            this.groupBoxEx4.Location = new System.Drawing.Point(9, 350);
             this.groupBoxEx4.Name = "groupBoxEx4";
-            this.groupBoxEx4.Size = new System.Drawing.Size(546, 235);
+            this.groupBoxEx4.Size = new System.Drawing.Size(546, 232);
             this.groupBoxEx4.TabIndex = 18;
             this.groupBoxEx4.TabStop = false;
             this.groupBoxEx4.Text = "待发送信息";
@@ -342,7 +346,7 @@ namespace CommunTools
             this.richTextBox_Send.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTextBox_Send.Location = new System.Drawing.Point(3, 22);
             this.richTextBox_Send.Name = "richTextBox_Send";
-            this.richTextBox_Send.Size = new System.Drawing.Size(540, 210);
+            this.richTextBox_Send.Size = new System.Drawing.Size(540, 207);
             this.richTextBox_Send.TabIndex = 0;
             this.richTextBox_Send.Text = "";
             // 
@@ -996,12 +1000,12 @@ namespace CommunTools
             this.btnDCD.BtnForeColor = System.Drawing.Color.White;
             this.btnDCD.BtnText = " ";
             this.btnDCD.ConerRadius = 30;
-            this.btnDCD.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDCD.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnDCD.EnabledMouseEffect = false;
             this.btnDCD.FillColor = System.Drawing.Color.Black;
             this.btnDCD.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btnDCD.IsRadius = true;
-            this.btnDCD.IsShowRect = true;
+            this.btnDCD.IsShowRect = false;
             this.btnDCD.IsShowTips = false;
             this.btnDCD.Location = new System.Drawing.Point(76, 24);
             this.btnDCD.Margin = new System.Windows.Forms.Padding(0);
@@ -1022,12 +1026,12 @@ namespace CommunTools
             this.btnCTS.BtnForeColor = System.Drawing.Color.White;
             this.btnCTS.BtnText = " ";
             this.btnCTS.ConerRadius = 30;
-            this.btnCTS.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCTS.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnCTS.EnabledMouseEffect = false;
             this.btnCTS.FillColor = System.Drawing.Color.Black;
             this.btnCTS.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btnCTS.IsRadius = true;
-            this.btnCTS.IsShowRect = true;
+            this.btnCTS.IsShowRect = false;
             this.btnCTS.IsShowTips = false;
             this.btnCTS.Location = new System.Drawing.Point(177, 24);
             this.btnCTS.Margin = new System.Windows.Forms.Padding(0);
@@ -1060,12 +1064,12 @@ namespace CommunTools
             this.btnDSR.BtnForeColor = System.Drawing.Color.White;
             this.btnDSR.BtnText = " ";
             this.btnDSR.ConerRadius = 30;
-            this.btnDSR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDSR.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnDSR.EnabledMouseEffect = false;
             this.btnDSR.FillColor = System.Drawing.Color.Black;
             this.btnDSR.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btnDSR.IsRadius = true;
-            this.btnDSR.IsShowRect = true;
+            this.btnDSR.IsShowRect = false;
             this.btnDSR.IsShowTips = false;
             this.btnDSR.Location = new System.Drawing.Point(274, 24);
             this.btnDSR.Margin = new System.Windows.Forms.Padding(0);
@@ -1090,6 +1094,32 @@ namespace CommunTools
             this.skinLabel12.TabIndex = 49;
             this.skinLabel12.Text = "DSR";
             // 
+            // cmbEncoding
+            // 
+            this.cmbEncoding.BorderColor = System.Drawing.Color.Gainsboro;
+            this.cmbEncoding.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbEncoding.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbEncoding.FormattingEnabled = true;
+            this.cmbEncoding.Location = new System.Drawing.Point(294, 346);
+            this.cmbEncoding.Name = "cmbEncoding";
+            this.cmbEncoding.Size = new System.Drawing.Size(140, 24);
+            this.cmbEncoding.TabIndex = 48;
+            this.cmbEncoding.WaterText = "";
+            this.cmbEncoding.SelectedIndexChanged += new System.EventHandler(this.cmbEncoding_SelectedIndexChanged);
+            // 
+            // skinLabel13
+            // 
+            this.skinLabel13.AutoSize = true;
+            this.skinLabel13.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel13.BorderColor = System.Drawing.Color.White;
+            this.skinLabel13.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel13.Location = new System.Drawing.Point(180, -3);
+            this.skinLabel13.Name = "skinLabel13";
+            this.skinLabel13.Size = new System.Drawing.Size(107, 20);
+            this.skinLabel13.TabIndex = 50;
+            this.skinLabel13.Text = "数据编码格式：";
+            // 
             // Frm_SerialPort
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1099,6 +1129,7 @@ namespace CommunTools
             this.CaptionFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ClientSize = new System.Drawing.Size(905, 614);
             this.CloseBoxSize = new System.Drawing.Size(32, 24);
+            this.Controls.Add(this.cmbEncoding);
             this.Controls.Add(this.groupBoxEx1);
             this.Controls.Add(this.skinPanel1);
             this.Controls.Add(this.ucCheckBox1);
@@ -1132,6 +1163,7 @@ namespace CommunTools
             this.skinPanel1.ResumeLayout(false);
             this.skinPanel1.PerformLayout();
             this.groupBoxEx4.ResumeLayout(false);
+            this.groupBoxEx4.PerformLayout();
             this.groupBoxEx3.ResumeLayout(false);
             this.groupBoxEx2.ResumeLayout(false);
             this.groupBoxEx2.PerformLayout();
@@ -1205,5 +1237,7 @@ namespace CommunTools
         private Com_CSSkin.SkinControl.SkinLabel skinLabel11;
         private ZCS_FormUI.Controls.UCBtnExt btnDCD;
         private Com_CSSkin.SkinControl.SkinLabel skinLabel10;
+        private Com_CSSkin.SkinControl.SkinLabel skinLabel13;
+        private Com_CSSkin.SkinControl.SkinComboBox cmbEncoding;
     }
 }
