@@ -443,7 +443,7 @@ namespace CommunTools
             richTextBox_Receive.AppendText(dateMsg);
             richTextBox_Receive.SelectionColor = Color.Blue;
 
-            richTextBox_Receive.AppendText(System.Text.Encoding.Default.GetString(e.receivedBytes));
+            richTextBox_Receive.AppendText(System.Text.Encoding.ASCII.GetString(e.receivedBytes));
 
             /*
             int n = sp.BytesToRead;//先记录下来，避免某种原因，人为的原因，操作几次之间时间长，缓存不一致
