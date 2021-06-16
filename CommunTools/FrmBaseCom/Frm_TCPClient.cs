@@ -186,7 +186,7 @@ namespace CommunTools
                             }
                             else
                             {
-                                string bufOri = Encoding.UTF8.GetString(buf);
+                                string bufOri = Encoding.ASCII.GetString(buf);
 
                                 if (buf[0] == 0) // 表示接收到的是消息数据；
                                 {
