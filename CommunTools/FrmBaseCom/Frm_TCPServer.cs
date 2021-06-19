@@ -73,7 +73,7 @@ namespace CommunTools
                 }
                 catch (SocketException se)
                 {
-                    FrmDialog.ShowDialog(this, "程序异常：\n" + se.Message);
+                    FrmDialog.ShowDialog(this, "程序异常：\n" + se.Message, MessageCommon.msgTitle);
                     return;
                 }
                 // 设置监听队列的长度；
@@ -197,7 +197,7 @@ namespace CommunTools
                 strKey = lbOnline.Text.Trim();
                 if (string.IsNullOrEmpty(strKey))   // 判断是不是选择了发送的对象；
                 {
-                    FrmDialog.ShowDialog(this, "请先选择您要发送的对象!");
+                    FrmDialog.ShowDialog(this, "请先选择您要发送的对象!", MessageCommon.msgTitle);
                 }
                 else
                 {

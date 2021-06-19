@@ -161,7 +161,7 @@ namespace CommunTools
             this.txtPort.IsShowRect = true;
             this.txtPort.IsShowSearchBtn = false;
             this.txtPort.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtPort.Location = new System.Drawing.Point(110, 76);
+            this.txtPort.Location = new System.Drawing.Point(98, 76);
             this.txtPort.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPort.MaxValue = new decimal(new int[] {
             1000000,
@@ -182,7 +182,7 @@ namespace CommunTools
             this.txtPort.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.txtPort.RectWidth = 1;
             this.txtPort.RegexPattern = "";
-            this.txtPort.Size = new System.Drawing.Size(85, 26);
+            this.txtPort.Size = new System.Drawing.Size(100, 26);
             this.txtPort.TabIndex = 2;
             // 
             // skinLabel1
@@ -215,7 +215,7 @@ namespace CommunTools
             this.txtTCPIP.IsShowRect = true;
             this.txtTCPIP.IsShowSearchBtn = false;
             this.txtTCPIP.KeyBoardType = ZCS_FormUI.KeyBoardType.UCKeyBorderAll_EN;
-            this.txtTCPIP.Location = new System.Drawing.Point(110, 27);
+            this.txtTCPIP.Location = new System.Drawing.Point(98, 27);
             this.txtTCPIP.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTCPIP.MaxValue = new decimal(new int[] {
             1000000,
@@ -236,7 +236,7 @@ namespace CommunTools
             this.txtTCPIP.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.txtTCPIP.RectWidth = 1;
             this.txtTCPIP.RegexPattern = "";
-            this.txtTCPIP.Size = new System.Drawing.Size(140, 26);
+            this.txtTCPIP.Size = new System.Drawing.Size(157, 26);
             this.txtTCPIP.TabIndex = 0;
             // 
             // groupBoxEx3
@@ -268,7 +268,7 @@ namespace CommunTools
             this.lblrecestatus.BorderColor = System.Drawing.Color.White;
             this.lblrecestatus.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblrecestatus.ForeColor = System.Drawing.Color.BlueViolet;
-            this.lblrecestatus.Location = new System.Drawing.Point(421, 8);
+            this.lblrecestatus.Location = new System.Drawing.Point(414, 456);
             this.lblrecestatus.Name = "lblrecestatus";
             this.lblrecestatus.Size = new System.Drawing.Size(183, 20);
             this.lblrecestatus.TabIndex = 39;
@@ -552,7 +552,7 @@ namespace CommunTools
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.CaptionBackColorTop = System.Drawing.Color.AntiqueWhite;
+            this.CaptionBackColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.CaptionFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ClientSize = new System.Drawing.Size(796, 480);
             this.CloseBoxSize = new System.Drawing.Size(32, 24);

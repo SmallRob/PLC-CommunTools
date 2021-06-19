@@ -63,6 +63,7 @@
     <Compile Include="Common\ByteDataCommon.cs" />
     <Compile Include="Common\FuncGroupAttribute.cs" />
     <Compile Include="Common\FuncURIAttribute.cs" />
+    <Compile Include="Common\MessageCommon.cs" />
     <Compile Include="Common\TCPClientServices.cs" />
     <Compile Include="Entity\TCPClient.cs" />
     <Compile Include="Entity\TCPComServer.cs" />
@@ -178,6 +179,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="login.ico" />
+    <None Include="Resources\shichang.png" />
+    <None Include="Resources\close.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

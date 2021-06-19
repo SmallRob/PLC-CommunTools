@@ -46,6 +46,7 @@ namespace CommunTools
             this.ckbHEX = new ZCS_FormUI.Controls.UCCheckBox();
             this.btnScan = new ZCS_FormUI.Controls.UCBtnExt();
             this.groupBoxEx4 = new ZCS_FormUI.Controls.GroupBoxEx();
+            this.skinLabel13 = new Com_CSSkin.SkinControl.SkinLabel();
             this.richTextBox_Send = new System.Windows.Forms.RichTextBox();
             this.txtFileDic = new ZCS_FormUI.Controls.UCTextBoxEx();
             this.ckbFile = new ZCS_FormUI.Controls.UCCheckBox();
@@ -55,6 +56,8 @@ namespace CommunTools
             this.ckbHEXRev = new ZCS_FormUI.Controls.UCCheckBox();
             this.richTextBox_Receive = new System.Windows.Forms.RichTextBox();
             this.groupBoxEx2 = new ZCS_FormUI.Controls.GroupBoxEx();
+            this.ckbRts = new ZCS_FormUI.Controls.UCCheckBox();
+            this.ckbDtr = new ZCS_FormUI.Controls.UCCheckBox();
             this.cmbHandShake = new Com_CSSkin.SkinControl.SkinComboBox();
             this.skinLabel9 = new Com_CSSkin.SkinControl.SkinLabel();
             this.btnValidCodeTest = new ZCS_FormUI.Controls.UCBtnExt();
@@ -80,17 +83,14 @@ namespace CommunTools
             this.skinLabel5 = new Com_CSSkin.SkinControl.SkinLabel();
             this.skinLabel4 = new Com_CSSkin.SkinControl.SkinLabel();
             this.skinLabel7 = new Com_CSSkin.SkinControl.SkinLabel();
-            this.ckbDtr = new ZCS_FormUI.Controls.UCCheckBox();
-            this.ckbRts = new ZCS_FormUI.Controls.UCCheckBox();
             this.groupBoxEx1 = new ZCS_FormUI.Controls.GroupBoxEx();
-            this.skinLabel10 = new Com_CSSkin.SkinControl.SkinLabel();
-            this.btnDCD = new ZCS_FormUI.Controls.UCBtnExt();
-            this.btnCTS = new ZCS_FormUI.Controls.UCBtnExt();
-            this.skinLabel11 = new Com_CSSkin.SkinControl.SkinLabel();
             this.btnDSR = new ZCS_FormUI.Controls.UCBtnExt();
             this.skinLabel12 = new Com_CSSkin.SkinControl.SkinLabel();
+            this.btnCTS = new ZCS_FormUI.Controls.UCBtnExt();
+            this.skinLabel11 = new Com_CSSkin.SkinControl.SkinLabel();
+            this.btnDCD = new ZCS_FormUI.Controls.UCBtnExt();
+            this.skinLabel10 = new Com_CSSkin.SkinControl.SkinLabel();
             this.cmbEncoding = new Com_CSSkin.SkinControl.SkinComboBox();
-            this.skinLabel13 = new Com_CSSkin.SkinControl.SkinLabel();
             this.skinPanel1.SuspendLayout();
             this.groupBoxEx4.SuspendLayout();
             this.groupBoxEx3.SuspendLayout();
@@ -339,6 +339,18 @@ namespace CommunTools
             this.groupBoxEx4.TabStop = false;
             this.groupBoxEx4.Text = "待发送信息";
             // 
+            // skinLabel13
+            // 
+            this.skinLabel13.AutoSize = true;
+            this.skinLabel13.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel13.BorderColor = System.Drawing.Color.White;
+            this.skinLabel13.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel13.Location = new System.Drawing.Point(180, -3);
+            this.skinLabel13.Name = "skinLabel13";
+            this.skinLabel13.Size = new System.Drawing.Size(107, 20);
+            this.skinLabel13.TabIndex = 50;
+            this.skinLabel13.Text = "数据编码格式：";
+            // 
             // richTextBox_Send
             // 
             this.richTextBox_Send.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -526,6 +538,32 @@ namespace CommunTools
             this.groupBoxEx2.TabIndex = 6;
             this.groupBoxEx2.TabStop = false;
             this.groupBoxEx2.Text = "COM口设置";
+            // 
+            // ckbRts
+            // 
+            this.ckbRts.BackColor = System.Drawing.Color.Transparent;
+            this.ckbRts.Checked = false;
+            this.ckbRts.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ckbRts.ForeColor = System.Drawing.Color.Black;
+            this.ckbRts.Location = new System.Drawing.Point(284, 252);
+            this.ckbRts.Name = "ckbRts";
+            this.ckbRts.Padding = new System.Windows.Forms.Padding(1);
+            this.ckbRts.Size = new System.Drawing.Size(234, 37);
+            this.ckbRts.TabIndex = 49;
+            this.ckbRts.TextValue = "启用请求发送信号（RtsEnable）";
+            // 
+            // ckbDtr
+            // 
+            this.ckbDtr.BackColor = System.Drawing.Color.Transparent;
+            this.ckbDtr.Checked = false;
+            this.ckbDtr.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ckbDtr.ForeColor = System.Drawing.Color.Black;
+            this.ckbDtr.Location = new System.Drawing.Point(284, 223);
+            this.ckbDtr.Name = "ckbDtr";
+            this.ckbDtr.Padding = new System.Windows.Forms.Padding(1);
+            this.ckbDtr.Size = new System.Drawing.Size(248, 26);
+            this.ckbDtr.TabIndex = 48;
+            this.ckbDtr.TextValue = "启用控制终端就续信号（DtrEnable）";
             // 
             // cmbHandShake
             // 
@@ -938,32 +976,6 @@ namespace CommunTools
             this.skinLabel7.TabIndex = 1;
             this.skinLabel7.Text = "COM：";
             // 
-            // ckbDtr
-            // 
-            this.ckbDtr.BackColor = System.Drawing.Color.Transparent;
-            this.ckbDtr.Checked = false;
-            this.ckbDtr.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckbDtr.ForeColor = System.Drawing.Color.Black;
-            this.ckbDtr.Location = new System.Drawing.Point(284, 223);
-            this.ckbDtr.Name = "ckbDtr";
-            this.ckbDtr.Padding = new System.Windows.Forms.Padding(1);
-            this.ckbDtr.Size = new System.Drawing.Size(248, 26);
-            this.ckbDtr.TabIndex = 48;
-            this.ckbDtr.TextValue = "启用控制终端就续信号（DtrEnable）";
-            // 
-            // ckbRts
-            // 
-            this.ckbRts.BackColor = System.Drawing.Color.Transparent;
-            this.ckbRts.Checked = false;
-            this.ckbRts.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckbRts.ForeColor = System.Drawing.Color.Black;
-            this.ckbRts.Location = new System.Drawing.Point(284, 252);
-            this.ckbRts.Name = "ckbRts";
-            this.ckbRts.Padding = new System.Windows.Forms.Padding(1);
-            this.ckbRts.Size = new System.Drawing.Size(234, 37);
-            this.ckbRts.TabIndex = 49;
-            this.ckbRts.TextValue = "启用请求发送信号（RtsEnable）";
-            // 
             // groupBoxEx1
             // 
             this.groupBoxEx1.Controls.Add(this.btnDSR);
@@ -979,82 +991,6 @@ namespace CommunTools
             this.groupBoxEx1.TabIndex = 28;
             this.groupBoxEx1.TabStop = false;
             this.groupBoxEx1.Text = "信号状态";
-            // 
-            // skinLabel10
-            // 
-            this.skinLabel10.AutoSize = true;
-            this.skinLabel10.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel10.BorderColor = System.Drawing.Color.White;
-            this.skinLabel10.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel10.Location = new System.Drawing.Point(31, 28);
-            this.skinLabel10.Name = "skinLabel10";
-            this.skinLabel10.Size = new System.Drawing.Size(40, 20);
-            this.skinLabel10.TabIndex = 45;
-            this.skinLabel10.Text = "DCD";
-            // 
-            // btnDCD
-            // 
-            this.btnDCD.BackColor = System.Drawing.Color.Transparent;
-            this.btnDCD.BtnBackColor = System.Drawing.Color.White;
-            this.btnDCD.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnDCD.BtnForeColor = System.Drawing.Color.White;
-            this.btnDCD.BtnText = " ";
-            this.btnDCD.ConerRadius = 30;
-            this.btnDCD.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btnDCD.EnabledMouseEffect = false;
-            this.btnDCD.FillColor = System.Drawing.Color.Black;
-            this.btnDCD.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.btnDCD.IsRadius = true;
-            this.btnDCD.IsShowRect = false;
-            this.btnDCD.IsShowTips = false;
-            this.btnDCD.Location = new System.Drawing.Point(76, 24);
-            this.btnDCD.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDCD.Name = "btnDCD";
-            this.btnDCD.RectColor = System.Drawing.Color.Gray;
-            this.btnDCD.RectWidth = 1;
-            this.btnDCD.Size = new System.Drawing.Size(26, 26);
-            this.btnDCD.TabIndex = 46;
-            this.btnDCD.TabStop = false;
-            this.btnDCD.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-            this.btnDCD.TipsText = "";
-            // 
-            // btnCTS
-            // 
-            this.btnCTS.BackColor = System.Drawing.Color.White;
-            this.btnCTS.BtnBackColor = System.Drawing.Color.White;
-            this.btnCTS.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCTS.BtnForeColor = System.Drawing.Color.White;
-            this.btnCTS.BtnText = " ";
-            this.btnCTS.ConerRadius = 30;
-            this.btnCTS.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.btnCTS.EnabledMouseEffect = false;
-            this.btnCTS.FillColor = System.Drawing.Color.Black;
-            this.btnCTS.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.btnCTS.IsRadius = true;
-            this.btnCTS.IsShowRect = false;
-            this.btnCTS.IsShowTips = false;
-            this.btnCTS.Location = new System.Drawing.Point(177, 24);
-            this.btnCTS.Margin = new System.Windows.Forms.Padding(0);
-            this.btnCTS.Name = "btnCTS";
-            this.btnCTS.RectColor = System.Drawing.Color.Gray;
-            this.btnCTS.RectWidth = 1;
-            this.btnCTS.Size = new System.Drawing.Size(26, 26);
-            this.btnCTS.TabIndex = 48;
-            this.btnCTS.TabStop = false;
-            this.btnCTS.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-            this.btnCTS.TipsText = "";
-            // 
-            // skinLabel11
-            // 
-            this.skinLabel11.AutoSize = true;
-            this.skinLabel11.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel11.BorderColor = System.Drawing.Color.White;
-            this.skinLabel11.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel11.Location = new System.Drawing.Point(132, 28);
-            this.skinLabel11.Name = "skinLabel11";
-            this.skinLabel11.Size = new System.Drawing.Size(34, 20);
-            this.skinLabel11.TabIndex = 47;
-            this.skinLabel11.Text = "CTS";
             // 
             // btnDSR
             // 
@@ -1094,6 +1030,82 @@ namespace CommunTools
             this.skinLabel12.TabIndex = 49;
             this.skinLabel12.Text = "DSR";
             // 
+            // btnCTS
+            // 
+            this.btnCTS.BackColor = System.Drawing.Color.White;
+            this.btnCTS.BtnBackColor = System.Drawing.Color.White;
+            this.btnCTS.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnCTS.BtnForeColor = System.Drawing.Color.White;
+            this.btnCTS.BtnText = " ";
+            this.btnCTS.ConerRadius = 30;
+            this.btnCTS.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnCTS.EnabledMouseEffect = false;
+            this.btnCTS.FillColor = System.Drawing.Color.Black;
+            this.btnCTS.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btnCTS.IsRadius = true;
+            this.btnCTS.IsShowRect = false;
+            this.btnCTS.IsShowTips = false;
+            this.btnCTS.Location = new System.Drawing.Point(177, 24);
+            this.btnCTS.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCTS.Name = "btnCTS";
+            this.btnCTS.RectColor = System.Drawing.Color.Gray;
+            this.btnCTS.RectWidth = 1;
+            this.btnCTS.Size = new System.Drawing.Size(26, 26);
+            this.btnCTS.TabIndex = 48;
+            this.btnCTS.TabStop = false;
+            this.btnCTS.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.btnCTS.TipsText = "";
+            // 
+            // skinLabel11
+            // 
+            this.skinLabel11.AutoSize = true;
+            this.skinLabel11.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel11.BorderColor = System.Drawing.Color.White;
+            this.skinLabel11.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel11.Location = new System.Drawing.Point(132, 28);
+            this.skinLabel11.Name = "skinLabel11";
+            this.skinLabel11.Size = new System.Drawing.Size(34, 20);
+            this.skinLabel11.TabIndex = 47;
+            this.skinLabel11.Text = "CTS";
+            // 
+            // btnDCD
+            // 
+            this.btnDCD.BackColor = System.Drawing.Color.White;
+            this.btnDCD.BtnBackColor = System.Drawing.Color.White;
+            this.btnDCD.BtnFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnDCD.BtnForeColor = System.Drawing.Color.White;
+            this.btnDCD.BtnText = " ";
+            this.btnDCD.ConerRadius = 30;
+            this.btnDCD.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.btnDCD.EnabledMouseEffect = false;
+            this.btnDCD.FillColor = System.Drawing.Color.Black;
+            this.btnDCD.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btnDCD.IsRadius = true;
+            this.btnDCD.IsShowRect = false;
+            this.btnDCD.IsShowTips = false;
+            this.btnDCD.Location = new System.Drawing.Point(76, 24);
+            this.btnDCD.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDCD.Name = "btnDCD";
+            this.btnDCD.RectColor = System.Drawing.Color.Gray;
+            this.btnDCD.RectWidth = 1;
+            this.btnDCD.Size = new System.Drawing.Size(26, 26);
+            this.btnDCD.TabIndex = 46;
+            this.btnDCD.TabStop = false;
+            this.btnDCD.TipsColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            this.btnDCD.TipsText = "";
+            // 
+            // skinLabel10
+            // 
+            this.skinLabel10.AutoSize = true;
+            this.skinLabel10.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel10.BorderColor = System.Drawing.Color.White;
+            this.skinLabel10.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel10.Location = new System.Drawing.Point(31, 28);
+            this.skinLabel10.Name = "skinLabel10";
+            this.skinLabel10.Size = new System.Drawing.Size(40, 20);
+            this.skinLabel10.TabIndex = 45;
+            this.skinLabel10.Text = "DCD";
+            // 
             // cmbEncoding
             // 
             this.cmbEncoding.BorderColor = System.Drawing.Color.Gainsboro;
@@ -1108,24 +1120,12 @@ namespace CommunTools
             this.cmbEncoding.WaterText = "";
             this.cmbEncoding.SelectedIndexChanged += new System.EventHandler(this.cmbEncoding_SelectedIndexChanged);
             // 
-            // skinLabel13
-            // 
-            this.skinLabel13.AutoSize = true;
-            this.skinLabel13.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel13.BorderColor = System.Drawing.Color.White;
-            this.skinLabel13.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel13.Location = new System.Drawing.Point(180, -3);
-            this.skinLabel13.Name = "skinLabel13";
-            this.skinLabel13.Size = new System.Drawing.Size(107, 20);
-            this.skinLabel13.TabIndex = 50;
-            this.skinLabel13.Text = "数据编码格式：";
-            // 
             // Frm_SerialPort
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.CaptionBackColorTop = System.Drawing.Color.AntiqueWhite;
+            this.CaptionBackColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.CaptionFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ClientSize = new System.Drawing.Size(905, 614);
             this.CloseBoxSize = new System.Drawing.Size(32, 24);
