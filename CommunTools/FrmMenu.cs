@@ -181,7 +181,7 @@ namespace CommunTools
                 }
                 return false;
             }
-            else return true;
+            else return false;
         }
 
         private void FrmMenu_Resize(object sender, EventArgs e)
