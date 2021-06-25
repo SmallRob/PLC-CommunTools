@@ -51,6 +51,10 @@
     <Compile Include="MQTT\MQTTBase.cs" />
     <Compile Include="NetworkStreamPlus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SOCKET\SocketObject.cs" />
+    <Compile Include="SOCKET\Sockets.cs" />
+    <Compile Include="SOCKET\TcpClients.cs" />
+    <Compile Include="SOCKET\TcpServer.cs" />
     <Compile Include="TcpMsgManager.cs" />
     <Compile Include="TCP\Abstracts\ClientSocket.cs" />
     <Compile Include="TCP\AxTcpClient.cs">
