@@ -63,7 +63,7 @@ namespace CommunTools
             this.groupBoxEx1.Controls.Add(this.btnStart);
             this.groupBoxEx1.Controls.Add(this.skinLabel1);
             this.groupBoxEx1.Controls.Add(this.txtTCPIP);
-            this.groupBoxEx1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBoxEx1.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBoxEx1.Location = new System.Drawing.Point(10, 31);
             this.groupBoxEx1.Name = "groupBoxEx1";
             this.groupBoxEx1.Size = new System.Drawing.Size(394, 127);
@@ -75,7 +75,7 @@ namespace CommunTools
             // 
             this.ckbTLS.BackColor = System.Drawing.Color.Transparent;
             this.ckbTLS.Checked = false;
-            this.ckbTLS.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ckbTLS.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ckbTLS.Location = new System.Drawing.Point(71, 74);
             this.ckbTLS.Name = "ckbTLS";
             this.ckbTLS.Padding = new System.Windows.Forms.Padding(1);
@@ -87,14 +87,14 @@ namespace CommunTools
             // 
             this.btnStart.BackColor = System.Drawing.Color.White;
             this.btnStart.BtnBackColor = System.Drawing.Color.White;
-            this.btnStart.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnStart.BtnFont = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnStart.BtnForeColor = System.Drawing.Color.White;
             this.btnStart.BtnText = "链接服务";
             this.btnStart.ConerRadius = 5;
             this.btnStart.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStart.EnabledMouseEffect = false;
             this.btnStart.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnStart.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btnStart.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btnStart.IsRadius = true;
             this.btnStart.IsShowRect = true;
             this.btnStart.IsShowTips = false;
@@ -115,7 +115,7 @@ namespace CommunTools
             this.skinLabel1.AutoSize = true;
             this.skinLabel1.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel1.BorderColor = System.Drawing.Color.White;
-            this.skinLabel1.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel1.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinLabel1.Location = new System.Drawing.Point(17, 28);
             this.skinLabel1.Name = "skinLabel1";
             this.skinLabel1.Size = new System.Drawing.Size(36, 20);
@@ -130,7 +130,7 @@ namespace CommunTools
             this.txtTCPIP.DecLength = 2;
             this.txtTCPIP.FillColor = System.Drawing.Color.Empty;
             this.txtTCPIP.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-            this.txtTCPIP.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtTCPIP.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtTCPIP.InputText = "";
             this.txtTCPIP.InputType = ZCS_FormUI.TextInputType.NotControl;
             this.txtTCPIP.IsFocusColor = true;
@@ -156,7 +156,7 @@ namespace CommunTools
             this.txtTCPIP.Padding = new System.Windows.Forms.Padding(5);
             this.txtTCPIP.PasswordChar = '\0';
             this.txtTCPIP.PromptColor = System.Drawing.Color.Gray;
-            this.txtTCPIP.PromptFont = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtTCPIP.PromptFont = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtTCPIP.PromptText = "";
             this.txtTCPIP.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.txtTCPIP.RectWidth = 1;
@@ -167,7 +167,7 @@ namespace CommunTools
             // groupBoxEx3
             // 
             this.groupBoxEx3.Controls.Add(this.txtShowMsg);
-            this.groupBoxEx3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBoxEx3.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBoxEx3.Location = new System.Drawing.Point(413, 31);
             this.groupBoxEx3.Name = "groupBoxEx3";
             this.groupBoxEx3.Size = new System.Drawing.Size(375, 225);
@@ -191,7 +191,7 @@ namespace CommunTools
             this.lblrecestatus.AutoSize = true;
             this.lblrecestatus.BackColor = System.Drawing.Color.Transparent;
             this.lblrecestatus.BorderColor = System.Drawing.Color.White;
-            this.lblrecestatus.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblrecestatus.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblrecestatus.ForeColor = System.Drawing.Color.BlueViolet;
             this.lblrecestatus.Location = new System.Drawing.Point(414, 262);
             this.lblrecestatus.Name = "lblrecestatus";
@@ -220,7 +220,7 @@ namespace CommunTools
             this.rdbFile.BaseColor = System.Drawing.Color.DimGray;
             this.rdbFile.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
             this.rdbFile.DownBack = null;
-            this.rdbFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdbFile.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rdbFile.Location = new System.Drawing.Point(3, 3);
             this.rdbFile.MouseBack = null;
             this.rdbFile.Name = "rdbFile";
@@ -241,7 +241,7 @@ namespace CommunTools
             this.rdbDirct.BaseColor = System.Drawing.Color.DimGray;
             this.rdbDirct.ControlState = Com_CSSkin.SkinClass.ControlState.Normal;
             this.rdbDirct.DownBack = null;
-            this.rdbDirct.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.rdbDirct.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.rdbDirct.Location = new System.Drawing.Point(83, 3);
             this.rdbDirct.MouseBack = null;
             this.rdbDirct.Name = "rdbDirct";
@@ -259,7 +259,7 @@ namespace CommunTools
             // 
             this.ucCheckBox1.BackColor = System.Drawing.Color.Transparent;
             this.ucCheckBox1.Checked = false;
-            this.ucCheckBox1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ucCheckBox1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ucCheckBox1.Location = new System.Drawing.Point(418, 340);
             this.ucCheckBox1.Name = "ucCheckBox1";
             this.ucCheckBox1.Padding = new System.Windows.Forms.Padding(1);
@@ -271,14 +271,14 @@ namespace CommunTools
             // 
             this.btnSend.BackColor = System.Drawing.Color.White;
             this.btnSend.BtnBackColor = System.Drawing.Color.White;
-            this.btnSend.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSend.BtnFont = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSend.BtnForeColor = System.Drawing.Color.White;
             this.btnSend.BtnText = "发送";
             this.btnSend.ConerRadius = 5;
             this.btnSend.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSend.EnabledMouseEffect = false;
             this.btnSend.FillColor = System.Drawing.Color.Green;
-            this.btnSend.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btnSend.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btnSend.IsRadius = true;
             this.btnSend.IsShowRect = true;
             this.btnSend.IsShowTips = false;
@@ -298,14 +298,14 @@ namespace CommunTools
             // 
             this.btnScan.BackColor = System.Drawing.Color.White;
             this.btnScan.BtnBackColor = System.Drawing.Color.White;
-            this.btnScan.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnScan.BtnFont = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnScan.BtnForeColor = System.Drawing.Color.White;
             this.btnScan.BtnText = "浏览...";
             this.btnScan.ConerRadius = 5;
             this.btnScan.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnScan.EnabledMouseEffect = false;
             this.btnScan.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnScan.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnScan.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnScan.IsRadius = true;
             this.btnScan.IsShowRect = true;
             this.btnScan.IsShowTips = false;
@@ -323,7 +323,7 @@ namespace CommunTools
             // groupBoxEx4
             // 
             this.groupBoxEx4.Controls.Add(this.richTextBox_Send);
-            this.groupBoxEx4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.groupBoxEx4.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBoxEx4.Location = new System.Drawing.Point(10, 164);
             this.groupBoxEx4.Name = "groupBoxEx4";
             this.groupBoxEx4.Size = new System.Drawing.Size(394, 281);
@@ -351,7 +351,7 @@ namespace CommunTools
             this.txtFileDic.DecLength = 2;
             this.txtFileDic.FillColor = System.Drawing.Color.Empty;
             this.txtFileDic.FocusBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(77)))), ((int)(((byte)(59)))));
-            this.txtFileDic.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtFileDic.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txtFileDic.InputText = "";
             this.txtFileDic.InputType = ZCS_FormUI.TextInputType.NotControl;
             this.txtFileDic.IsFocusColor = true;
@@ -377,7 +377,7 @@ namespace CommunTools
             this.txtFileDic.Padding = new System.Windows.Forms.Padding(5);
             this.txtFileDic.PasswordChar = '\0';
             this.txtFileDic.PromptColor = System.Drawing.Color.Gray;
-            this.txtFileDic.PromptFont = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.txtFileDic.PromptFont = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.txtFileDic.PromptText = "";
             this.txtFileDic.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.txtFileDic.RectWidth = 1;
@@ -389,7 +389,7 @@ namespace CommunTools
             // 
             this.ckbFile.BackColor = System.Drawing.Color.Transparent;
             this.ckbFile.Checked = false;
-            this.ckbFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ckbFile.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ckbFile.Location = new System.Drawing.Point(418, 311);
             this.ckbFile.Name = "ckbFile";
             this.ckbFile.Padding = new System.Windows.Forms.Padding(1);
@@ -402,7 +402,7 @@ namespace CommunTools
             this.skinLabel4.AutoSize = true;
             this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel4.BorderColor = System.Drawing.Color.White;
-            this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel4.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.skinLabel4.Location = new System.Drawing.Point(421, 288);
             this.skinLabel4.Name = "skinLabel4";
             this.skinLabel4.Size = new System.Drawing.Size(79, 20);
@@ -414,7 +414,7 @@ namespace CommunTools
             this.labComInfo.AutoSize = true;
             this.labComInfo.BackColor = System.Drawing.Color.Transparent;
             this.labComInfo.BorderColor = System.Drawing.Color.White;
-            this.labComInfo.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labComInfo.Font = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labComInfo.ForeColor = System.Drawing.Color.BlueViolet;
             this.labComInfo.Location = new System.Drawing.Point(18, 450);
             this.labComInfo.Name = "labComInfo";
@@ -426,14 +426,14 @@ namespace CommunTools
             // 
             this.btnSendFile.BackColor = System.Drawing.Color.White;
             this.btnSendFile.BtnBackColor = System.Drawing.Color.White;
-            this.btnSendFile.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSendFile.BtnFont = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnSendFile.BtnForeColor = System.Drawing.Color.White;
             this.btnSendFile.BtnText = "发送文件";
             this.btnSendFile.ConerRadius = 5;
             this.btnSendFile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSendFile.EnabledMouseEffect = false;
             this.btnSendFile.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnSendFile.Font = new System.Drawing.Font("微软雅黑", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.btnSendFile.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btnSendFile.IsRadius = true;
             this.btnSendFile.IsShowRect = true;
             this.btnSendFile.IsShowTips = false;
@@ -454,7 +454,7 @@ namespace CommunTools
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionBackColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.CaptionFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CaptionFont = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ClientSize = new System.Drawing.Size(796, 480);
             this.CloseBoxSize = new System.Drawing.Size(32, 24);
             this.Controls.Add(this.btnSendFile);
@@ -471,7 +471,7 @@ namespace CommunTools
             this.Controls.Add(this.groupBoxEx3);
             this.Controls.Add(this.groupBoxEx1);
             this.EffectBack = System.Drawing.Color.Silver;
-            this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
@@ -481,7 +481,7 @@ namespace CommunTools
             this.MiniSize = new System.Drawing.Size(32, 24);
             this.Name = "Frm_ComWebSocket";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WebSocket通讯";
+            this.Text = "WebSocket客户端";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Frm_ComWebSocket_FormClosed);
             this.Load += new System.EventHandler(this.Frm_SerialServer_Load);
             this.groupBoxEx1.ResumeLayout(false);

@@ -62,7 +62,7 @@ namespace CommunTools
             this.menuSystem.ItemSplitter = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
             this.menuSystem.Name = "menuSystem";
             this.menuSystem.RadiusStyle = Com_CSSkin.SkinClass.RoundStyle.All;
-            this.menuSystem.Size = new System.Drawing.Size(181, 84);
+            this.menuSystem.Size = new System.Drawing.Size(111, 62);
             this.menuSystem.SkinAllColor = true;
             this.menuSystem.TitleAnamorphosis = true;
             this.menuSystem.TitleColor = System.Drawing.Color.RoyalBlue;
@@ -72,24 +72,24 @@ namespace CommunTools
             // 
             // tsmShow
             // 
-            this.tsmShow.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tsmShow.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tsmShow.Image = global::CommunTools.Properties.Resources.shichang;
             this.tsmShow.Name = "tsmShow";
-            this.tsmShow.Size = new System.Drawing.Size(180, 26);
+            this.tsmShow.Size = new System.Drawing.Size(110, 26);
             this.tsmShow.Text = "显示";
             this.tsmShow.Click += new System.EventHandler(this.tsmShow_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(107, 6);
             // 
             // tsmExit
             // 
-            this.tsmExit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tsmExit.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.tsmExit.Image = global::CommunTools.Properties.Resources.close;
             this.tsmExit.Name = "tsmExit";
-            this.tsmExit.Size = new System.Drawing.Size(180, 26);
+            this.tsmExit.Size = new System.Drawing.Size(110, 26);
             this.tsmExit.Text = "退出";
             this.tsmExit.Click += new System.EventHandler(this.tsmExit_Click);
             // 
@@ -110,19 +110,18 @@ namespace CommunTools
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.CaptionBackColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.CaptionFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ClientSize = new System.Drawing.Size(385, 650);
+            this.CaptionFont = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.ClientSize = new System.Drawing.Size(385, 435);
             this.CloseBoxSize = new System.Drawing.Size(32, 24);
             this.EffectBack = System.Drawing.Color.LightGray;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaxSize = new System.Drawing.Size(32, 24);
-            this.MinimumSize = new System.Drawing.Size(385, 650);
+            this.MinimumSize = new System.Drawing.Size(385, 435);
             this.MiniSize = new System.Drawing.Size(32, 24);
             this.Name = "FrmMenu";
             this.ShowInTaskbar = false;
             this.ShowSystemMenu = true;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "硬件及协议通讯工具";
             this.Load += new System.EventHandler(this.FrmMenu_Load);
             this.Resize += new System.EventHandler(this.FrmMenu_Resize);

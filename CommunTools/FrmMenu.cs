@@ -27,10 +27,13 @@ namespace CommunTools
         {
             var attrBase = new AttributesContext<Com_BaseFuncItem>();
             var attrProto = new AttributesContext<Com_ProtoFuncItem>();
+            var attrOther = new AttributesContext<Com_OtherFuncItem>();
+
             lstMenuGroup = new List<KeyValuePair<Type, string>>()
             {
                new KeyValuePair<Type,string>(typeof(Com_BaseFuncItem),attrBase.XGroup()),
-               new KeyValuePair<Type,string>(typeof(Com_ProtoFuncItem),attrProto.XGroup())
+               new KeyValuePair<Type,string>(typeof(Com_ProtoFuncItem),attrProto.XGroup()),
+               new KeyValuePair<Type,string>(typeof(Com_OtherFuncItem),attrOther.XGroup())
             };
         }
 
@@ -107,6 +110,10 @@ namespace CommunTools
                 gpbIndex++;
                 this.Refresh();
             }
+
+            //重新计算高度
+            this.Size = new System.Drawing.Size(Size.Width, totolHeight + 50 + lstMenuGroup.Count * 2);
+            this.MinimumSize = this.MaximumSize = this.Size;
         }
 
         private void boxMark_Click(object sender, EventArgs e)

@@ -45,18 +45,39 @@ namespace CommunTools.Enums
             COM_SerialPort = 4,
 
             /// <summary>
-            /// SOCKET通讯
+            /// Socket服务端
             /// </summary>
-            [Description("   Socket通信")]
+            [Description("  Socket服务端")]
+            [FuncURI("Frm_SocketServer")]
+            COM_SocketServer = 5,
+
+            /// <summary>
+            /// Socket客户端
+            /// </summary>
+            [Description("  Socket客户端")]
             [FuncURI("Frm_ComSocket")]
-            COM_Socket = 5,
+            COM_SocketClient = 6,
 
             /// <summary>
             /// WebSocket
             /// </summary>
-            [Description(" WebSocket通信")]
+            [Description("WebSocket服务端")]
+            [FuncURI("Frm_WebSocketServer")]
+            COM_WebSocketServer = 7,
+
+            /// <summary>
+            /// WebSocket
+            /// </summary>
+            [Description("WebSocket客户端")]
             [FuncURI("Frm_ComWebSocket")]
-            COM_WebSocket = 6
+            COM_WebSocket = 8,
+
+            /// <summary>
+            /// WebSocket
+            /// </summary>
+            [Description("    UDP通讯")]
+            [FuncURI("Frm_ComWebSocket")]
+            COM_ComUDP = 9
         }
 
         /// <summary>
@@ -66,55 +87,63 @@ namespace CommunTools.Enums
         [FuncGroup("Proto", "硬件协议通信")]
         public enum Com_ProtoFuncItem
         {
-            [Description(" SUSI I/O口通信")]
-            [FuncURI("Frm_SUSI")]
-            Proto_SUSI = 1,
+            //[Description(" SUSI I/O口通信")]
+            //[FuncURI("Frm_SUSI")]
+            //Proto_SUSI = 1,
 
-            [Description("Twain扫描仪协议")]
-            [FuncURI("Frm_Twain")]
-            Proto_Twain = 2,
+            [Description("    MQTT协议")]
+            [FuncURI("Frm_MQTT")]
+            Proto_MQTT = 1,
 
-            [Description("   Modbus通讯$(三菱PLC)")]
-            [FuncURI("Frm_BCNet_A")]
-            Proto_BCNet_A = 3,
-
-            [Description("  SEC-F控制器$(三菱PLC)")]
-            [FuncURI("Frm_MELSEC")]
-            Proto_MELSEC_F = 4,
-
-            [Description("   Modbus通讯$(西门子PLC)")]
-            [FuncURI("Frm_Modbus")]
-            Proto_Modbus = 5,
-
-            [Description("  西门子S7 PLC")]
-            [FuncURI("Frm_S7")]
-            Proto_S7 = 6,
-
-            [Description("   FincTCP通信$(欧姆龙PLC)")]
-            [FuncURI("Frm_CS1W")]
-            Proto_HL8202 = 7,
-
-            //SECS
-            [Description("  SECS PLC协议$半导体自动化")]
-            [FuncURI("Frm_SECS")]
-            Proto_SECS = 8,
+            [Description("    施耐德PLC")]
+            [FuncURI("Frm_SCHNEIDER")]
+            Proto_SCHND = 2,
 
             //松下电工 FP
             [Description("   电工FP控制器$  (松下PLC)")]
             [FuncURI("Frm_NAIS_FP")]
-            Proto_NAIS_FP = 9,
+            Proto_NAIS_FP = 3,
+
+            [Description("   FincTCP通信$(欧姆龙PLC)")]
+            [FuncURI("Frm_CS1W")]
+            Proto_HL8202 = 4,
+
+            [Description("   Modbus通讯$(三菱PLC)")]
+            [FuncURI("Frm_BCNet_A")]
+            Proto_BCNet_A = 5,
+
+            [Description("  SEC-F控制器$(三菱PLC)")]
+            [FuncURI("Frm_MELSEC")]
+            Proto_MELSEC_F = 6,
+
+            [Description("  西门子S7 PLC")]
+            [FuncURI("Frm_S7")]
+            Proto_S7 = 7,
+
+            [Description("   Modbus通讯$(西门子PLC)")]
+            [FuncURI("Frm_Modbus")]
+            Proto_Modbus = 8,
+
+            //SECS
+            [Description("  SECS PLC协议$半导体自动化")]
+            [FuncURI("Frm_SECS")]
+            Proto_SECS = 9,        
 
             [Description("  台达PLC通讯")]
             [FuncURI("Frm_DELTA_PLC")]
-            Proto_DELTA_PLC = 10,
+            Proto_DELTA_PLC = 10
+        }
 
-            [Description("   MQTT协议")]
-            [FuncURI("Frm_MQTT")]
-            Proto_MQTT = 11,
-
-            [Description("   施耐德PLC")]
-            [FuncURI("Frm_SCHNEIDER")]
-            Proto_SCHND = 12
+        /// <summary>
+        /// 硬件协议通信
+        /// </summary>
+        [Flags]
+        [FuncGroup("Other", "其他硬件通信")]
+        public enum Com_OtherFuncItem
+        {
+            [Description("Twain扫描仪协议")]
+            [FuncURI("Frm_Twain")]
+            Proto_Twain = 1
         }
     }
 }
