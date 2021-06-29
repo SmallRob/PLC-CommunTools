@@ -15,7 +15,7 @@ using System.Windows.Threading;
 
 namespace CommunWPF.ViewModels
 {
-    internal class MainWindowViewModel : MainWindowBase, IDisposable
+    internal class SerialPortWindowViewModel : MainWindowBase, IDisposable
     {
         #region 字段
         internal SerialPort SerialPortBase = new SerialPort();
@@ -1116,7 +1116,7 @@ namespace CommunWPF.ViewModels
         }
         #endregion
 
-        public MainWindowViewModel()
+        public SerialPortWindowViewModel()
         {
             SerialPortModel = new SerialPortModel();
             SerialPortModel.SerialPortDataContext();

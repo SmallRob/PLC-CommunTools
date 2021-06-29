@@ -9,18 +9,18 @@ using System.Windows.Input;
 
 namespace CommunWPF.Views
 {
-    public partial class MainWindow : Window, IDisposable
+    public partial class SerialPortWindow : Window, IDisposable
     {
-        internal MainWindowViewModel mainWindowViewModel = null;
+        internal SerialPortWindowViewModel mainWindowViewModel = null;
 
-        public MainWindow()
+        public SerialPortWindow()
         {
             InitializeComponent();
 
             Height = 532;
             Width = Height / 0.625;
 
-            mainWindowViewModel = new MainWindowViewModel();
+            mainWindowViewModel = new SerialPortWindowViewModel();
             DataContext = mainWindowViewModel;
         }
 

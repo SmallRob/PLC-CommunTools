@@ -1,4 +1,4 @@
-﻿<Window x:Class="CommunWPF.Views.MainWindow"
+﻿<Window x:Class="CommunWPF.Views.SerialPortWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,7 +10,7 @@
     
     <!--Window Style-->
     <Window.Resources>
-        <Style x:Key="MainWindowChromeStyle" TargetType="{x:Type local:MainWindow}">
+        <Style x:Key="MainWindowChromeStyle" TargetType="{x:Type local:SerialPortWindow}">
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
                     <WindowChrome/>
