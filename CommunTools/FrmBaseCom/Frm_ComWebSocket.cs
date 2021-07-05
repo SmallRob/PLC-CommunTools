@@ -74,7 +74,8 @@ namespace CommunTools
         private void MessageReceived()
         {
             //注册消息接收事件，接收服务端发送的数据
-            wsClient.MessageReceived += (data) => {
+            wsClient.MessageReceived += (data) =>
+            {
 
                 StringBuilder sb = new StringBuilder();
                 sb.AppendFormat("[{0}]# \n", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff"));
@@ -83,7 +84,7 @@ namespace CommunTools
                 txtShowMsg.Text += sb.ToString();
             };
         }
-     
+
         void ShowMsg(string str)
         {
             txtShowMsg.AppendText(str + "\r\n");
@@ -94,7 +95,7 @@ namespace CommunTools
             if (!string.IsNullOrWhiteSpace(richTextBox_Send.Text.Trim()))
             {
                 string inputMsg = richTextBox_Send.Text.ToString();
-              
+
                 wsClient.SendMessage(inputMsg);
                 MessageReceived();
             }
@@ -102,7 +103,8 @@ namespace CommunTools
 
         private void Frm_ComWebSocket_FormClosed(object sender, FormClosedEventArgs e)
         {
-            wsClient.Dispose();
+            if (wsClient != null)
+                wsClient.Dispose();
         }
     }
 }

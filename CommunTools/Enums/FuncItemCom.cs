@@ -76,7 +76,7 @@ namespace CommunTools.Enums
             /// WebSocket
             /// </summary>
             [Description("    UDP通讯")]
-            [FuncURI("Frm_ComWebSocket")]
+            [FuncURI("Frm_ComUDP")]
             COM_ComUDP = 9
         }
 

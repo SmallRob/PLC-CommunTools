@@ -121,13 +121,15 @@ namespace CommunTools
                 serialPort1.StopBits = (StopBits)System.Enum.Parse(typeof(StopBits), cmbStopBits.Text);
                 serialPort1.Handshake = (Handshake)System.Enum.Parse(typeof(Handshake), cmbHandShake.Text);
 
+                serialPort1.ReceivedBytesThreshold = 1;
+
                 serialPort1.RtsEnable = ckbRts.Checked;
                 serialPort1.DtrEnable = ckbDtr.Checked;
 
                 serialPort1.WriteBufferSize = 1048576;   /* 输出缓冲区的大小为1048576字节 = 1MB */
                 serialPort1.ReadBufferSize = 2097152;    /* 输入缓冲区的大小为2097152字节 = 2MB */
 
-                SetSeriaPortEncoding();
+                serialPort1.Encoding = SetSeriaPortEncoding((EnumEncoding)System.Enum.Parse(typeof(EnumEncoding), cmbEncoding.Text));
 
                 try
                 {
@@ -155,31 +157,18 @@ namespace CommunTools
             }
         }
 
-        private void SetSeriaPortEncoding()
-        {
-            EnumEncoding encoding = (EnumEncoding)System.Enum.Parse(typeof(EnumEncoding), cmbEncoding.Text);
-            switch (encoding)
+        // EnumEncoding encoding = (EnumEncoding)System.Enum.Parse(typeof(EnumEncoding), cmbEncoding.Text);
+
+        private Encoding SetSeriaPortEncoding(EnumEncoding encoding) =>
+            encoding switch
             {
-                case EnumEncoding.ASCII:
+                EnumEncoding.ASCII => Encoding.ASCII,
+                EnumEncoding.UTF8 => Encoding.UTF8,
+                EnumEncoding.Unicode => Encoding.Unicode,
+                EnumEncoding.UTF32 => Encoding.UTF32,
+                _ => throw new ArgumentException(message: "invalid enum value", paramName: nameof(encoding))
 
-                    serialPort1.Encoding = System.Text.Encoding.ASCII;
-                    break;
-                case EnumEncoding.UTF8:
-
-                    serialPort1.Encoding = System.Text.Encoding.UTF8;
-                    break;
-                case EnumEncoding.Unicode:
-
-                    serialPort1.Encoding = System.Text.Encoding.Unicode;
-                    break;
-                case EnumEncoding.UTF32:
-
-                    serialPort1.Encoding = System.Text.Encoding.UTF32;
-                    break;
-                default:
-                    break;
-            }
-        }
+            };
 
         private void SetBtnEnable(bool isEnable)
         {
@@ -659,7 +648,7 @@ namespace CommunTools
         {
             if (cmbEncoding.SelectedIndex >= 0)
             {
-                SetSeriaPortEncoding();
+                serialPort1.Encoding = SetSeriaPortEncoding((EnumEncoding)System.Enum.Parse(typeof(EnumEncoding), cmbEncoding.Text));
             }
         }
     }

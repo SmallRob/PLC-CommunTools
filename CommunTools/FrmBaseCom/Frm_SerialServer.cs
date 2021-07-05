@@ -42,7 +42,8 @@ namespace CommunTools
                 (cmbPortParity,EnumHelper.GetEnumList(typeof(sp.PortParity))),
                 (cmbBandRate,EnumHelper.GetEnumList(typeof(sp.BandRate))),
                 (cmbStopBits,EnumHelper.GetEnumList(typeof(sp.StopBits))),
-                (cmbDataBits,EnumHelper.GetEnumList(typeof(sp.DataBit)))
+                (cmbDataBits,EnumHelper.GetEnumList(typeof(sp.DataBit))),
+                (cmbHandShake,EnumHelper.GetEnumList(typeof(sp.HandShake)))
             };
 
             foreach ((SkinComboBox box, IList<EnumListModel> enumModel) item in ps)
@@ -159,7 +160,7 @@ namespace CommunTools
                 comServer.EntitySerialPort.WriteTimeout = 3000;
 
                 //设置数据流控制；数据传输的握手协议
-                comServer.EntitySerialPort.Handshake = Handshake.None;
+                comServer.EntitySerialPort.Handshake = (Handshake)System.Enum.Parse(typeof(Handshake), cmbHandShake.Text);
                 comServer.EntitySerialPort.ReceivedBytesThreshold = 1;
                 comServer.EntitySerialPort.RtsEnable = true;
 
@@ -287,7 +288,8 @@ namespace CommunTools
                     server.TCPClient = server.EntityTCPListen.AcceptTcpClient();
                 }
                 catch
-                { }
+                {
+                }
                 if (server.TCPClient == null)
                 {
                     continue;

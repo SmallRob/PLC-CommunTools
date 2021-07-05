@@ -54,6 +54,8 @@ namespace CommunTools
             this.txtShowMsg = new System.Windows.Forms.RichTextBox();
             this.labComInfo = new Com_CSSkin.SkinControl.SkinLabel();
             this.labLinkClient = new Com_CSSkin.SkinControl.SkinLabel();
+            this.cmbHandShake = new Com_CSSkin.SkinControl.SkinComboBox();
+            this.skinLabel9 = new Com_CSSkin.SkinControl.SkinLabel();
             this.groupBoxEx1.SuspendLayout();
             this.groupBoxEx2.SuspendLayout();
             this.groupBoxEx3.SuspendLayout();
@@ -264,6 +266,8 @@ namespace CommunTools
             // 
             // groupBoxEx2
             // 
+            this.groupBoxEx2.Controls.Add(this.cmbHandShake);
+            this.groupBoxEx2.Controls.Add(this.skinLabel9);
             this.groupBoxEx2.Controls.Add(this.cmbDataBits);
             this.groupBoxEx2.Controls.Add(this.cmbStopBits);
             this.groupBoxEx2.Controls.Add(this.cmbBandRate);
@@ -277,7 +281,7 @@ namespace CommunTools
             this.groupBoxEx2.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBoxEx2.Location = new System.Drawing.Point(10, 193);
             this.groupBoxEx2.Name = "groupBoxEx2";
-            this.groupBoxEx2.Size = new System.Drawing.Size(394, 257);
+            this.groupBoxEx2.Size = new System.Drawing.Size(394, 296);
             this.groupBoxEx2.TabIndex = 6;
             this.groupBoxEx2.TabStop = false;
             this.groupBoxEx2.Text = "COM口设置";
@@ -413,7 +417,7 @@ namespace CommunTools
             this.groupBoxEx3.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.groupBoxEx3.Location = new System.Drawing.Point(413, 31);
             this.groupBoxEx3.Name = "groupBoxEx3";
-            this.groupBoxEx3.Size = new System.Drawing.Size(375, 419);
+            this.groupBoxEx3.Size = new System.Drawing.Size(375, 458);
             this.groupBoxEx3.TabIndex = 7;
             this.groupBoxEx3.TabStop = false;
             this.groupBoxEx3.Text = "接收信息";
@@ -425,7 +429,7 @@ namespace CommunTools
             this.txtShowMsg.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtShowMsg.Location = new System.Drawing.Point(3, 22);
             this.txtShowMsg.Name = "txtShowMsg";
-            this.txtShowMsg.Size = new System.Drawing.Size(369, 394);
+            this.txtShowMsg.Size = new System.Drawing.Size(369, 433);
             this.txtShowMsg.TabIndex = 0;
             this.txtShowMsg.Text = "";
             // 
@@ -437,7 +441,7 @@ namespace CommunTools
             this.labComInfo.BorderColor = System.Drawing.Color.White;
             this.labComInfo.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labComInfo.ForeColor = System.Drawing.Color.BlueViolet;
-            this.labComInfo.Location = new System.Drawing.Point(32, 454);
+            this.labComInfo.Location = new System.Drawing.Point(32, 494);
             this.labComInfo.Name = "labComInfo";
             this.labComInfo.Size = new System.Drawing.Size(85, 20);
             this.labComInfo.TabIndex = 10;
@@ -457,6 +461,31 @@ namespace CommunTools
             this.labLinkClient.TabIndex = 11;
             this.labLinkClient.Text = "- Client信息";
             // 
+            // cmbHandShake
+            // 
+            this.cmbHandShake.BorderColor = System.Drawing.Color.Gainsboro;
+            this.cmbHandShake.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbHandShake.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbHandShake.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHandShake.FormattingEnabled = true;
+            this.cmbHandShake.Location = new System.Drawing.Point(110, 256);
+            this.cmbHandShake.Name = "cmbHandShake";
+            this.cmbHandShake.Size = new System.Drawing.Size(140, 27);
+            this.cmbHandShake.TabIndex = 49;
+            this.cmbHandShake.WaterText = "";
+            // 
+            // skinLabel9
+            // 
+            this.skinLabel9.AutoSize = true;
+            this.skinLabel9.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel9.BorderColor = System.Drawing.Color.White;
+            this.skinLabel9.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel9.Location = new System.Drawing.Point(28, 259);
+            this.skinLabel9.Name = "skinLabel9";
+            this.skinLabel9.Size = new System.Drawing.Size(79, 20);
+            this.skinLabel9.TabIndex = 48;
+            this.skinLabel9.Text = "握手协议：";
+            // 
             // Frm_SerialServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -464,7 +493,7 @@ namespace CommunTools
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.CaptionBackColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.CaptionFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ClientSize = new System.Drawing.Size(796, 480);
+            this.ClientSize = new System.Drawing.Size(796, 525);
             this.CloseBoxSize = new System.Drawing.Size(32, 24);
             this.Controls.Add(this.labLinkClient);
             this.Controls.Add(this.labComInfo);
@@ -476,9 +505,9 @@ namespace CommunTools
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(796, 480);
+            this.MaximumSize = new System.Drawing.Size(796, 525);
             this.MaxSize = new System.Drawing.Size(32, 24);
-            this.MinimumSize = new System.Drawing.Size(796, 480);
+            this.MinimumSize = new System.Drawing.Size(796, 525);
             this.MiniSize = new System.Drawing.Size(32, 24);
             this.Name = "Frm_SerialServer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -521,5 +550,7 @@ namespace CommunTools
         private Com_CSSkin.SkinControl.SkinComboBox cmbDataBits;
         private Com_CSSkin.SkinControl.SkinComboBox cmbStopBits;
         private Com_CSSkin.SkinControl.SkinComboBox cmbBandRate;
+        private Com_CSSkin.SkinControl.SkinComboBox cmbHandShake;
+        private Com_CSSkin.SkinControl.SkinLabel skinLabel9;
     }
 }
