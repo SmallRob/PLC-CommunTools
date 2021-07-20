@@ -57,6 +57,7 @@
     <Compile Include="SOCKET\TcpServer.cs" />
     <Compile Include="TcpMsgManager.cs" />
     <Compile Include="TCP\Abstracts\ClientSocket.cs" />
+    <Compile Include="TCP\AsyncTcpServer.cs" />
     <Compile Include="TCP\AxTcpClient.cs">
       <SubType>Component</SubType>
     </Compile>
