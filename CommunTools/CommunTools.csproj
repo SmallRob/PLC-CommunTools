@@ -84,12 +84,6 @@
     <Compile Include="FrmBaseCom\Frm_ComWebSocket.Designer.cs">
       <DependentUpon>Frm_ComWebSocket.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmBaseCom\Frm_MQTT.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmBaseCom\Frm_MQTT.Designer.cs">
-      <DependentUpon>Frm_MQTT.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmBaseCom\Frm_SerialServer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,9 +131,6 @@
     <Compile Include="Common\SerialPortEventArgs.cs" />
     <EmbeddedResource Include="FrmBaseCom\Frm_ComWebSocket.resx">
       <DependentUpon>Frm_ComWebSocket.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmBaseCom\Frm_MQTT.resx">
-      <DependentUpon>Frm_MQTT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBaseCom\Frm_SerialServer.resx">
       <DependentUpon>Frm_SerialServer.cs</DependentUpon>
