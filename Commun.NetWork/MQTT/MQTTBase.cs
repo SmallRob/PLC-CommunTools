@@ -39,7 +39,7 @@ namespace Commun.NetWork.MQTT
             TcpMsgManager.TcpClientConnect(SocketIP, SocketPort);
             TcpMsgManager.IslinkError = false;
 
-            Console.WriteLine(">> 客户端连接已建议");
+            Console.WriteLine(">> 客户端连接已建立");
 
             // 发送MQTT的登录请求
             List<byte> byteList = new List<byte>();
@@ -144,16 +144,16 @@ namespace Commun.NetWork.MQTT
                     pingBytes.Add(0xC0);
                     pingBytes.Add(0x00);
 
-                    Task t = new Task(() =>
-                    {
-                        while (true)
-                        {
-                            Thread.Sleep(2000);
-                            TcpMsgManager.SendMessage(pingBytes.ToArray());
-                            Console.WriteLine(">> 发送心跳");
-                        }
-                    });
-                    t.Start();
+                    _ = Task.Run(async () =>
+                      {
+                          while (true)
+                          {
+                              await Task.Delay(2000);
+
+                              TcpMsgManager.SendMessage(pingBytes.ToArray());
+                              Console.WriteLine(">> 发送心跳");
+                          }
+                      });
                 }
             }
         }

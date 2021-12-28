@@ -2,8 +2,37 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon\favicon.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="icon\Close.png" />
+    <None Remove="icon\favicon.ico" />
+    <None Remove="icon\favicon.png" />
+    <None Remove="icon\Max.png" />
+    <None Remove="icon\Min.png" />
+    <None Remove="icon\Red.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Commun.NetCore\Commun.NetCore.csproj">
+      <Private>true</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="icon\Close.png" />
+    <Resource Include="icon\favicon.ico" />
+    <Resource Include="icon\favicon.png" />
+    <Resource Include="icon\Max.png" />
+    <Resource Include="icon\Min.png" />
+    <Resource Include="icon\Red.png" />
+  </ItemGroup>
 
 </Project>

@@ -2,12 +2,13 @@
 using CommunTools.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using ZCS_Common;
 using ZCS_FormUI.Controls;
 using ZCS_FormUI.Forms;
-using static CommunTools.Enum.FuncItemCom;
+using static CommunTools.Enums.FuncItemCom;
 
 namespace CommunTools
 {
@@ -16,18 +17,23 @@ namespace CommunTools
         public FrmMenu()
         {
             InitializeComponent();
+            isSonSingle = ConfigHelper.GetConfigBool("isSonSingle");
         }
 
         private List<KeyValuePair<Type, string>> lstMenuGroup;
+        private bool isSonSingle = false;
 
         private void GetMenuGroup()
         {
             var attrBase = new AttributesContext<Com_BaseFuncItem>();
             var attrProto = new AttributesContext<Com_ProtoFuncItem>();
+            var attrOther = new AttributesContext<Com_OtherFuncItem>();
+
             lstMenuGroup = new List<KeyValuePair<Type, string>>()
             {
                new KeyValuePair<Type,string>(typeof(Com_BaseFuncItem),attrBase.XGroup()),
-               new KeyValuePair<Type,string>(typeof(Com_ProtoFuncItem),attrProto.XGroup())
+               new KeyValuePair<Type,string>(typeof(Com_ProtoFuncItem),attrProto.XGroup()),
+               new KeyValuePair<Type,string>(typeof(Com_OtherFuncItem),attrOther.XGroup())
             };
         }
 
@@ -104,6 +110,10 @@ namespace CommunTools
                 gpbIndex++;
                 this.Refresh();
             }
+
+            //重新计算高度
+            this.Size = new System.Drawing.Size(Size.Width, totolHeight + 50 + lstMenuGroup.Count * 2);
+            this.MinimumSize = this.MaximumSize = this.Size;
         }
 
         private void boxMark_Click(object sender, EventArgs e)
@@ -160,22 +170,68 @@ namespace CommunTools
             }
         }
 
-
         private bool FrmOpenJujg(string funcUrl)
         {
-            int frmCount = Application.OpenForms.Count;
-            for (int i = frmCount - 1; i >= 0; i--)
+            if (isSonSingle)
             {
-                string openName = Application.OpenForms[i].Name;
-                if (openName.Equals(funcUrl))
+                int frmCount = Application.OpenForms.Count;
+                for (int i = frmCount - 1; i >= 0; i--)
                 {
-                    //如果窗口已打开，则激活
-                    Application.OpenForms[i].Activate();
-                    Application.OpenForms[i].Focus();
-                    return true;
+                    string openName = Application.OpenForms[i].Name;
+                    if (openName.Equals(funcUrl))
+                    {
+                        //如果窗口已打开，则激活
+                        Application.OpenForms[i].Activate();
+                        Application.OpenForms[i].Focus();
+                        return true;
+                    }
                 }
+                return false;
             }
-            return false;
+            else return false;
+        }
+
+        private void FrmMenu_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                //this.notifySystem.Visible = true;
+                this.Hide();
+            }
+        }
+
+        /// <summary>
+        /// 显示
+        /// </summary>
+        private void tsmShow_Click(object sender, EventArgs e)
+        {
+            //this.notifySystem.Visible = false;
+            if (!this.Visible)
+            {
+                this.Show();
+                this.StartPosition = FormStartPosition.Manual; //窗体的位置由Location属性决定
+            }
+            else
+            {
+                this.Hide();
+            }
+        }
+
+        /// <summary>
+        /// 退出
+        /// </summary>
+        private void tsmExit_Click(object sender, EventArgs e)
+        {
+            this.notifySystem.Visible = false;
+            this.notifySystem.Dispose();      //解决托盘残留图标
+
+            //杀掉自己的进程
+            Process.GetCurrentProcess().Kill();
+        }
+
+        private void menuSystem_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            tsmShow.Text = this.Visible ? "最小化" : "显示";
         }
     }
 }

@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ZCS_FormUI</RootNamespace>
     <AssemblyName>ZCS_FormUI</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,6 +27,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>7</LangVersion>
     <FileAlignment>1024</FileAlignment>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,12 +42,9 @@
     <DocumentationFile>
     </DocumentationFile>
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Com_CSSkin, Version=16.1.14.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\UsingLib\Com_CSSkin.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Vbe.Interop, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -60,6 +59,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Taurus.CSSkinUI.WF">
+      <HintPath>..\UsingLib\Taurus.CSSkinUI.WF.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\ButtonEx.cs">
@@ -614,7 +616,7 @@
     <Content Include="Resources\function_group_close.png" />
     <Content Include="Resources\function_group_open.png" />
     <None Include="Resources\loading.gif" />
-    <None Include="Resources\loading1.gif" />
+    <None Include="Resources\loading2.gif" />
     <None Include="Resources\help.png" />
     <None Include="Resources\ic_add_black_18dp.png" />
     <None Include="Resources\ic_remove_black_18dp.png" />
@@ -627,6 +629,7 @@
     <None Include="Resources\list_subtract.png" />
     <None Include="Resources\more1.png" />
     <None Include="Resources\right.png" />
+    <None Include="Resources\qty_delete.png" />
     <Content Include="Resources\root.png" />
     <None Include="Resources\sanjiao1.png" />
     <None Include="Resources\sanjiao2.png" />

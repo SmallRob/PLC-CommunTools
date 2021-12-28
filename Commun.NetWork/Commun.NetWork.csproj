@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Commun.NetWork</RootNamespace>
     <AssemblyName>Commun.NetWork</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,13 +31,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,11 +45,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum\EncodeType.cs" />
+    <Compile Include="CommunDataValid.cs" />
+    <Compile Include="Enums\EncodeType.cs" />
+    <Compile Include="Enums\SocketState.cs" />
     <Compile Include="MQTT\MQTTBase.cs" />
     <Compile Include="NetworkStreamPlus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SOCKET\SocketObject.cs" />
+    <Compile Include="SOCKET\Sockets.cs" />
+    <Compile Include="SOCKET\TcpClients.cs" />
+    <Compile Include="SOCKET\TcpServer.cs" />
     <Compile Include="TcpMsgManager.cs" />
+    <Compile Include="TCP\Abstracts\ClientSocket.cs" />
+    <Compile Include="TCP\AsyncTcpServer.cs" />
+    <Compile Include="TCP\AxTcpClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TCP\AxTcpClient.Designer.cs">
+      <DependentUpon>AxTcpClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCP\AxTcpServer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TCP\AxTcpServer.Designer.cs">
+      <DependentUpon>AxTcpServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TCP\EventHandler\ConnectedEventHandler.cs" />
+    <Compile Include="TCP\EventHandler\DisConnectedEventHandler.cs" />
+    <Compile Include="TCP\EventHandler\MessageReceivedEventHandler.cs" />
+    <Compile Include="TCP\Abstracts\ProxySocket.cs" />
+    <Compile Include="TCP\Abstracts\ZDataBuffer.cs" />
+    <Compile Include="TCP\Abstracts\ZMessage.cs" />
+    <Compile Include="WSocketClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ZCS_Common\ZCS_Common.csproj">
@@ -56,7 +85,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="WebSocket4Net">
+      <Version>0.15.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
