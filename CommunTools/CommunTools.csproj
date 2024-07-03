@@ -186,6 +186,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="UseLib\InpOut\INPOUT32.DPR" />
+    <None Include="UseLib\InpOut\INPOUT32.FRM" />
+    <None Include="UseLib\InpOut\INPOUT32.VBP" />
+    <None Include="UseLib\InpOut\INPOUT32.vbw" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Commun.NetWork\Commun.NetWork.csproj">
@@ -203,6 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="login.ico" />
+    <Content Include="UseLib\InpOut\INPOUT32.BAS" />
+    <Content Include="UseLib\InpOut\INPOUT32.DLL" />
+    <Content Include="UseLib\InpOut\INPOUT32.TXT" />
     <None Include="Resources\shichang.png" />
     <None Include="Resources\close.png" />
   </ItemGroup>

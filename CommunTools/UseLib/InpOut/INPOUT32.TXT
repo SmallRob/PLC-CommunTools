@@ -1,0 +1,72 @@
+Documentation for inpout32.zip
+ 
+Inpout32.zip contains a DLL that enables direct reading and writing to I/O ports in 32-bit Visual-Basic programs running under Windows 95.
+
+by Jan Axelson
+Lakeview Research
+Email: jaxelson@lvr.com
+WWW: http://www.lvr.com
+
+Important information and cautions:
+
+1. Use this DLL at your own risk. Writing directly to hardware ports can result in system crashes, loss of data, and even permanent damage. Inpout32 was developed to allow access to parallel ports and other ports on custom hardware, but you can use it to attempt to access any hardware that is mapped as an I/O port. You've been warned!
+ 
+2. Use this DLL only with 32-bit programs. 16-bit programs require a 16-bit DLL (inpout16.dll).
+ 
+3. Windows 95 allows direct port reads and writes unless a VxD has control of the port and blocks access. Under Windows NT, direct port access is not allowed, and you must use a kernel-mode device driver.
+ 
+4. For the latest parallel-port programming and interfacing information and tools, visit Parallel Port Central at: 
+ 
+http://www.lvr.com 
+
+*** 
+ 
+Inpout32.zip contains the following files:
+
+inpout32.txt
+This file
+
+inpout32.dll 
+A DLL that enables the use of Inp and Out routines in 32-bit Visual Basic 4 and Visual Basic 5 programs. 
+ 
+inpout32.bas 
+Visual-Basic declarations for Inp and Out 
+
+inpout32.vbp 
+Visual Basic 4 test project for inpout32. The project will also load into and run under Visual Basic 5.
+
+inpout32.frm 
+Startup form for the test project 
+ 
+inpout32.dpr 
+Source code for inpout32.dll. The DLL was compiled with Borland's Delphi 2.0 Object Pascal compiler.
+
+*** 
+
+How to run the test program (inpout32.vbp): 
+1. Copy inpout32.dll to one of these locations: your default Windows directory (usually \Windows), your Windows system directory (usually \Windows\system), or your application's working directory. In the VB programming environment, the working directory is the default VB directory. 
+2. Open the project inpout32.vbp.
+3. In the Form_Load subroutine, set PortAddress equal to the port address you want to test. 
+3. Clicking the command button causes the program to do the following: write a value to the port, read the port, and display the result. The value increments with each click, resetting to 0 at 255.
+
+*** 
+
+How to use inpout32 in your programs: 
+
+1. Copy inpout32.dll to your default Windows directory (or other directory as described above).
+
+2. Add inpout32.bas to your Visual-Basic project (File menu, Add File). 
+
+3. Use this syntax to write to a port: 
+   Out PortAddress, ValueToWrite 
+
+   Example:
+   Out &h378, &h55 
+
+   Use this syntax to read a port: 
+   ValueRead = Inp(PortAddress) 
+
+   Example: 
+   ValueRead = Inp(&h378) 
+ 
+(The syntax is identical to QuickBasic's Inp and Out). 

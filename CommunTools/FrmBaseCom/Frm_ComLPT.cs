@@ -24,31 +24,65 @@ namespace CommunTools
             InitializeComponent();
         }
 
+        static int portAddress = 0x378; // Typically, 0x378 is the address for LPT1
+        static int portDecData = 0xFF;
+
         public class PortControl // Import dll to project
         {
             [DllImport("inpout32.dll", EntryPoint = "Out32")]
-            public static extern void Output(int portAddress, int value); // decimal
+            public static extern void Output(int portAddress, int data); // decimal
 
             [DllImport("inpout32.dll", EntryPoint = "Inp32")]
             public static extern int Input(int portAddress);
-        }
 
-        static int portAddress = 0x378; // Typically, 0x378 is the address for LPT1
-        static int portDecData = 0xFF;
+            public static void WriteDataPort(int data)
+            {
+                Output(portAddress, data);
+            }
+
+            public static void WriteControlPort(int data)
+            {
+                data = data ^ 0xB;
+                data = data & 0xF;
+                Output(0x037A, data);
+            }
+
+            public static int ReadControlPort()
+            {
+                int data = Input(0x037A);
+                data = data ^ 0xB;
+                data = data & 0xF;
+                return data;
+            }
+
+            public static int ReadStatusPort()
+            {
+                int ValueGet = Input(0x0379);
+
+                ValueGet = ValueGet ^ 0x80;
+                ValueGet = ValueGet & 0xF0;
+                ValueGet = ValueGet >> 4;
+
+                return ValueGet;
+            }
+        }
 
         private void btnInp_BtnClick(object sender, EventArgs e)
         {
             // Read a value from the parallel port
             Console.WriteLine("Reading value from the parallel port...");
-            int value = PortControl.Input(portAddress);
-            Console.WriteLine($"Value read from port: {value:X}"); 
+            int value = PortControl.ReadControlPort();
+            Console.WriteLine($"Value read from port: {value:X}");
+            richTextBox_Send.AppendText("读取数据 " + value + "\n");
         }
 
         private void btnOut_BtnClick(object sender, EventArgs e)
         {
             // Write a value to the parallel port
             Console.WriteLine("Writing value to the parallel port...");
-            PortControl.Output(portAddress, portDecData); // Sending 0xFF (all bits high)
+            PortControl.WriteDataPort(portDecData); // Sending 0xFF (all bits high)
+            richTextBox_Send.AppendText ("写入数据 " + PortControl.ReadStatusPort()+"\n");
+
         }
     }
 }

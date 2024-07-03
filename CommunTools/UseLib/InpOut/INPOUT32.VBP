@@ -1,0 +1,14 @@
+Form=inpout32.frm
+Module=inpout; Inpout32.bas
+ProjWinSize=82,446,194,128
+ProjWinShow=2
+IconForm="inpout32"
+Name="Project1"
+HelpContextID="0"
+StartMode=0
+VersionCompatible32="0"
+MajorVer=1
+MinorVer=0
+RevisionVer=0
+AutoIncrementVer=0
+ServerSupportFiles=0

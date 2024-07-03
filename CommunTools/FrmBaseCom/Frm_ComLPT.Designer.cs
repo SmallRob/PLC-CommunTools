@@ -43,7 +43,7 @@ namespace CommunTools
             this.btnOut.BtnBackColor = System.Drawing.Color.White;
             this.btnOut.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnOut.BtnForeColor = System.Drawing.Color.White;
-            this.btnOut.BtnText = "Output";
+            this.btnOut.BtnText = "写入";
             this.btnOut.ConerRadius = 5;
             this.btnOut.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOut.EnabledMouseEffect = false;
@@ -80,7 +80,7 @@ namespace CommunTools
             this.btnInp.BtnBackColor = System.Drawing.Color.White;
             this.btnInp.BtnFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnInp.BtnForeColor = System.Drawing.Color.White;
-            this.btnInp.BtnText = "Input";
+            this.btnInp.BtnText = "读取";
             this.btnInp.ConerRadius = 5;
             this.btnInp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInp.EnabledMouseEffect = false;
