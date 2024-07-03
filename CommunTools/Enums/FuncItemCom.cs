@@ -77,7 +77,14 @@ namespace CommunTools.Enums
             /// </summary>
             [Description("    UDP通讯")]
             [FuncURI("Frm_ComUDP")]
-            COM_ComUDP = 9
+            COM_ComUDP = 9,
+
+            /// <summary>
+            /// WebSocket
+            /// </summary>
+            [Description("   LPT并口通讯")]
+            [FuncURI("Frm_ComLPT")]
+            COM_ComLTP = 10
         }
 
         /// <summary>
