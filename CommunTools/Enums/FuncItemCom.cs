@@ -13,7 +13,7 @@ namespace CommunTools.Enums
         /// 基础通信
         /// </summary>
         [Flags]
-        [FuncGroup("Base", "基础通信")]
+        [FuncGroup("Base", "基础通信协议")]
         public enum Com_BaseFuncItem
         {
             /// <summary>

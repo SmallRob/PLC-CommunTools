@@ -64,6 +64,14 @@ namespace CommunTools
 
                 gpb.Location = new Point(20, 33 + totolHeight + 4 * gpbIndex);
                 gpb.Text = groupInf[1];
+
+                Label titleLabel = new Label();
+                titleLabel.Text = groupInf[1];
+                titleLabel.Size = new Size(80, 16);
+                titleLabel.Location = new Point(0, 0);
+                titleLabel.Click += (s, ev) => ToggleGroupBox(gpb, gpbHeight);
+                gpb.Controls.Add(titleLabel);
+
                 this.Controls.Add(gpb);
 
                 totolHeight += gpbHeight;
@@ -130,6 +138,49 @@ namespace CommunTools
         {
             string funcUrl = ((Com_CSSkin.SkinControl.SkinPanel)sender).Parent.Tag.ToString();
             SkipToFunction(funcUrl);
+        }
+
+        /// <summary>
+        /// 折叠分组菜单
+        /// </summary>
+        /// <param name="gpb"></param>
+        /// <param name="originalHeight"></param>
+        private void ToggleGroupBox(GroupBox gpb, int originalHeight)
+        {
+            if (gpb.Height == originalHeight)
+            {
+                foreach (Control control in gpb.Controls)
+                {
+                    if (!(control is Label))
+                    {
+                        control.Visible = false;
+                    }
+                }
+                gpb.Height = 20; // 折叠后的高度
+
+                // 重新计算窗体高度
+                this.Size = new System.Drawing.Size(Size.Width, Size.Height - originalHeight + 20);
+
+                // 这里有问题，TODO
+
+            }
+            else
+            {
+                foreach (Control control in gpb.Controls)
+                {
+                    control.Visible = true;
+                }
+                gpb.Height = originalHeight;
+
+                // 重新计算窗体高度
+                this.Size = new System.Drawing.Size(Size.Width, Size.Height + originalHeight - 20);
+
+                // 这里有问题，TODO
+            }
+
+            // 重新设置最小和最大尺寸
+            this.MinimumSize = this.Size;
+            this.MaximumSize = this.Size;
         }
 
         /// <summary>
