@@ -78,7 +78,6 @@
     <Compile Include="Utilites\IOFileUtilites\PathHelper.cs" />
     <Compile Include="Utilites\IOFileUtilites\SelectFileDialog.cs" />
     <None Include="CfgFiles\packages.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
