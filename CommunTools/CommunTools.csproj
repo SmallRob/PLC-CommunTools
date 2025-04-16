@@ -114,6 +114,12 @@
     <Compile Include="FrmOther\Frm_Twain.Designer.cs">
       <DependentUpon>Frm_Twain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmProto\Frm_SCHNEIDER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProto\Frm_SCHNEIDER.Designer.cs">
+      <DependentUpon>Frm_SCHNEIDER.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProto\Frm_MQTT.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmOther\Frm_Twain.resx">
       <DependentUpon>Frm_Twain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProto\Frm_SCHNEIDER.resx">
+      <DependentUpon>Frm_SCHNEIDER.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProto\Frm_MQTT.resx">
       <DependentUpon>Frm_MQTT.cs</DependentUpon>

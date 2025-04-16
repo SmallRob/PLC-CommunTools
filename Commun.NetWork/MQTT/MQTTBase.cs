@@ -18,12 +18,18 @@ namespace Commun.NetWork.MQTT
         /// <summary>
         /// Socket Host
         /// </summary>
-        public string SocketIP { get => _socketIP; set => _socketIP = value; }
+        public string SocketIP
+        {
+            get => _socketIP; set => _socketIP = value;
+        }
 
         /// <summary>
         /// Socket Port
         /// </summary>
-        public int SocketPort { get => _socketPort; set => _socketPort = value; }
+        public int SocketPort
+        {
+            get => _socketPort; set => _socketPort = value;
+        }
 
         public MQTTBase(string socketIP, int socketPort)
         {
@@ -235,8 +241,32 @@ namespace Commun.NetWork.MQTT
 
             TcpMsgManager.SendMessage(ssList.ToArray());
 
-            // 进行解析
+            // 获取数据的超时处理
+            byte[] result = new byte[1];
+            result = TcpMsgManager.Receive(0, 1);
 
+            // 0011 0000  16#30   10#48 
+            int msgType = ((short)result[0]) >> 4;
+            if (msgType == 3)// 属于一个发布确认数据报文
+            {
+                // 获取payload字节数
+                byte[] lenResult = new byte[1];
+                lenResult = TcpMsgManager.Receive(0, 1);
+                int len = (short)lenResult[0];
+
+                byte[] pyloadResult = new byte[len];
+                pyloadResult = TcpMsgManager.Receive(0, 1);
+
+                //socket.Receive(pyloadResult, 0, len, SocketFlags.None);// 把剩下所有字节全部拿到
+
+                // 判断最后一个字节是不是0
+                // 如果是0，说明连接请求被接受
+                if (pyloadResult[len - 1] == 0)
+                {
+                    Console.WriteLine(">> MQTT发布成功");
+                }
+            }
         }
+
     }
 }

@@ -48,6 +48,7 @@
     <Compile Include="CommunDataValid.cs" />
     <Compile Include="Enums\EncodeType.cs" />
     <Compile Include="Enums\SocketState.cs" />
+    <Compile Include="ModbusTCP\ModbusTcpHelper.cs" />
     <Compile Include="MQTT\MQTTBase.cs" />
     <Compile Include="NetworkStreamPlus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
