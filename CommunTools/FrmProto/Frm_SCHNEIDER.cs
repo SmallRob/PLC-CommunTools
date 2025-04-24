@@ -26,7 +26,19 @@ namespace CommunTools
             modbusTcp.ConnectPLC("192.168.1.1", 502);
 
             // 接收及发送数据
-            // TODO
+            byte[] sendData = new byte[12];
+            byte[] receiveData = new byte[12];
+            sendData[0] = 0x01;
+            sendData[1] = 0x03;
+            sendData[2] = 0x00;
+            sendData[3] = 0x00;
+            sendData[4] = 0x00;
+            sendData[5] = 0x01;
+            sendData[6] = 0x02;
+            sendData[7] = 0xC4;
+            sendData[8] = 0x0B;
+            receiveData = modbusTcp.SendData(sendData);
+            modbusTcp.Close();
 
 
         }
