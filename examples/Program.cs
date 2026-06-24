@@ -21,9 +21,10 @@ public class Program
             Console.WriteLine("1. Modbus 协议示例");
             Console.WriteLine("2. MQTT 协议示例");
             Console.WriteLine("3. 串口通讯协议示例");
-            Console.WriteLine("4. 综合示例（多协议监控）");
-            Console.WriteLine("5. 协议转换示例");
-            Console.WriteLine("6. 设备发现示例");
+            Console.WriteLine("4. OPC UA 协议示例");
+            Console.WriteLine("5. 综合示例（多协议监控）");
+            Console.WriteLine("6. 协议转换示例");
+            Console.WriteLine("7. 设备发现示例");
             Console.WriteLine("0. 退出");
             Console.WriteLine();
             Console.Write("请输入选择 (0-6): ");
@@ -46,12 +47,15 @@ public class Program
                         await RunSerialExamples();
                         break;
                     case "4":
-                        await ComprehensiveExample.MultiProtocolMonitoring();
+                        await RunOpcUaExamples();
                         break;
                     case "5":
-                        await ComprehensiveExample.ProtocolBridgeExample();
+                        await ComprehensiveExample.MultiProtocolMonitoring();
                         break;
                     case "6":
+                        await ComprehensiveExample.ProtocolBridgeExample();
+                        break;
+                    case "7":
                         await ComprehensiveExample.DeviceDiscoveryExample();
                         break;
                     case "0":
@@ -120,5 +124,20 @@ public class Program
 
         Console.WriteLine("\n2. 插件使用示例");
         await SerialExample.PluginUsage();
+    }
+
+    private static async Task RunOpcUaExamples()
+    {
+        Console.WriteLine("=== OPC UA 协议示例 ===");
+        Console.WriteLine();
+
+        Console.WriteLine("1. 基本使用示例");
+        await OpcUaExample.BasicUsage();
+
+        Console.WriteLine("\n2. 插件使用示例");
+        await OpcUaExample.PluginUsage();
+
+        Console.WriteLine("\n3. 读写示例");
+        await OpcUaExample.ReadWriteExample();
     }
 }

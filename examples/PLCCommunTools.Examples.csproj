@@ -12,6 +12,7 @@
     <ProjectReference Include="..\src\Core\Commun.Modbus\Commun.Modbus.csproj" />
     <ProjectReference Include="..\src\Core\Commun.MQTT\Commun.MQTT.csproj" />
     <ProjectReference Include="..\src\Core\Commun.Serial\Commun.Serial.csproj" />
+    <ProjectReference Include="..\src\Core\Commun.OPCUA\Commun.OPCUA.csproj" />
   </ItemGroup>
 
 </Project>
