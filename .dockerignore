@@ -1,0 +1,12 @@
+**/.git
+**/bin
+**/obj
+**/packages
+**/.vs
+**/.vscode
+**/node_modules
+**/Dockerfile*
+**/docker-compose*
+**/.dockerignore
+**/README.md
+**/LICENSE
