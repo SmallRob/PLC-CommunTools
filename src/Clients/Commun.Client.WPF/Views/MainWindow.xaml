@@ -1,0 +1,65 @@
+<Window x:Class="Commun.Client.WPF.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:Commun.Client.WPF.Controls"
+        Title="PLC-CommunTools - 工业通讯调试工具" Height="768" Width="1024"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource MetroWindowBackgroundBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+
+        <!-- Menu Bar -->
+        <Menu Grid.Row="0" Background="{DynamicResource MetroPanelBackgroundBrush}">
+            <MenuItem Header="通讯调试" Foreground="{DynamicResource MetroForegroundBrush}">
+                <MenuItem Header="TCP 客户端" Click="TcpClient_Click" />
+                <MenuItem Header="串口通讯" Click="Serial_Click" />
+                <MenuItem Header="Modbus TCP" Click="Modbus_Click" />
+                <MenuItem Header="MQTT 客户端" Click="Mqtt_Click" />
+                <MenuItem Header="OPC UA 客户端" Click="OpcUa_Click" />
+                <Separator />
+                <MenuItem Header="退出" Click="Exit_Click" />
+            </MenuItem>
+            <MenuItem Header="视图" Foreground="{DynamicResource MetroForegroundBrush}">
+                <MenuItem Header="连接状态" Click="ConnectionStatus_Click" />
+            </MenuItem>
+            <MenuItem Header="帮助" Foreground="{DynamicResource MetroForegroundBrush}">
+                <MenuItem Header="关于" Click="About_Click" />
+            </MenuItem>
+        </Menu>
+
+        <!-- Main Content -->
+        <TabControl x:Name="MainTabControl" Grid.Row="1" Style="{DynamicResource MetroTabControl}">
+            <!-- Welcome Tab -->
+            <TabItem Header="主页" Style="{DynamicResource MetroTabItem}">
+                <Grid Margin="20">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock Text="PLC-CommunTools" FontSize="32" Foreground="{DynamicResource MetroForegroundBrush}" HorizontalAlignment="Center" />
+                        <TextBlock Text="工业通讯调试工具 v2.0" FontSize="16" Foreground="{DynamicResource MetroForegroundBrush}" HorizontalAlignment="Center" Margin="0,10,0,30" />
+                        <TextBlock Text="支持协议:" FontSize="14" Foreground="{DynamicResource MetroForegroundBrush}" Margin="0,0,0,10" />
+                        <WrapPanel HorizontalAlignment="Center">
+                            <Button Content="Modbus TCP" Style="{DynamicResource MetroButton}" Margin="5" Click="Modbus_Click" />
+                            <Button Content="MQTT" Style="{DynamicResource MetroButton}" Margin="5" Click="Mqtt_Click" />
+                            <Button Content="串口" Style="{DynamicResource MetroButton}" Margin="5" Click="Serial_Click" />
+                            <Button Content="OPC UA" Style="{DynamicResource MetroButton}" Margin="5" Click="OpcUa_Click" />
+                        </WrapPanel>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <!-- Status Bar -->
+        <StatusBar Grid.Row="2" Background="{DynamicResource MetroPanelBackgroundBrush}">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusText" Text="就绪" Foreground="{DynamicResource MetroForegroundBrush}" />
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock x:Name="ConnectionStatusText" Text="未连接" Foreground="{DynamicResource MetroForegroundBrush}" />
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

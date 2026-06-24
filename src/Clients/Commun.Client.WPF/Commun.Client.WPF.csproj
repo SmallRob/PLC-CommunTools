@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Commun.Protocols\Commun.Protocols.csproj" />
+    <ProjectReference Include="..\..\Core\Commun.Modbus\Commun.Modbus.csproj" />
+    <ProjectReference Include="..\..\Core\Commun.MQTT\Commun.MQTT.csproj" />
+    <ProjectReference Include="..\..\Core\Commun.Serial\Commun.Serial.csproj" />
+    <ProjectReference Include="..\..\Core\Commun.OPCUA\Commun.OPCUA.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Commun.Data\Commun.Data.csproj" />
+  </ItemGroup>
+
+</Project>

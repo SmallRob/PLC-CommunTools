@@ -1,0 +1,25 @@
+<UserControl x:Class="Commun.Client.WPF.Views.MqttView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="{DynamicResource MetroWindowBackgroundBrush}">
+    <Grid Margin="15">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+        <GroupBox Header="连接" Grid.Row="0" Style="{DynamicResource MetroGroupBox}">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="代理:" Style="{DynamicResource MetroLabel}"/>
+                <TextBox x:Name="TxtBroker" Text="localhost" Width="120" Style="{DynamicResource MetroTextBox}"/>
+                <Label Content="端口:" Style="{DynamicResource MetroLabel}" Margin="10,0,0,0"/>
+                <TextBox x:Name="TxtPort" Text="1883" Width="50" Style="{DynamicResource MetroTextBox}"/>
+                <Button x:Name="BtnConnect" Content="连接" Style="{DynamicResource MetroButton}" Margin="10,0,0,0"/>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox Header="发布/订阅" Grid.Row="1" Style="{DynamicResource MetroGroupBox}">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="主题:" Style="{DynamicResource MetroLabel}"/>
+                <TextBox x:Name="TxtTopic" Text="test/topic" Width="150" Style="{DynamicResource MetroTextBox}"/>
+                <Label Content="消息:" Style="{DynamicResource MetroLabel}" Margin="10,0,0,0"/>
+                <TextBox x:Name="TxtMessage" Text="Hello" Width="120" Style="{DynamicResource MetroTextBox}"/>
+                <Button x:Name="BtnPublish" Content="发布" Style="{DynamicResource MetroButton}" Margin="10,0,0,0"/>
+                <Button x:Name="BtnSubscribe" Content="订阅" Style="{DynamicResource MetroButton}" Margin="5,0,0,0"/>
+            </StackPanel>
+        </GroupBox>
+        <TextBox x:Name="TxtLog" Grid.Row="2" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Background="#FF1E1E1E" Foreground="#FF00FFFF" FontFamily="Consolas"/>
+    </Grid>
+</UserControl>

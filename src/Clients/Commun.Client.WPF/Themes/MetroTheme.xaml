@@ -1,0 +1,131 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Metro Color Palette -->
+    <Color x:Key="MetroAccentColor">#FF0078D7</Color>
+    <Color x:Key="MetroAccentLightColor">#FF429CE3</Color>
+    <Color x:Key="MetroAccentDarkColor">#FF005A9E</Color>
+    <Color x:Key="MetroBackgroundColor">#FFF2F2F2</Color>
+    <Color x:Key="MetroWindowBackgroundColor">#FF2D2D30</Color>
+    <Color x:Key="MetroPanelBackgroundColor">#FF1E1E1E</Color>
+    <Color x:Key="MetroForegroundColor">#FFEEEEEE</Color>
+    <Color x:Key="MetroBorderColor">#FF3F3F46</Color>
+    <Color x:Key="MetroSuccessColor">#FF107C10</Color>
+    <Color x:Key="MetroErrorColor">#FFD32F2F</Color>
+    <Color x:Key="MetroWarningColor">#FFFFB900</Color>
+
+    <SolidColorBrush x:Key="MetroAccentBrush" Color="{StaticResource MetroAccentColor}" />
+    <SolidColorBrush x:Key="MetroBackgroundBrush" Color="{StaticResource MetroBackgroundColor}" />
+    <SolidColorBrush x:Key="MetroWindowBackgroundBrush" Color="{StaticResource MetroWindowBackgroundColor}" />
+    <SolidColorBrush x:Key="MetroPanelBackgroundBrush" Color="{StaticResource MetroPanelBackgroundColor}" />
+    <SolidColorBrush x:Key="MetroForegroundBrush" Color="{StaticResource MetroForegroundColor}" />
+    <SolidColorBrush x:Key="MetroBorderBrush" Color="{StaticResource MetroBorderColor}" />
+    <SolidColorBrush x:Key="MetroSuccessBrush" Color="{StaticResource MetroSuccessColor}" />
+    <SolidColorBrush x:Key="MetroErrorBrush" Color="{StaticResource MetroErrorColor}" />
+
+    <!-- Metro Button Style -->
+    <Style x:Key="MetroButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource MetroAccentBrush}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Padding" Value="16,8" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" CornerRadius="3">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource MetroAccentLightColor}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource MetroAccentDarkColor}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="border" Property="Opacity" Value="0.4" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Metro TextBox Style -->
+    <Style x:Key="MetroTextBox" TargetType="TextBox">
+        <Setter Property="Background" Value="{StaticResource MetroPanelBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource MetroForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource MetroBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="8,6" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="CaretBrush" Value="{StaticResource MetroForegroundBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="3">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" Margin="2" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource MetroAccentBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Metro Label Style -->
+    <Style x:Key="MetroLabel" TargetType="Label">
+        <Setter Property="Foreground" Value="{StaticResource MetroForegroundBrush}" />
+        <Setter Property="FontSize" Value="13" />
+    </Style>
+
+    <!-- Metro GroupBox Style -->
+    <Style x:Key="MetroGroupBox" TargetType="GroupBox">
+        <Setter Property="Foreground" Value="{StaticResource MetroForegroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource MetroBorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+    </Style>
+
+    <!-- Metro CheckBox Style -->
+    <Style x:Key="MetroCheckBox" TargetType="CheckBox">
+        <Setter Property="Foreground" Value="{StaticResource MetroForegroundBrush}" />
+        <Setter Property="FontSize" Value="13" />
+    </Style>
+
+    <!-- Metro TabControl Style -->
+    <Style x:Key="MetroTabControl" TargetType="TabControl">
+        <Setter Property="Background" Value="{StaticResource MetroWindowBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource MetroBorderBrush}" />
+    </Style>
+
+    <Style x:Key="MetroTabItem" TargetType="TabItem">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource MetroForegroundBrush}" />
+        <Setter Property="Padding" Value="16,8" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border x:Name="border" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" BorderThickness="0,0,0,2" BorderBrush="Transparent">
+                        <ContentPresenter ContentSource="Header" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource MetroAccentBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="#19FFFFFF" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

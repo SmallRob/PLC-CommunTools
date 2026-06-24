@@ -1,0 +1,16 @@
+<UserControl x:Class="Commun.Client.WPF.Views.SerialView" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Background="{DynamicResource MetroWindowBackgroundBrush}">
+    <Grid Margin="15">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+        <GroupBox Header="串口设置" Grid.Row="0" Style="{DynamicResource MetroGroupBox}">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <Label Content="串口:" Style="{DynamicResource MetroLabel}"/>
+                <ComboBox x:Name="CmbPorts" Width="100" Margin="5,0"/>
+                <Label Content="波特率:" Style="{DynamicResource MetroLabel}" Margin="10,0,0,0"/>
+                <ComboBox x:Name="CmbBaudRate" Width="80" Margin="5,0" SelectedIndex="3"/>
+                <Button x:Name="BtnOpen" Content="打开" Style="{DynamicResource MetroButton}" Margin="10,0,0,0"/>
+                <Button x:Name="BtnClose" Content="关闭" Style="{DynamicResource MetroButton}" Margin="5,0,0,0" IsEnabled="False"/>
+            </StackPanel>
+        </GroupBox>
+        <TextBox x:Name="TxtLog" Grid.Row="1" IsReadOnly="True" VerticalScrollBarVisibility="Auto" Background="#FF1E1E1E" Foreground="#FFFFFF00" FontFamily="Consolas"/>
+    </Grid>
+</UserControl>
