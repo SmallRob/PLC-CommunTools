@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commun.Logging", "src\Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commun.Configuration", "src\Infrastructure\Commun.Configuration\Commun.Configuration.csproj", "{53B45C24-A85B-43BA-A53F-0328B02607B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{964171FE-3B61-48A9-82AC-2E2D00B5EC64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commun.Protocols.Tests", "tests\Commun.Protocols.Tests\Commun.Protocols.Tests.csproj", "{BDCF4239-C9CB-465B-80D7-6D6DD1D978C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +52,10 @@ Global
 		{53B45C24-A85B-43BA-A53F-0328B02607B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53B45C24-A85B-43BA-A53F-0328B02607B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53B45C24-A85B-43BA-A53F-0328B02607B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDCF4239-C9CB-465B-80D7-6D6DD1D978C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDCF4239-C9CB-465B-80D7-6D6DD1D978C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDCF4239-C9CB-465B-80D7-6D6DD1D978C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDCF4239-C9CB-465B-80D7-6D6DD1D978C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2A23BA9D-632D-46D2-B242-DA68B834D04B} = {E42B0B4C-FC4D-4A06-A950-21C5636518A8}
@@ -57,5 +65,6 @@ Global
 		{8EC7B762-95EC-40F0-8800-68434BF33BDE} = {1E84D6C1-6F9A-4C4E-9603-6E30F9FA40EC}
 		{F8A24522-5918-40BC-8538-A46AF998F709} = {1E84D6C1-6F9A-4C4E-9603-6E30F9FA40EC}
 		{53B45C24-A85B-43BA-A53F-0328B02607B3} = {1E84D6C1-6F9A-4C4E-9603-6E30F9FA40EC}
+		{BDCF4239-C9CB-465B-80D7-6D6DD1D978C0} = {964171FE-3B61-48A9-82AC-2E2D00B5EC64}
 	EndGlobalSection
 EndGlobal
