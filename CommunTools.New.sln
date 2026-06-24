@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E42B0B4C-FC4D-4A06-A950-21C5636518A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{2A23BA9D-632D-46D2-B242-DA68B834D04B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commun.Protocols", "src\Core\Commun.Protocols\Commun.Protocols.csproj", "{8793B22D-3587-497F-BE47-0615A1A4A2B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commun.Common", "src\Core\Commun.Common\Commun.Common.csproj", "{2B3FFFA6-A1E9-4134-B147-8258D73C29AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1E84D6C1-6F9A-4C4E-9603-6E30F9FA40EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commun.Data", "src\Infrastructure\Commun.Data\Commun.Data.csproj", "{8EC7B762-95EC-40F0-8800-68434BF33BDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commun.Logging", "src\Infrastructure\Commun.Logging\Commun.Logging.csproj", "{F8A24522-5918-40BC-8538-A46AF998F709}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commun.Configuration", "src\Infrastructure\Commun.Configuration\Commun.Configuration.csproj", "{53B45C24-A85B-43BA-A53F-0328B02607B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8793B22D-3587-497F-BE47-0615A1A4A2B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8793B22D-3587-497F-BE47-0615A1A4A2B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8793B22D-3587-497F-BE47-0615A1A4A2B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8793B22D-3587-497F-BE47-0615A1A4A2B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B3FFFA6-A1E9-4134-B147-8258D73C29AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B3FFFA6-A1E9-4134-B147-8258D73C29AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B3FFFA6-A1E9-4134-B147-8258D73C29AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B3FFFA6-A1E9-4134-B147-8258D73C29AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC7B762-95EC-40F0-8800-68434BF33BDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC7B762-95EC-40F0-8800-68434BF33BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC7B762-95EC-40F0-8800-68434BF33BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC7B762-95EC-40F0-8800-68434BF33BDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8A24522-5918-40BC-8538-A46AF998F709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8A24522-5918-40BC-8538-A46AF998F709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8A24522-5918-40BC-8538-A46AF998F709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8A24522-5918-40BC-8538-A46AF998F709}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53B45C24-A85B-43BA-A53F-0328B02607B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53B45C24-A85B-43BA-A53F-0328B02607B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53B45C24-A85B-43BA-A53F-0328B02607B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53B45C24-A85B-43BA-A53F-0328B02607B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2A23BA9D-632D-46D2-B242-DA68B834D04B} = {E42B0B4C-FC4D-4A06-A950-21C5636518A8}
+		{8793B22D-3587-497F-BE47-0615A1A4A2B1} = {2A23BA9D-632D-46D2-B242-DA68B834D04B}
+		{2B3FFFA6-A1E9-4134-B147-8258D73C29AB} = {2A23BA9D-632D-46D2-B242-DA68B834D04B}
+		{1E84D6C1-6F9A-4C4E-9603-6E30F9FA40EC} = {E42B0B4C-FC4D-4A06-A950-21C5636518A8}
+		{8EC7B762-95EC-40F0-8800-68434BF33BDE} = {1E84D6C1-6F9A-4C4E-9603-6E30F9FA40EC}
+		{F8A24522-5918-40BC-8538-A46AF998F709} = {1E84D6C1-6F9A-4C4E-9603-6E30F9FA40EC}
+		{53B45C24-A85B-43BA-A53F-0328B02607B3} = {1E84D6C1-6F9A-4C4E-9603-6E30F9FA40EC}
+	EndGlobalSection
+EndGlobal
