@@ -267,4 +267,138 @@ public class OpcUaProtocolTests
 
         Assert.IsAssignableFrom<IProtocolPlugin>(plugin);
     }
+
+    [Fact]
+    public void OpcUaPlugin_HasSubscribeCommand()
+    {
+        var plugin = new OpcUaPlugin();
+        var metadata = plugin.GetMetadata();
+
+        Assert.Contains("Subscribe", metadata.SupportedCommands);
+        Assert.Contains("Unsubscribe", metadata.SupportedCommands);
+    }
+
+    [Fact]
+    public void Subscribe_NotConnected_ReturnsFalse()
+    {
+        var protocol = new OpcUaProtocol();
+
+        var result = protocol.Subscribe("ns=2;s=Demo.Static.Scalar.Int32");
+
+        Assert.False(result);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public void Unsubscribe_NotConnected_ReturnsFalse()
+    {
+        var protocol = new OpcUaProtocol();
+
+        var result = protocol.Unsubscribe("ns=2;s=Demo.Static.Scalar.Int32");
+
+        Assert.False(result);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public void IsSubscribed_NotConnected_ReturnsFalse()
+    {
+        var protocol = new OpcUaProtocol();
+
+        var result = protocol.IsSubscribed("ns=2;s=Demo.Static.Scalar.Int32");
+
+        Assert.False(result);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public void GetActiveSubscriptions_NotConnected_ReturnsEmpty()
+    {
+        var protocol = new OpcUaProtocol();
+
+        var subscriptions = protocol.GetActiveSubscriptions();
+
+        Assert.NotNull(subscriptions);
+        Assert.Empty(subscriptions);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public void SubscriptionCount_NotConnected_ReturnsZero()
+    {
+        var protocol = new OpcUaProtocol();
+
+        Assert.Equal(0, protocol.SubscriptionCount);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public async Task Subscribe_AfterFailedConnect_ReturnsFalse()
+    {
+        var protocol = new OpcUaProtocol();
+
+        var config = new ProtocolConfig
+        {
+            Address = "192.0.2.1",
+            Port = 4840,
+            Timeout = TimeSpan.FromSeconds(2)
+        };
+
+        await protocol.ConnectAsync(config);
+
+        var result = protocol.Subscribe("ns=2;s=Demo.Static.Scalar.Int32");
+
+        Assert.False(result);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public async Task SubscriptionCount_AfterFailedConnect_ReturnsZero()
+    {
+        var protocol = new OpcUaProtocol();
+
+        var config = new ProtocolConfig
+        {
+            Address = "192.0.2.1",
+            Port = 4840,
+            Timeout = TimeSpan.FromSeconds(2)
+        };
+
+        await protocol.ConnectAsync(config);
+
+        Assert.Equal(0, protocol.SubscriptionCount);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public void NodeValueChanged_Event_CanSubscribe()
+    {
+        var protocol = new OpcUaProtocol();
+
+        NodeValueChangedEventArgs? receivedArgs = null;
+        protocol.NodeValueChanged += (sender, args) => { receivedArgs = args; };
+
+        Assert.Null(receivedArgs);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public void NodeValueChanged_Event_CanUnsubscribe()
+    {
+        var protocol = new OpcUaProtocol();
+
+        void Handler(object? sender, NodeValueChangedEventArgs args) { }
+        protocol.NodeValueChanged += Handler;
+        protocol.NodeValueChanged -= Handler;
+
+        protocol.Dispose();
+    }
 }

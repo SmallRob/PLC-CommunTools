@@ -139,5 +139,8 @@ public class Program
 
         Console.WriteLine("\n3. 读写示例");
         await OpcUaExample.ReadWriteExample();
+
+        Console.WriteLine("\n4. 订阅监控示例");
+        await OpcUaExample.SubscriptionExample();
     }
 }

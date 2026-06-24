@@ -15,6 +15,13 @@ public class OpcUaProtocol : ProtocolBase
     private OpcUaConfig? _config;
     private ApplicationConfiguration? _appConfig;
     private Session? _session;
+    private OpcUaSubscriptionManager? _subscriptionManager;
+
+    public event EventHandler<NodeValueChangedEventArgs>? NodeValueChanged
+    {
+        add { if (_subscriptionManager != null) _subscriptionManager.NodeValueChanged += value; }
+        remove { if (_subscriptionManager != null) _subscriptionManager.NodeValueChanged -= value; }
+    }
 
     protected override async Task<bool> ConnectCoreAsync(ProtocolConfig config)
     {
@@ -65,6 +72,11 @@ public class OpcUaProtocol : ProtocolBase
                 null
             );
 
+            if (_session.Connected)
+            {
+                _subscriptionManager = new OpcUaSubscriptionManager(_session);
+            }
+
             return _session.Connected;
         }
         catch (Exception ex)
@@ -76,6 +88,12 @@ public class OpcUaProtocol : ProtocolBase
 
     protected override async Task DisconnectCoreAsync()
     {
+        if (_subscriptionManager != null)
+        {
+            _subscriptionManager.Dispose();
+            _subscriptionManager = null;
+        }
+
         if (_session != null)
         {
             _session.Close();
@@ -192,6 +210,34 @@ public class OpcUaProtocol : ProtocolBase
             return new ProtocolResponse { Success = false, ErrorMessage = ex.Message };
         }
     }
+
+    public bool Subscribe(string nodeIdString, int publishingInterval = 1000)
+    {
+        if (_subscriptionManager == null)
+            return false;
+
+        return _subscriptionManager.Subscribe(nodeIdString, publishingInterval);
+    }
+
+    public bool Unsubscribe(string nodeIdString)
+    {
+        if (_subscriptionManager == null)
+            return false;
+
+        return _subscriptionManager.Unsubscribe(nodeIdString);
+    }
+
+    public bool IsSubscribed(string nodeIdString)
+    {
+        return _subscriptionManager?.IsSubscribed(nodeIdString) ?? false;
+    }
+
+    public IReadOnlyCollection<string> GetActiveSubscriptions()
+    {
+        return _subscriptionManager?.GetActiveSubscriptions() ?? Array.Empty<string>();
+    }
+
+    public int SubscriptionCount => _subscriptionManager?.SubscriptionCount ?? 0;
 
     private static byte[] ConvertToBytes(object value)
     {
