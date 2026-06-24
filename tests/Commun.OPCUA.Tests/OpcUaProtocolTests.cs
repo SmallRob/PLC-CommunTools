@@ -401,4 +401,133 @@ public class OpcUaProtocolTests
 
         protocol.Dispose();
     }
+
+    [Fact]
+    public void OpcUaPlugin_HasCallCommand()
+    {
+        var plugin = new OpcUaPlugin();
+        var metadata = plugin.GetMetadata();
+
+        Assert.Contains("Call", metadata.SupportedCommands);
+    }
+
+    [Fact]
+    public async Task CallMethodAsync_NotConnected_ReturnsError()
+    {
+        var protocol = new OpcUaProtocol();
+
+        var result = await protocol.CallMethodAsync("ns=2;s=Object", "ns=2;s=Method", 1, 2, 3);
+
+        Assert.False(result.Success);
+        Assert.Equal("Not connected", result.ErrorMessage);
+        Assert.Empty(result.OutputArguments);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public async Task CallMethodAsync_VariantArgs_NotConnected_ReturnsError()
+    {
+        var protocol = new OpcUaProtocol();
+
+        var args = new[] { new Opc.Ua.Variant(1), new Opc.Ua.Variant("test") };
+        var result = await protocol.CallMethodAsync("ns=2;s=Object", "ns=2;s=Method", args);
+
+        Assert.False(result.Success);
+        Assert.Equal("Not connected", result.ErrorMessage);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public async Task CallMethodAsync_Request_NotConnected_ReturnsError()
+    {
+        var protocol = new OpcUaProtocol();
+
+        var request = new MethodCallRequest
+        {
+            ObjectNodeId = "ns=2;s=Object",
+            MethodNodeId = "ns=2;s=Method",
+            InputArguments = new List<object> { 1, "hello", 3.14 }
+        };
+
+        var result = await protocol.CallMethodAsync(request);
+
+        Assert.False(result.Success);
+        Assert.Equal("Not connected", result.ErrorMessage);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public async Task CallMethodAsync_AfterFailedConnect_ReturnsError()
+    {
+        var protocol = new OpcUaProtocol();
+
+        var config = new ProtocolConfig
+        {
+            Address = "192.0.2.1",
+            Port = 4840,
+            Timeout = TimeSpan.FromSeconds(2)
+        };
+
+        await protocol.ConnectAsync(config);
+
+        var result = await protocol.CallMethodAsync("ns=2;s=Object", "ns=2;s=Method", 1);
+
+        Assert.False(result.Success);
+        Assert.Equal("Not connected", result.ErrorMessage);
+
+        protocol.Dispose();
+    }
+
+    [Fact]
+    public void MethodCallResult_DefaultValues()
+    {
+        var result = new MethodCallResult();
+
+        Assert.False(result.Success);
+        Assert.Null(result.ErrorMessage);
+        Assert.NotNull(result.OutputArguments);
+        Assert.Empty(result.OutputArguments);
+    }
+
+    [Fact]
+    public void MethodCallRequest_DefaultValues()
+    {
+        var request = new MethodCallRequest();
+
+        Assert.Equal(string.Empty, request.ObjectNodeId);
+        Assert.Equal(string.Empty, request.MethodNodeId);
+        Assert.NotNull(request.InputArguments);
+        Assert.Empty(request.InputArguments);
+    }
+
+    [Fact]
+    public void MethodCallRequest_CanSetProperties()
+    {
+        var request = new MethodCallRequest
+        {
+            ObjectNodeId = "ns=2;s=MyObject",
+            MethodNodeId = "ns=2;s=MyMethod",
+            InputArguments = new List<object> { 42, "hello", true }
+        };
+
+        Assert.Equal("ns=2;s=MyObject", request.ObjectNodeId);
+        Assert.Equal("ns=2;s=MyMethod", request.MethodNodeId);
+        Assert.Equal(3, request.InputArguments.Count);
+    }
+
+    [Fact]
+    public void MethodCallResult_CanSetProperties()
+    {
+        var result = new MethodCallResult
+        {
+            Success = true,
+            OutputArguments = new List<object> { 100, "result" }
+        };
+
+        Assert.True(result.Success);
+        Assert.Equal(2, result.OutputArguments.Count);
+    }
 }

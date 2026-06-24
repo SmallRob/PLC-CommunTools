@@ -198,4 +198,76 @@ public class OpcUaExample
             protocol.Dispose();
         }
     }
+
+    public static async Task MethodCallExample()
+    {
+        Console.WriteLine("\n=== OPC UA 方法调用示例 ===");
+
+        var protocol = new OpcUaProtocol();
+        var config = new ProtocolConfig
+        {
+            Address = "localhost",
+            Port = 4840,
+            Timeout = TimeSpan.FromSeconds(30)
+        };
+
+        try
+        {
+            var connected = await protocol.ConnectAsync(config);
+            if (!connected)
+            {
+                Console.WriteLine("连接失败！");
+                return;
+            }
+
+            Console.WriteLine("已连接到 OPC UA 服务器");
+
+            Console.WriteLine("\n1. 使用 params 方式调用方法...");
+            var result1 = await protocol.CallMethodAsync(
+                "ns=2;s=MyObject",
+                "ns=2;s=MyMethod",
+                100, "hello", 3.14
+            );
+            Console.WriteLine($"调用: {(result1.Success ? "成功" : $"失败 - {result1.ErrorMessage}")}");
+            if (result1.Success && result1.OutputArguments.Count > 0)
+            {
+                Console.WriteLine($"输出参数: {string.Join(", ", result1.OutputArguments)}");
+            }
+
+            Console.WriteLine("\n2. 使用 Variant 数组调用方法...");
+            var args = new[]
+            {
+                new Opc.Ua.Variant(42),
+                new Opc.Ua.Variant("world"),
+                new Opc.Ua.Variant(true)
+            };
+            var result2 = await protocol.CallMethodAsync("ns=2;s=MyObject", "ns=2;s=MyMethod", args);
+            Console.WriteLine($"调用: {(result2.Success ? "成功" : $"失败 - {result2.ErrorMessage}")}");
+
+            Console.WriteLine("\n3. 使用 MethodCallRequest 调用方法...");
+            var request = new MethodCallRequest
+            {
+                ObjectNodeId = "ns=2;s=MyObject",
+                MethodNodeId = "ns=2;s=MyMethod",
+                InputArguments = new List<object> { 200, "test", 9.81 }
+            };
+            var result3 = await protocol.CallMethodAsync(request);
+            Console.WriteLine($"调用: {(result3.Success ? "成功" : $"失败 - {result3.ErrorMessage}")}");
+            if (result3.Success)
+            {
+                Console.WriteLine($"输出参数数量: {result3.OutputArguments.Count}");
+            }
+
+            await protocol.DisconnectAsync();
+            Console.WriteLine("\n已断开连接");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"错误: {ex.Message}");
+        }
+        finally
+        {
+            protocol.Dispose();
+        }
+    }
 }

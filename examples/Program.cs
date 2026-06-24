@@ -142,5 +142,8 @@ public class Program
 
         Console.WriteLine("\n4. 订阅监控示例");
         await OpcUaExample.SubscriptionExample();
+
+        Console.WriteLine("\n5. 方法调用示例");
+        await OpcUaExample.MethodCallExample();
     }
 }

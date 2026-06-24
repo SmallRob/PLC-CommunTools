@@ -239,6 +239,130 @@ public class OpcUaProtocol : ProtocolBase
 
     public int SubscriptionCount => _subscriptionManager?.SubscriptionCount ?? 0;
 
+    public async Task<MethodCallResult> CallMethodAsync(string objectNodeId, string methodNodeId, params object[] inputArgs)
+    {
+        if (_session == null || !_session.Connected)
+            return new MethodCallResult { Success = false, ErrorMessage = "Not connected" };
+
+        try
+        {
+            var objectId = new NodeId(objectNodeId);
+            var methodId = new NodeId(methodNodeId);
+
+            var inputArgValues = inputArgs.Select(a => new Variant(a)).ToArray();
+
+            var outputArgs = _session.Call(objectId, methodId, inputArgValues);
+
+            var outputValues = new List<object>();
+            if (outputArgs != null)
+            {
+                foreach (var arg in outputArgs)
+                {
+                    if (arg is Variant variant)
+                        outputValues.Add(variant.Value);
+                    else
+                        outputValues.Add(arg);
+                }
+            }
+
+            return new MethodCallResult
+            {
+                Success = true,
+                OutputArguments = outputValues
+            };
+        }
+        catch (Exception ex)
+        {
+            return new MethodCallResult
+            {
+                Success = false,
+                ErrorMessage = ex.Message
+            };
+        }
+    }
+
+    public async Task<MethodCallResult> CallMethodAsync(string objectNodeId, string methodNodeId, Variant[] inputArgs)
+    {
+        if (_session == null || !_session.Connected)
+            return new MethodCallResult { Success = false, ErrorMessage = "Not connected" };
+
+        try
+        {
+            var objectId = new NodeId(objectNodeId);
+            var methodId = new NodeId(methodNodeId);
+
+            var outputArgs = _session.Call(objectId, methodId, inputArgs);
+
+            var outputValues = new List<object>();
+            if (outputArgs != null)
+            {
+                foreach (var arg in outputArgs)
+                {
+                    if (arg is Variant variant)
+                        outputValues.Add(variant.Value);
+                    else
+                        outputValues.Add(arg);
+                }
+            }
+
+            return new MethodCallResult
+            {
+                Success = true,
+                OutputArguments = outputValues
+            };
+        }
+        catch (Exception ex)
+        {
+            return new MethodCallResult
+            {
+                Success = false,
+                ErrorMessage = ex.Message
+            };
+        }
+    }
+
+    public async Task<MethodCallResult> CallMethodAsync(MethodCallRequest request)
+    {
+        if (_session == null || !_session.Connected)
+            return new MethodCallResult { Success = false, ErrorMessage = "Not connected" };
+
+        try
+        {
+            var objectId = new NodeId(request.ObjectNodeId);
+            var methodId = new NodeId(request.MethodNodeId);
+
+            var inputArgs = request.InputArguments.Select(a => new Variant(a)).ToArray();
+
+            var outputArgs = _session.Call(objectId, methodId, inputArgs);
+
+            var outputValues = new List<object>();
+            if (outputArgs != null)
+            {
+                foreach (var arg in outputArgs)
+                {
+                    if (arg is Variant variant)
+                        outputValues.Add(variant.Value);
+                    else
+                        outputValues.Add(arg);
+                }
+            }
+
+            return new MethodCallResult
+            {
+                Success = true,
+                OutputArguments = outputValues
+            };
+        }
+        catch (Exception ex)
+        {
+            return new MethodCallResult
+            {
+                Success = false,
+                ErrorMessage = ex.Message
+            };
+        }
+    }
+
     private static byte[] ConvertToBytes(object value)
     {
         return value switch

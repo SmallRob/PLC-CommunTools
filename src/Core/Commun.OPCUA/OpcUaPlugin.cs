@@ -27,7 +27,8 @@ public class OpcUaPlugin : IProtocolPlugin
                 "Write",
                 "Browse",
                 "Subscribe",
-                "Unsubscribe"
+                "Unsubscribe",
+                "Call"
             },
             DefaultConfig = new Dictionary<string, object>
             {
